@@ -1,0 +1,76 @@
+# Instansiasi dari doc-dev-backfill/templates/docker-compose.yml.template — Mode B, Step 04.
+# Modul: purchase_product_optional (Odoo 17.0)
+#
+# !! PRASYARAT PENTING - MOHON DIKONFIRMASI/DISESUAIKAN DEV SEBELUM `docker compose up` !!
+# __manifest__.py modul ini depends ke `sale_product_configurator` (dan `purchase_product_matrix`)
+# -- setahu BACKFILL, `sale_product_configurator` adalah fitur ENTERPRISE Odoo, BUKAN Community.
+# Image `odoo:17.0` polos dari Docker Hub cuma berisi Community -- kalau benar Enterprise-only,
+# container ini akan gagal install modul (`depends` tidak ketemu) memakai image di bawah.
+# BACKFILL TIDAK PUNYA akses ke image Enterprise Doodex sendiri (kalau ada) -- silakan ganti baris
+# `image:` di bawah ke image Enterprise internal Doodex, atau tambahkan volume mount ke source
+# Enterprise addons yang sah, sebelum menjalankan.
+#
+# Command default: install modul + jalankan SEMUA test (TransactionCase/HttpCase) di tests/*.py,
+# lalu berhenti (--stop-after-init) -- G1 "apakah modul+test jalan tanpa error".
+# Untuk G2 (cek manual lewat browser di http://localhost:8079), hapus baris
+# `--test-enable`/`--test-tags`/`--stop-after-init` lalu `docker compose up` ulang.
+#
+# !! SWITCH KE G2 (2026-07-28, Step 07 -- verifikasi AI-Browser) !! -- command di bawah diganti ke
+# G2 (server hidup, TANPA --test-enable/--test-tags/--stop-after-init), memakai DATABASE BARU
+# `purchase_product_optional_demo` (terpisah dari `purchase_product_optional_test` yang dipakai
+# Step 04, supaya tidak bentrok/tertimpa). Server akan TETAP HIDUP setelah `docker compose up`
+# (tidak exit sendiri) -- ini disengaja, biar AI-Browser (Claude in Chrome) bisa navigasi ke
+# http://localhost:8079 selagi container jalan. Matikan manual (`docker compose down` atau Ctrl+C)
+# setelah verifikasi Step 07 selesai.
+#
+# !! PRASYARAT TAMBAHAN (2026-07-28, Step 04 revisi) !! -- modul ini sekarang juga punya test JS
+# (QUnit, bundle `web.qunit_suite_tests`) dan Tour (`static/tests/tours/`, dijalankan via
+# `HttpCase.start_tour()`). KEDUANYA butuh Chrome/Chromium headless TERSEDIA di dalam container --
+# image `odoo:17.0` resmi dari Docker Hub TIDAK SELALU menyertakan Chrome secara default. Kalau
+# `docker compose up` gagal spesifik di test QUnit/Tour dengan error terkait browser/Chrome tidak
+# ditemukan (bukan error test logic), ini penyebabnya -- perlu image yang sudah menyertakan Chrome,
+# atau tambahkan langkah instalasi Chrome ke image (di luar scope BACKFILL untuk menyiapkan itu).
+#
+# !! TEMUAN run #2 (2026-07-28) !! -- Tour di-SKIP dengan pesan "websocket-client module is not
+# installed". Ini paket Python (bukan Chrome) yang dipakai `HttpCase.browser_js`/`start_tour` untuk
+# komunikasi ke Chrome DevTools Protocol -- TIDAK ada di image `odoo:17.0` resmi secara default.
+#
+# !! REVISI GAGAL (2026-07-28) !! -- percobaan pertama menambahkan `entrypoint: []` + `command:
+# bash -c "pip3 install ... && odoo ..."` supaya tidak perlu `exec` terpisah. INI SALAH -- entrypoint
+# resmi image `odoo:17.0` yang menerjemahkan env var HOST/USER/PASSWORD jadi koneksi db (`db:5432`)
+# ikut terbuang, container gagal start total (tidak ada satu baris log pun ter-tulis di run #3).
+# Sudah di-revert. Fix yang benar: lihat `Dockerfile` di folder ini -- `websocket-client` di-install
+# di layer image (build), bukan di command/entrypoint, supaya entrypoint bawaan image tetap utuh.
+# Command di bawah dikembalikan PERSIS seperti versi yang terbukti jalan di run #1/#2.
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  odoo:
+    build: .
+    depends_on:
+      - db
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: odoo
+    ports:
+      - "8079:8069"
+    volumes:
+      - D:/Kuncoro/doodex/repo/purchase-product-optional/purchase_product_optional:/mnt/extra-addons/purchase_product_optional
+      - ./logs:/var/log/odoo
+    command: >
+      odoo -d purchase_product_optional_demo
+      -i purchase_product_optional
+      --addons-path=/usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons
+      --logfile=/var/log/odoo/odoo.log
+
+volumes:
+  db-data:
