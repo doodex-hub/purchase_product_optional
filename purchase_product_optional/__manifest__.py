@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name': "Purchase Product Optional",
-    'version': '17.0.1.0.0',
+    'version': '18.0.1.0.0',
     'category': 'Tools',
     'summary': "Configure your products",
     'author': 'Doodex',
@@ -17,7 +17,14 @@ The main purpose is to override the sale_order view to allow configuring product
 It also enables the "optional products" feature.
     """,
 
-    'depends': ['purchase', 'purchase_product_matrix', 'sale_product_configurator'],
+    # 'sale' ditambahkan eksplisit (Step 6, Fase A1 revisi 2026-07-29, escalasi G2) -- di 17.0
+    # field `optional_product_ids`/key `has_optional_products` (dipakai controllers/main.py) hanya
+    # ada karena dependency lama `sale_product_configurator` menarik `sale` secara transitif.
+    # `sale_product_configurator` dihapus (DIFF-02, wajib untuk fix install-blocking di 18.0), tapi
+    # itu ikut menghilangkan `sale` -- fitur "optional products" (inti modul ini) crash total tanpa
+    # `sale` terinstall. User memutuskan (eskalasi 2026-07-29): tambah 'sale' eksplisit -- net
+    # footprint SAMA seperti 17.0 (sale sudah implisit tertarik di sana juga), cuma sekarang jelas.
+    'depends': ['purchase', 'purchase_product_matrix', 'sale'],
     'data': [
         'views/purchase_order_views.xml',
     ],

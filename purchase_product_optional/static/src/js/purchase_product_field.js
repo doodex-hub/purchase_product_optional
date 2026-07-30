@@ -89,13 +89,13 @@ patch(PurchaseOrderLineProductField.prototype, {
             if (!result.mode || result.mode === 'configurator') {
                 this._openProductConfigurator();
             } else {
-                this._openGridConfigurator();
+                this._openGridConfigurator(false);
             }
         }
     },
 
-    _editProductConfiguration() {
-        super._editProductConfiguration(...arguments);
+    onEditConfiguration() {
+        super.onEditConfiguration(...arguments);
         if (this.props.record.data.is_configurable_product) {
             this._openProductConfigurator(true);
         }

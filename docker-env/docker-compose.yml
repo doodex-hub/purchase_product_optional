@@ -1,47 +1,52 @@
-# Instansiasi dari doc-dev-backfill/templates/docker-compose.yml.template — Mode B, Step 04.
-# Modul: purchase_product_optional (Odoo 17.0)
+# Instance BARU untuk migrasi 18.0 (Step 6, Checkpoint G1 — Install Test).
+# Modul: purchase_product_optional (target: Odoo 18.0)
 #
-# !! PRASYARAT PENTING - MOHON DIKONFIRMASI/DISESUAIKAN DEV SEBELUM `docker compose up` !!
-# __manifest__.py modul ini depends ke `sale_product_configurator` (dan `purchase_product_matrix`)
-# -- setahu BACKFILL, `sale_product_configurator` adalah fitur ENTERPRISE Odoo, BUKAN Community.
-# Image `odoo:17.0` polos dari Docker Hub cuma berisi Community -- kalau benar Enterprise-only,
-# container ini akan gagal install modul (`depends` tidak ketemu) memakai image di bawah.
-# BACKFILL TIDAK PUNYA akses ke image Enterprise Doodex sendiri (kalau ada) -- silakan ganti baris
-# `image:` di bawah ke image Enterprise internal Doodex, atau tambahkan volume mount ke source
-# Enterprise addons yang sah, sebelum menjalankan.
+# TERPISAH SENGAJA dari instance BACKFILL 17.0 (`docker-env/` di source-codebase,
+# `purchase-product-optional`, port 8079) — supaya kedua instance bisa hidup BERSAMAAN tanpa
+# bentrok kalau suatu saat perlu dibandingkan langsung (17.0 vs 18.0). Penamaan unik:
+# - `name:` project eksplisit (bukan auto dari nama folder)
+# - port host 8082 (beda dari instance 17.0 di 8079 — 8081 dicoba dulu 2026-07-29, ternyata
+#   sudah dipakai proses lain di komputer dev, pindah ke 8082)
+# - volume db + network otomatis ikut ter-prefix nama project di atas, jadi tidak perlu diberi
+#   nama eksplisit lagi (Docker Compose men-generate `purchase_product_optional_18_db-data`, dst)
 #
-# Command default: install modul + jalankan SEMUA test (TransactionCase/HttpCase) di tests/*.py,
-# lalu berhenti (--stop-after-init) -- G1 "apakah modul+test jalan tanpa error".
-# Untuk G2 (cek manual lewat browser di http://localhost:8079), hapus baris
-# `--test-enable`/`--test-tags`/`--stop-after-init` lalu `docker compose up` ulang.
+# !! SWITCH KE G2 (2026-07-29) !! -- G1 (install test, db `_install`) sudah PASS (lihat
+# 06c_IMPLEMENTATION_LOG.md). Command di bawah diganti untuk G2 (validasi runtime via browser) --
+# database BARU `_demo` (terpisah dari `_install` supaya tidak bentrok/tertimpa), `--stop-after-init`
+# DIHAPUS supaya server TETAP HIDUP setelah `docker compose up` (disengaja, biar Claude in Chrome /
+# dev bisa buka http://localhost:8082). Matikan manual (`docker compose down`/Ctrl+C) setelah
+# verifikasi G2 selesai. Untuk balik ke G1 (kalau perlu re-test install): kembalikan db ke
+# `_install` dan tambahkan lagi `--stop-after-init`.
 #
-# !! SWITCH KE G2 (2026-07-28, Step 07 -- verifikasi AI-Browser) !! -- command di bawah diganti ke
-# G2 (server hidup, TANPA --test-enable/--test-tags/--stop-after-init), memakai DATABASE BARU
-# `purchase_product_optional_demo` (terpisah dari `purchase_product_optional_test` yang dipakai
-# Step 04, supaya tidak bentrok/tertimpa). Server akan TETAP HIDUP setelah `docker compose up`
-# (tidak exit sendiri) -- ini disengaja, biar AI-Browser (Claude in Chrome) bisa navigasi ke
-# http://localhost:8079 selagi container jalan. Matikan manual (`docker compose down` atau Ctrl+C)
-# setelah verifikasi Step 07 selesai.
+# !! REVISI G2 lanjutan (2026-07-29, MF-14) !! -- `depends` modul ditambah `'sale'` (lihat
+# __manifest__.py + FINDINGS.md MF-14). Modul SUDAH terinstall di db `_demo` yang sedang jalan --
+# `-i` saja TIDAK akan mendeteksi dependency baru pada modul yang statusnya sudah "installed". Ganti
+# `-i` -> `-u` (update) supaya Odoo mengevaluasi ulang graph dependency dan otomatis install `sale`
+# yang belum pernah ada di db ini.
 #
-# !! PRASYARAT TAMBAHAN (2026-07-28, Step 04 revisi) !! -- modul ini sekarang juga punya test JS
-# (QUnit, bundle `web.qunit_suite_tests`) dan Tour (`static/tests/tours/`, dijalankan via
-# `HttpCase.start_tour()`). KEDUANYA butuh Chrome/Chromium headless TERSEDIA di dalam container --
-# image `odoo:17.0` resmi dari Docker Hub TIDAK SELALU menyertakan Chrome secara default. Kalau
-# `docker compose up` gagal spesifik di test QUnit/Tour dengan error terkait browser/Chrome tidak
-# ditemukan (bukan error test logic), ini penyebabnya -- perlu image yang sudah menyertakan Chrome,
-# atau tambahkan langkah instalasi Chrome ke image (di luar scope BACKFILL untuk menyiapkan itu).
+# !! SWITCH KE STEP 9 (2026-07-29, Dev Testing) !! -- G2 SELESAI (MF-13/MF-14 resolved &
+# terverifikasi, termasuk AC-01-09 dites live via browser). Command di bawah diganti untuk re-run
+# suite `tests/*.py` (11 TC, baseline BACKFILL 17.0 run #7) sebagai bukti regresi di 18.0:
+# - Database BARU `_test` (fresh, bukan `_demo` yang sudah dipakai G2 — supaya `-i` install ulang
+#   dari nol termasuk dependency baru `sale`, tidak perlu `-u`).
+# - `--test-enable --test-tags /purchase_product_optional` -- jalankan HANYA test milik modul ini
+#   (bukan seluruh test suite Odoo).
+# - `--stop-after-init` -- container akan EXIT sendiri setelah test selesai (beda dari G2 yang
+#   sengaja dibiarkan hidup) -- ini normal, cek hasilnya dari `docker-env/logs/odoo.log`.
+# - **Ekspektasi Tour/QUnit tetap SKIP** (bukan bug baru) -- BACKFILL 17.0 sudah membuktikan
+#   `odoo:17.0` resmi tidak menyertakan Chrome/Chromium, dan percobaan menambah Chrome ke image
+#   GAGAL (run #6 BACKFILL, `apt-get install chromium` exit code 100, package tidak tersedia di
+#   base image) -- sudah di-treat sebagai limitasi lingkungan permanen, BUKAN dikejar lagi di sini.
+#   `odoo:18.0` kemungkinan besar sama. Kalau ternyata Tour/QUnit skip lagi dengan pesan serupa,
+#   ini EXPECTED, bukan masalah baru yang perlu di-workaround ulang.
 #
-# !! TEMUAN run #2 (2026-07-28) !! -- Tour di-SKIP dengan pesan "websocket-client module is not
-# installed". Ini paket Python (bukan Chrome) yang dipakai `HttpCase.browser_js`/`start_tour` untuk
-# komunikasi ke Chrome DevTools Protocol -- TIDAK ada di image `odoo:17.0` resmi secara default.
-#
-# !! REVISI GAGAL (2026-07-28) !! -- percobaan pertama menambahkan `entrypoint: []` + `command:
-# bash -c "pip3 install ... && odoo ..."` supaya tidak perlu `exec` terpisah. INI SALAH -- entrypoint
-# resmi image `odoo:17.0` yang menerjemahkan env var HOST/USER/PASSWORD jadi koneksi db (`db:5432`)
-# ikut terbuang, container gagal start total (tidak ada satu baris log pun ter-tulis di run #3).
-# Sudah di-revert. Fix yang benar: lihat `Dockerfile` di folder ini -- `websocket-client` di-install
-# di layer image (build), bukan di command/entrypoint, supaya entrypoint bawaan image tetap utuh.
-# Command di bawah dikembalikan PERSIS seperti versi yang terbukti jalan di run #1/#2.
+# !! SWITCH KE STEP 10 (2026-07-29, QA Testing) !! -- Step 9 SELESAI (11/11 pass). Command
+# dikembalikan ke mode server-hidup (pola sama seperti G2) supaya Claude in Chrome / dev bisa
+# eksplorasi interaktif lagi -- pakai db `_demo` (sudah punya `sale` terinstall + data test dari G2
+# sebelumnya, termasuk PO P00012), BUKAN `_test` (khusus automated test run, jangan dipakai untuk
+# eksplorasi manual supaya tidak tercampur). `--test-enable`/`--test-tags`/`--stop-after-init`
+# semua dihapus lagi.
+name: purchase_product_optional_18
 
 services:
   db:
@@ -62,13 +67,13 @@ services:
       USER: odoo
       PASSWORD: odoo
     ports:
-      - "8079:8069"
+      - "8082:8069"
     volumes:
-      - D:/Kuncoro/doodex/repo/purchase-product-optional/purchase_product_optional:/mnt/extra-addons/purchase_product_optional
+      - D:/Kuncoro/doodex/repo/purchase-product-18/purchase_product_optional:/mnt/extra-addons/purchase_product_optional
       - ./logs:/var/log/odoo
     command: >
-      odoo -d purchase_product_optional_demo
-      -i purchase_product_optional
+      odoo -d purchase_product_optional_18_demo
+      -u purchase_product_optional
       --addons-path=/usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons
       --logfile=/var/log/odoo/odoo.log
 

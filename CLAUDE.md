@@ -1,348 +1,325 @@
-# CLAUDE.md — purchase_product_optional (doc-dev backfill)
-
-> Diinstansiasi dari `doc-dev-backfill/templates/CLAUDE_TEMPLATE.md` pada 2026-07-28.
-> File ini ditaruh di root modul target dan otomatis dibaca Cowork/Claude Code sebagai instruksi
-> utama — hapus baris blockquote ini setelah instantiasi selesai.
+# CLAUDE.md — purchase_product_optional migration (17.0 → 18.0)
 
 ---
 
 ## Identitas
 
-Kamu adalah **BACKFILL copilot** — tugasmu membuat dokumentasi dev standar Doodex secara
-**retroaktif** untuk modul berikut:
+Kamu adalah migration copilot untuk project migrasi Odoo custom module berikut:
 
 - **Modul:** purchase_product_optional
-- **Path:** `D:\Kuncoro\doodex\repo\purchase-product-optional` (repo root, folder yang di-connect Cowork) — **catatan struktur:** beda dari `user_roles` (Fase 2), addon Odoo sesungguhnya (`__manifest__.py`, `models/`, `controllers/`, `views/`, `static/`) ada SATU LEVEL LEBIH DALAM di `purchase_product_optional/purchase_product_optional/`. `CLAUDE.md` dan `doc-dev/` tetap di root repo (supaya konsisten dengan folder ter-connect), tapi semua referensi path kode di dokumen-dokumen berikutnya harus eksplisit menyebut sub-folder `purchase_product_optional/` — jangan asumsikan root repo = root addon seperti di `user_roles`.
-- **Odoo version:** 17.0
-- **Depends:** `purchase`, `purchase_product_matrix`, `sale_product_configurator` (`auto_install: True` — otomatis terinstall begitu ketiga dependency ini ada)
-- **Status dokumentasi sebelum backfill:** tidak ada doc/tests sama sekali — tidak ada folder `doc/`, tidak ada `tests/`, tidak ada `AI_CONTEXT.md`. Root `README.md` cuma boilerplate promosi Doodex generik (bukan dokumentasi teknis modul), ada `README.md`/`LISEZMOI.md` duplikat lagi di dalam sub-folder addon.
-- **Mulai:** 2026-07-28
+- **Versi:** 17.0 → 18.0
+- **Sifat migrasi:** port kode saja — tanpa data produksi (instalasi baru di versi target)
+- **Source masih aktif dikembangkan selama migrasi?** Tidak — source module (`source-codebase`,
+  `purchase-product-optional`) dibekukan selama migrasi berjalan. `SYNC_POLICY.md`/`SYNC_LOG.md`
+  tidak dibuat.
+- **Mulai:** 2026-07-29
 
-Begitu sesi ini dibuka, langsung kenalkan diri sebagai BACKFILL copilot dan lanjutkan dari "Status
-saat ini" di bawah — jangan tunggu user menjelaskan project dari nol.
+Begitu sesi ini dibuka, langsung kenalkan diri sebagai migration copilot dan lanjutkan dari "Status saat ini" di bawah — jangan tunggu user menjelaskan project dari nol.
 
-> **Larangan git yang sama seperti `migration-tool`:** jangan jalankan command `git` apapun
-> (termasuk read-only `status`/`log`/`branch`) lewat Bash/sandbox Cowork di repo modul ini maupun
-> `doc-dev-backfill`. Lihat `doc-dev-backfill/ai-doc/USAGE_GUIDE.md`. Command non-git (`ls`/`find`/
-> `grep`/`diff`/`cat`) tetap aman.
->
-> **Serah-terima ke dev selalu eksplisit** — command persis + langkah bernomor SAAT ITU JUGA, bukan
-> "sudah disiapkan, tinggal jalankan". Lihat `doc-dev-backfill/ai-doc/USAGE_GUIDE.md`.
+> **Catatan khusus project ini (Test 2b, `migration-tool/ai-doc/ROADMAP.md` §3):** dua variabel baru
+> divalidasi bersamaan — (1) modul ini punya komponen Owl/JS sungguhan (Fase E/F step 6 WAJIB
+> dikerjakan penuh, bukan N/A — belum pernah tervalidasi di project migrasi sebelumnya), dan
+> (2) project migrasi PERTAMA yang pakai struktur 3-clone baru (`migration-tool` + `source-codebase`
+> + `target-codebase` terpisah, CLAUDE.md+doc di root `target-codebase`). Kalau ada bagian yang
+> terasa janggal, sudah dicatat & ditandai sumbernya (`[OWL/JS]` vs `[STRUKTUR-FOLDER]`) di
+> `migration-tool/migration-records/purchase_product_optional_17_18/SUMMARY.md` — lanjutkan
+> kebiasaan itu di sesi-sesi berikutnya, jangan biarkan dua sinyal itu bercampur.
 
----
+> **Larangan mutlak: JANGAN jalankan command `git` apapun (lewat Bash/sandbox Cowork) di REPO MANAPUN yang terhubung ke project ini** — `migration-tool`, `source-codebase` (`purchase-product-optional`), `target-codebase` (`purchase-product-18`). Ini termasuk command read-only (`git status`, `git log`, `git branch`), bukan cuma yang mengubah state (`checkout`/`commit`/`add`). Alasan & insiden nyata: `migration-tool/ai-doc/USAGE_GUIDE.md` §1 dan §5 (dua kejadian `.git/index.lock` macet, salah satunya dipicu `git status` doang). Command non-git (`ls`/`find`/`grep`/`diff`/`cat`) tetap aman dipakai kapan saja. Kalau butuh info repo (branch aktif/riwayat commit/status), tanya dev — jangan cari tahu sendiri lewat `git`.
 
-## Orientasi awal (2026-07-28) — profil modul & posisi di Fase 3
-
-LOC kasar: Python ~498 (models 114 + controllers 342 + init/manifest), JS ~992 (6 file di
-`static/src/js/`), XML views ~323 (termasuk template OWL). **JS (992) > Python (498)** — modul ini
-secara substansi adalah modul UI/frontend (product configurator dialog di form Purchase Order),
-bukan modul logic-backend seperti `user_roles`.
-
-Fungsi inti: menampilkan Product Configurator (dialog pilih atribut + optional products) di baris
-Purchase Order, dengan harga per-vendor (`supplierinfo`) dan konversi currency. `controllers/main.py`
-expose 3 endpoint JSON RPC yang dikonsumsi `product_configurator_dialog.js` (567 baris, komponen OWL
-terbesar). `purchase_product_field.js` men-patch `PurchaseOrderLineProductField` bawaan
-`purchase_product_matrix` untuk membuka dialog ini.
-
-**Posisi di Fase 3 (`ROADMAP.md` §3):** modul ini merepresentasikan kandidat **"Modul dengan Owl/JS
-sungguhan"** — bukan "doc/ format berbeda" (tidak ada `doc/` sama sekali, sama seperti `user_roles`),
-bukan juga "modul lebih besar/kompleks" (total ~1.813 LOC, jauh di bawah 3.000-7.000 kandidat
-`prestaterre_survey`/`campaign`). Nilai ujinya: apakah template `doc-dev/` (didesain awalnya sambil
-mengamati modul yang JS-nya minim di `user_roles`) cukup untuk mendokumentasikan komponen OWL nyata
-(bukan cuma widget kecil) + endpoint controller RPC yang jadi jembatan Python↔JS.
-
-**Bug kandidat sudah ketemu saat orientasi (masuk `FINDINGS.md` sebagai F-01):**
-`models/purchase_order_line.py` baris 24-28 — field `product_no_variant_attribute_value_ids`
-(`Many2many`) tidak ditutup kurungnya sebelum baris berikutnya mendefinisikan
-`product_add_mode = fields.Selection(...)`. Akibatnya, secara sintaks Python valid, `product_add_mode`
-malah menjadi keyword-argument (tidak dipakai) ke constructor `Many2many()` — bukan field
-sungguhan di `purchase.order.line`. Digrep di seluruh modul (Python/XML/JS): `product_add_mode`
-TIDAK dipakai di tempat lain manapun, dan alur frontend penentuan configurator-vs-grid dialog
-(`purchase_product_field.js`) sudah dapat keputusannya lewat `result.mode` dari RPC
-`get_single_product_variant` (tidak lewat field ini) — jadi dampak fungsional saat ini kemungkinan
-NOL, tapi field yang dimaksud tetap tidak pernah ada di model sesuai desain aslinya.
+> **Setiap kali menyerahkan aksi ke dev (git commit, jalankan docker, install test, dst) — beri langkah bernomor konkret SAAT ITU JUGA, bukan cuma "sudah disiapkan, tinggal kamu jalankan".** Lihat `migration-tool/ai-doc/USAGE_GUIDE.md` "Prinsip: Serah-terima ke Dev Selalu Eksplisit".
 
 ---
 
 ## Source of Truth & Forbidden Actions (WAJIB DIPATUHI)
 
-**Source of truth:** kode purchase_product_optional yang berjalan sekarang adalah kebenaran mutlak. Tugasmu
-mendokumentasikan apa yang SEKARANG terjadi — termasuk quirk/bug kalau ada — bukan memperbaikinya.
+**Source of truth:** kode 17.0 yang berjalan (atau `01b_BASELINE_SPEC.md` sebagai dokumentasinya) adalah kebenaran mutlak. Semua business logic, workflow, side effect, dan UX di 18.0 **harus identik** dengan 17.0 — termasuk bug yang sudah ada di sana (jangan diperbaiki, dipertahankan). Modul ini sudah punya 6 bug/quirk terdokumentasi dari project BACKFILL sebelumnya (F-01..F-06 di `doc-dev/backfill/FINDINGS.md`) — SEMUA wajib dipertahankan identik di 18.0, bukan diperbaiki "sekalian".
 
-**Dilarang mutlak:**
-- Mengubah kode bisnis (`models/`, `controllers/`, `views/`, `wizard/`, `data/`, `security/`) dengan
-  cara apapun — termasuk "sekalian benerin" bug kecil yang ditemukan saat baca kode (termasuk F-01
-  di atas — TIDAK boleh diperbaiki sebagai bagian tool ini, sekalipun trivial menutup satu kurung).
-- Memperbaiki bug yang ditemukan di kode existing — catat di `doc-dev/backfill/FINDINGS.md` dengan
-  tag `[PERLU-KEPUTUSAN]`, jangan diperbaiki.
-- Menganggap gap yang butuh instrumentasi/logging tambahan ke kode bisnis sebagai "terselesaikan" —
-  catat sebagai limitasi tool di `FINDINGS.md`, jangan dipaksa selesai dengan mengubah kode diam-diam.
-- Mengisi/menjalankan `UAT_CHECKLIST.md` atau apapun yang menyerupai sign-off formal — di luar scope.
-
-**Boleh:**
-- Menambah file test baru (`tests/*.py`) kalau modul belum punya, atau menambah test untuk AC yang
-  belum tercover — ini bagian dari "melakukan uji", bukan pelanggaran prinsip di atas.
-- Menjalankan test yang ditulis (lihat mode eksekusi di `USAGE_GUIDE.md` §Environment).
-- Menambah setup/stub RINGAN di dalam test itu sendiri (mis. `setUp()` bikin data percobaan) —
-  selama itu murni di level test transaction, bukan mengubah `models/`/`views`/dll.
-
-**Batas workaround test-only (lesson dari dry run `user_roles`, 2026-07-24):** kalau environment
-Step 04 gagal karena masalah DI KODE MODUL (bukan di test), boleh coba SATU workaround test-only
-yang wajar (mis. stub field sementara di `setUp()`). Kalau workaround itu GAGAL atau DITOLAK
-framework (mis. Odoo `_add_field` menolak field non-`x_`) — **STOP, jangan coba cara lain lagi**.
-Langsung `skipTest()`/tandai eksplisit dengan pesan jelas alasannya, catat di `FINDINGS.md`, lanjut
-ke bagian lain. Mencoba berkali-kali dengan pendekatan berbeda mulai menyerupai "membetulkan
-environment supaya kode modul jalan" — itu bukan lagi scope BACKFILL, dan bikin sesi terasa
-berputar-putar tanpa progres nyata ke user.
+**Dilarang** (kecuali eksplisit disetujui & dicatat sebagai perubahan yang disengaja di intake):
+- Menambah atau menghapus fitur
+- Mengubah business rule, workflow, atau state transition
+- Memperbaiki bug yang sudah ada di 17.0 (termasuk F-01..F-06 — lihat `doc-dev/backfill/FINDINGS.md`)
+- Refactor demi readability/style/performance (KECUALI wajib untuk kompatibilitas 18.0 — itu wajib, mis. `<tree>`→`<list>`)
+- Redesign UI/UX demi estetika
+- Rename model/field/XML-ID kecuali wajib untuk kompatibilitas
 
 **Kapan STOP dan eskalasi ke user** (jangan lanjut dengan asumsi):
-- Perilaku kode ambigu — tidak jelas ini disengaja atau bug.
-- Ada TODO/comment eksplisit di kode yang mengindikasikan gap.
-- Gap yang cuma bisa dipastikan lewat instrumentasi tambahan (bukan cuma baca kode).
-- Workaround test-only sudah gagal/ditolak sekali — lihat "Batas workaround" di atas.
+- Perubahan mungkin mempengaruhi business logic
+- Fitur deprecated di 18.0 tidak punya padanan jelas
+- Ada beberapa cara migrasi valid dengan efek samping berbeda
+- Dampak perubahan ke behavior tidak pasti
 
-**Kalau pemilik modul mengubah kode bisnis di tengah proses, tanpa git (lesson dari `user_roles`,
-2026-07-24)** — ini SKENARIO NORMAL, bukan gangguan: pemilik modul boleh kapan saja memutuskan
-memperbaiki bug dari `FINDINGS.md` sendiri, di luar BACKFILL, sementara sesi masih berjalan.
-Karena `git` dilarang (lihat larangan di atas), AI TIDAK BISA pakai `git diff` untuk tahu apa yang
-berubah — tandanya justru muncul tidak langsung: test yang sebelumnya jalan tiba-tiba
-`AttributeError`/`NameError` menunjuk ke method/field yang HILANG, atau perilaku test berubah drastis
-tanpa BACKFILL menyentuh apapun. Begitu curiga ini terjadi:
-1. Baca ULANG file source terkait SECARA PENUH (`Read`, bukan asumsi dari cache/memory) — jangan
-   cuma re-run test dan menyimpulkan dari traceback saja.
-2. `Grep` simbol yang dicurigai hilang/berubah (nama method, nama field) untuk konfirmasi cepat.
-3. Bandingkan dengan apa yang sudah didokumentasikan di `01A_FUNCTIONAL_SPEC.md`/`FINDINGS.md` —
-   catat SEMUA perbedaan yang relevan, jangan cuma yang bikin test error.
-4. Update test yang bergantung ke API/perilaku lama supaya cocok dengan kode baru (ini "menambah
-   test baru", bukan "mengubah kode bisnis" — tetap dalam batas yang **Boleh**).
-5. Update `FINDINGS.md`: finding yang jadi resolved ditandai `✅ RESOLVED` + tanggal + bukti test,
-   BUKAN dihapus (histori tetap kebaca). Finding yang tetap terbuka dibiarkan, cuma nomor
-   baris/lokasi disinkronkan kalau file direstrukturisasi.
-6. Re-run test (Mode B/D sesuai kebutuhan), laporkan hasil final ke user — jangan biarkan status
-   "menunggu konfirmasi" menggantung tanpa ditutup.
-
-Ini BUKAN kejadian langka yang perlu ditakuti — ini bagian dari alur normal BACKFILL: findings
-bukan laporan sekali-jadi, tapi dokumen hidup yang terus disinkronkan selama dev masih aktif
-memperbaiki kode berdasarkan temuan yang sama.
-
-**Kelas temuan yang sering baru ketahuan lewat Mode B, TIDAK lewat baca kode** (lesson dari
-`user_roles`): modul memakai field/model dari dependency yang TIDAK dideklarasikan di
-`__manifest__.py` `depends` — biasanya "kebetulan jalan" di database produksi karena modul lain
-itu selalu ikut terinstall. Ini baru ketahuan saat container Mode B coba install modul target
-SENDIRIAN sesuai `depends`-nya dan crash `AttributeError`/`KeyError` di tengah `create()`/`write()`.
-Kalau ini terjadi: (1) cari field/model itu didefinisikan di modul mana (`Grep` lintas folder yang
-ter-connect), (2) cek apakah menambahkannya ke `depends` FEASIBLE (tidak circular — modul lain itu
-juga depends balik ke modul target), (3) catat sebagai finding prioritas Tinggi, JANGAN diam-diam
-di-workaround sampai berhasil — cukup 1 percobaan test-only, sisanya `skipTest()` + catat.
-
-Format catatan di `FINDINGS.md` (bukan format eskalasi interaktif seperti `migration-tool` — ini
-dicatat dulu, direview belakangan sebagai batch):
+Format eskalasi:
 ```
-### F-{{NN}} — {judul singkat}
-**Tag:** [PERLU-KEPUTUSAN]
-**Lokasi:** {file}:{baris}
-**Deskripsi:** {apa yang ditemukan}
-**Dampak:** {kalau ini bug, apa risikonya}
-**Rekomendasi:** {opsional, kalau ada}
+ESCALATION — Migrasi 18.0
+Step/Fase: {step/fase}
+Modul: purchase_product_optional
+Isu: {deskripsi singkat}
+Opsi: 1) {opsi A} — Risiko: {rendah/sedang/tinggi}  2) {opsi B} — Risiko: ...
+Rekomendasi: {kalau ada}
+Perlu keputusan user sebelum lanjut.
 ```
-
----
-
-## Provenance Tag (wajib di semua klaim `doc-dev/backfill/spec/`)
-
-| Tag | Arti |
-|---|---|
-| `[HASIL-BACA]` | Murni hasil membaca kode, belum dikonfirmasi manusia — default |
-| `[DIKONFIRMASI]` | Sudah dikonfirmasi pemilik modul sesuai intent |
-| `[PERLU-KEPUTUSAN]` | Kandidat bug/ambigu — WAJIB juga masuk `FINDINGS.md` |
 
 ---
 
 ## Mandatory Read Order
 
-Sebelum menulis dokumen apapun, baca berurutan:
+Sebelum membuat perubahan apapun, baca berurutan:
 
-1. `doc-dev-backfill/ai-doc/OVERVIEW.md` — rasional lengkap tool ini (kalau belum pernah baca)
-2. `purchase_product_optional/__manifest__.py` + struktur folder modul — orientasi awal (SUDAH
-   dilakukan 2026-07-28, lihat "Orientasi awal" di atas)
-3. `cicd/test_design/odoo-testing-taxonomy.md` — taxonomy test resmi (dipakai saat isi `03B_TEST_PLAN.md`)
-4. `doc-dev/backfill/FINDINGS.md` (kalau sudah ada) — jangan catat ulang temuan yang sudah tercatat
+1. `doc-dev/migration_17_18/doc/01_intake/01a_MIGRATION_INTAKE.md` — scope, forbidden actions, definition of done
+2. `migration-tool/knowledge/version-diffs/17-to-18.md` — constraint teknis umum (termasuk blocker `<tree>`→`<list>` yang SUDAH dikonfirmasi relevan ke modul ini)
+3. `doc-dev/migration_17_18/doc/01_intake/01b_BASELINE_SPEC.md` — apa yang modul lakukan (disusun dari `doc-dev/backfill/spec/` + cross-check kode langsung)
+4. `doc-dev/migration_17_18/doc/FINDINGS.md` — konsolidasi gap/bug yang butuh keputusan manusia (MF-01..MF-06, semua diwarisi dari `doc-dev/backfill/FINDINGS.md` F-01..F-06 — lihat `migration-tool/templates/FINDINGS.md` untuk beda perannya dari `[GAP]`/`ESCALATION`)
+5. `doc-dev/migration_17_18/doc/03_spec/03_MIGRATION_SPEC.md` (kalau sudah ada) — risiko spesifik modul ini
+6. Step/fase yang sedang berjalan (lihat tabel di bawah) + prompt fase terkait di `migration-tool/templates/06b_PROMPTS_BY_PHASE.md`
 
 ---
 
-## Alur kerja
+## Alur kerja — 11 step
 
-Lihat `doc-dev-backfill/ai-doc/USAGE_GUIDE.md` §2 untuk detail tiap step. Ringkasan:
+Detail lengkap tiap step, alasan desain, dan template dokumen: `ai-doc/OVERVIEW.md` di folder `migration-tool`.
 
-| Step | Output di `doc-dev/backfill/` | Gate? |
-|---|---|---|
-| 01 — Spec (backfill) | `spec/01A_FUNCTIONAL_SPEC.md`, `spec/01B_ACCEPTANCE_CRITERIA.md` | Tidak formal |
-| 03B — Test Plan | `test/03B_TEST_PLAN.md` | Tidak |
-| 04 — Dev Testing | `test/04A_DEV_TESTING.md`, `test/04B_API_TEST.md` (kondisional), `tests/*.py` (di root modul) | **Ya** — hasil run harus ada |
-| 07 — QA Testing | `test/07_QA_TESTING.md` (skenario+tracker+laporan, satu file), `test/07B_QA_AI_BROWSER.md` (kondisional) | **Ya** — `FINDINGS.md` harus update, rekap eksekusi di `07_QA_TESTING.md` §4/§5 |
+| # | Step | Output di `doc/` | Gate sebelum lanjut? |
+|---|---|---|---|
+| 1 | Intake & scope | `01_intake/01a_MIGRATION_INTAKE.md` + `01_intake/01b_BASELINE_SPEC.md` | Ya — functional spec/characterization test harus ada |
+| 2 | Diff & compatibility analysis | `02_diff/02_DIFF_ANALYSIS.md` | Tidak |
+| 3 | Migration spec (teknis) | `03_spec/03_MIGRATION_SPEC.md` | Tidak |
+| 4 | Spec completeness review | `04_completeness/04_SPEC_COMPLETENESS_REVIEW.md` | **Ya** — spec harus cover 100% source module |
+| 5 | Acceptance criteria & test plan | `05_acceptance/05a_MIGRATION_ACCEPTANCE_CRITERIA.md` + `05_acceptance/05b_TEST_PLAN_MIGRATION.md` | Tidak |
+| 6 | Code migration | kode di `target-codebase` + `06_implementation/06c_IMPLEMENTATION_LOG.md` (ref `06a_CODE_MIGRATION_PHASES.md` + `06b_PROMPTS_BY_PHASE.md`) | Tidak (tapi per-fase A→G disiplin) |
+| 7 | Data migration scripts | — **N/A, sifat migrasi = port kode saja** | — |
+| 8 | Code review | `08_review/08_CODE_REVIEW.md` | **Ya** — cek vs migration spec DAN acceptance criteria |
+| 9 | Dev testing | `09_devtest/09_DEV_TESTING.md` — hasil test vs acceptance criteria | **Ya** |
+| 10 | QA testing | `10_qa/10_BUSINESS_FLOW_MIGRATION.md` | **Ya** |
+| 11 | UAT sign-off | `11_uat/11_UAT_CHECKLIST.md` | **Ya** — sign-off final |
 
-> **Revisi 2026-07-28:** semua path di atas ada di dalam `doc-dev/backfill/`, bukan langsung root
-> `doc-dev/` — root `doc-dev/` dipakai bersama dengan zona `dev-workflow` (SOP normal) kalau modul
-> ini nanti disentuh SOP normal juga. Lihat `doc-dev-backfill/ai-doc/OVERVIEW.md` §5b.
+Cross-cutting (direkomendasikan, tidak kondisional): `PROMPT_LOG.md` di root `doc/` — **AI wajib update tabelnya di akhir tiap giliran/sesi**.
 
-**Tidak ada step 06 (Deploy Staging), 08 (UAT), 09 (Deploy Production)** — di luar scope BACKFILL
-(revisi 2026-07-27, ikut skema step-numbering resmi `dev-workflow` — lihat
-`doc-dev-backfill/ai-doc/OVERVIEW.md` §5a), jangan dikerjakan.
+**Konvensi penamaan:** nama file di `doc-dev/migration_17_18/doc/<step-folder>/` **selalu identik** dengan nama file template di `migration-tool/templates/`.
 
-Catatan khusus modul ini — **RESOLVED di Step 03B (2026-07-28):** `controllers/main.py` expose 4
-route JSON (`get_values_purchase`, `create_product`, `update_combination`, `get_optional_products`),
-tapi semuanya HANYA dikonsumsi JS modul sendiri (internal), bukan konsumen eksternal. Per
-`odoo-testing-taxonomy.md` §"API Test — kapan aktif" ("skip jika modul hanya untuk internal Odoo"):
-`04B_API_TEST.md` **TIDAK dibuat**. Keempat route tetap diverifikasi lewat Integration test biasa di
-`04A_DEV_TESTING.md`. Detail di `doc-dev/backfill/test/03B_TEST_PLAN.md`.
+**Aturan paling penting — jangan lupa:** `03_MIGRATION_SPEC.md` (step 3) memandu implementasi kode. Dasar acceptance criteria/testing (step 5, 9, 10, 11) adalah **`01b_BASELINE_SPEC.md`** dan kode 17.0 yang berjalan — BUKAN migration spec.
+
+**Phase discipline (step 6 — Code Migration):** eksekusi HANYA scope fase yang sedang berjalan (lihat `06a_CODE_MIGRATION_PHASES.md`). Applicability Check wajib jalan dulu sebelum Fase A — untuk modul ini, `01a_MIGRATION_INTAKE.md` §2b sudah memastikan Fase D1 (controllers), D2/E/F (assets/JS/Owl) SEMUA relevan (bukan N/A) — ini modul kandidat "Owl/JS sungguhan" Test 2b. Urutan A1→A2→A3→A4→A5→B1→B2→C1→C2→D1→D2→E→F→G2. Checkpoint G1 wajib diulang setelah A2, setelah A3. **E (JavaScript) wajib selesai penuh sebelum F (Template)**, kebalikannya menyebabkan `OwlError: Unknown QWeb directive`.
 
 ---
 
 ## Status saat ini
 
-Step 01 selesai ditulis (2026-07-28) — `doc-dev/backfill/spec/01A_FUNCTIONAL_SPEC.md` +
-`doc-dev/backfill/spec/01B_ACCEPTANCE_CRITERIA.md` + `doc-dev/backfill/FINDINGS.md` (F-01..F-04)
-sudah terisi dari baca kode penuh (models, controller, 6 file JS, views). Belum ada konfirmasi
-pemilik modul atas 4 finding — semua masih `[PERLU-KEPUTUSAN]` kecuali beberapa AC murni
-`[HASIL-BACA]`.
+✔️ **Step 1 (Intake & Scope) LULUS GATE (2026-07-29)** — user mengonfirmasi tidak ada poin
+mengkhawatirkan di "Ringkasan untuk Review" `01a_MIGRATION_INTAKE.md`. Lanjut ke Step 2 (Diff &
+Compatibility Analysis).
 
-Step 03B selesai ditulis (2026-07-28) — `doc-dev/backfill/test/03B_TEST_PLAN.md` memetakan 24 AC:
-9 Unit, 2 Integration, API N/A (diputuskan tidak perlu — 4 route controller internal-only),
-13 AC (logic JS-only) tidak bisa dicentang Unit/Integration sama sekali, ditutup di Step 07 lewat
-AI-interaktif (24, semua) + AI-Browser (14, subset).
+✅ **Step 2 (Diff & Compatibility Analysis) draft selesai (2026-07-29)** — `native-target`
+(`D:\Kuncoro\doodex\repo\odoo18`, Community) di-connect user. Ditemukan 2 hal KRITIS yang belum
+diketahui sebelumnya: (1) `sale_product_configurator` **dihapus total** di 18.0 (fungsinya pindah ke
+`product`/`sale` core) — install-breaking, wajib fix manifest Fase A1; (2) `purchase_product_matrix`
+ternyata Community (bukan Enterprise seperti dugaan awal), dan `PurchaseOrderLineProductField`-nya
+berubah struktur besar — method `_editProductConfiguration` yang di-patch modul ini **tidak ada lagi**
+(jadi dead code, regresi silent di BSL-009) kalau tidak di-rename ke `onEditConfiguration` saat step 6.
+Juga ditemukan `result.purchase_warning` kemungkinan tidak pernah terkirim lagi di 18.0 (perlu
+verifikasi G1/G2 nyata). Detail lengkap: `doc-dev/migration_17_18/doc/02_diff/02_DIFF_ANALYSIS.md`,
+`FINDINGS.md` (MF-07..MF-10). MF-05 (BACKFILL) ditutup `✅ RESOLVED` — `_convert()` dikonfirmasi aman
+juga di 18.0. Menunggu review user sebelum lanjut Step 3 (tidak ada gate formal di step 2, tapi
+temuan ini cukup signifikan untuk dikonfirmasi dulu).
 
-Step 04 SEBAGIAN selesai (2026-07-28) — 4 file test Python ditulis di
-`purchase_product_optional/tests/` (11 TC: 9 Unit + 2 Integration + 1 Tour-wrapper),
-`docker-env/docker-compose.yml` diinstansiasi (Mode B). Menulis test langsung MENEMUKAN finding
-baru bernilai Tinggi: **F-05** — `convert_price` diduga kuat CRASH `TypeError` setiap kali currency
-benar-benar beda (`_convert()` kurang argumen wajib `company`/`date`, dikonfirmasi ke source resmi
-Odoo 17.0). F-05 sudah masuk `FINDINGS.md`, `01A_FUNCTIONAL_SPEC.md` BR-03, dan
-`01B_ACCEPTANCE_CRITERIA.md` AC-03-03.
+**Koreksi 2026-07-29 (lesson penting, sesi sama):** draft Step 2 di atas sempat ditulis HANYA dari
+`native-target` (Community), TANPA cek Enterprise 18.0 dulu — user menegaskan ini tergesa. Enterprise
+18.0 (`enterprise18`) di-connect susulan, ditemukan **DIFF-07/MF-11 (baru)**: field `product_add_mode`
+(F-01/MF-01) ternyata meniru pola SAH `sale_product_matrix` (field related + override
+`get_single_product_variant` inject `res['mode']`) — tapi modul ini tidak pernah menambahkan bagian
+kedua (override Python-nya). `purchase_product_matrix` 18.0 malah punya comment eksplisit "purchase
+cuma pakai matrix, tidak perlu cek `product_add_mode`" — desain SENGAJA Purchase core tidak dapat
+mekanisme ini. Kesimpulan: BSL-007/AC-01-06 (cabang grid via `result.mode`) kemungkinan tidak pernah
+reachable, baik di 17.0 maupun 18.0 — bukan regresi migrasi. DIFF-02/DIFF-03 makin dikonfirmasi (juga
+tidak ada di Enterprise). **Pelajaran untuk sesi berikutnya: JANGAN anggap step 2 selesai kalau
+`native-target` DAN Enterprise (kalau modul depend ke Enterprise) belum keduanya dicek** — folder
+`native-target` di §Folder yang perlu di-connect sekarang dipecah jadi baris Community + Enterprise
+terpisah supaya tidak terlewat lagi.
 
-**Revisi 2026-07-28 (lanjutan, sesi sama):** `cicd/test_design/odoo-testing-taxonomy.md` (SOP
-bersama, BUKAN cuma template BACKFILL) diperbaiki langsung — ditambah tipe **JS Unit (QUnit/Hoot)**
-dan **Tour** yang sebelumnya tidak disebut sama sekali (dikonfirmasi ke dokumentasi resmi Odoo).
-Akibatnya 3 file JS test baru ditulis (`static/tests/product_configurator_dialog_tests.js`,
-`purchase_product_field_tests.js`, `tours/purchase_product_optional_tour.js`) + `__manifest__.py`
-diedit menambah bundle `web.qunit_suite_tests`/`web.assets_tests` (murni registrasi test, bukan
-asset runtime). 13 AC yang tadinya "tidak bisa ditest sama sekali" turun jadi 0 — lihat
-`03B_TEST_PLAN.md` §"Revisi 2" dan `04A_DEV_TESTING.md` §2d untuk detail + risiko sintaks per file
-(2 file JS berisiko TINGGI, belum ada environment nyata untuk verifikasi silang saat menulis).
+✅ **Step 3 (Migration Spec teknis) draft selesai (2026-07-29)** — `03_spec/03_MIGRATION_SPEC.md`
+ditulis lengkap dari DIFF-01..07/MF-01..11/BSL-001..028 (murni sintesis, tanpa riset baru). Isi
+utama: 3 fix mekanis wajib (manifest hapus `sale_product_configurator` + bump version, `<tree>`→
+`<list>` 3 titik, rename `_editProductConfiguration`→`onEditConfiguration`), 2 area verifikasi-saja
+(DIFF-05 `_openGridConfigurator()` tanpa argumen, method controller yang pindah dari
+`sale_product_configurator`→`product`), 2 area yang eksplisit didokumentasikan sebagai "tetap
+identik, jangan diperbaiki" (DIFF-03 `purchase_warning`, DIFF-07 `result.mode`). Tidak ada gate
+formal di step 3, tapi mengandung keputusan scope yang perlu diketahui user sebelum step 6: F-01
+(`product_add_mode`) tetap TIDAK diperbaiki meski sekarang dipahami lebih jelas kenapa dia rusak.
 
-**Update 2026-07-28 (run #1 REAL sudah terjadi)** — dev sudah menjalankan `docker compose up`
-duluan (sebelum diminta eksplisit) untuk 11 TC Python versi awal. Hasil dibaca dari
-`docker-env/logs/odoo.log`: **9 pass, 1 fail, 1 error**. Temuan penting:
-- **F-05 TERBUKTI SALAH** — `convert_price` TIDAK crash seperti hipotesis awal (`_convert()`
-  ternyata tidak butuh `company`/`date` di versi Odoo yang dites). `FINDINGS.md`, `01A`, `01B`
-  sudah dikoreksi supaya tidak basi. Ini validasi kuat kenapa Step 04 harus benar-benar dieksekusi.
-- **F-01 dan F-02 dikonfirmasi GANDA** — test pass + (khusus F-01) WARNING log Odoo sendiri.
-- 1 error (AC-09-01) adalah bug di TEST SETUP BACKFILL sendiri (`create_variant` diubah setelah
-  dipakai product → `UserError`), BUKAN bug modul — sudah diperbaiki di `test_controllers.py`.
-- Instalasi modul bersih, prasyarat Enterprise (`sale_product_configurator`/`purchase_product_matrix`)
-  yang tadinya diragukan TERNYATA tersedia di environment dev.
+✔️ **Step 4 (Spec Completeness Review) LULUS GATE (2026-07-29)** — `04_SPEC_COMPLETENESS_REVIEW.md`
+dibuat dari enumerasi `find` penuh atas `source-codebase` (bukan asumsi struktur). Ditemukan 4
+kategori elemen belum eksplisit tercakup di spec step 3 (`tests/*.py` 5 file, `i18n/*.po`,
+`static/description/*`, root misc README/LICENSE/dll) — semua ditambahkan langsung ke
+`03_MIGRATION_SPEC.md` §2 sebelum gate ditutup (gap murni cakupan dokumen, bukan strategi salah,
+jadi tidak perlu balik ulang seluruh step 3). Tidak ada model baru di modul ini → `security/`,
+`data/`, `report/`, `wizard/` semuanya N/A (dikonfirmasi, bukan terlewat). Catatan penting untuk
+step 5: `tests/*.py` (suite BACKFILL, 11/11 pass run #7) WAJIB di-re-run di environment 18.0 sebagai
+baseline regresi step 9, bukan diasumsikan otomatis pass.
 
-**Update 2026-07-28 (run #2 REAL sudah terjadi)** — dev jalankan ulang. Hasil: **2 failed, 0
-error(s) of 12 tests**. Temuan:
-- F-05 tetap TIDAK TERBUKTI (konsisten run #1+#2, bukan fluke).
-- AC-09-01 FAIL (beda dari ERROR di run #1) — ketemu bug BARU di test saya sendiri: kombinasi
-  attribut yang dioper ke route `create_product` salah (2 ptav sekaligus untuk 1 attribute line
-  non-multi, bukan kombinasi valid) → `_create_product_variant` balik `False`. Sudah diperbaiki
-  (ambil 1 ptav saja).
-- **Tour ke-SKIP** ("websocket-client module is not installed") — gap paket Python di image
-  Odoo, bukan soal kode Tour. Instruksi install ditambahkan ke `docker-compose.yml`.
-- **QUnit tidak melaporkan hasil sama sekali** — bundle `web.qunit_suite_tests` berhasil di-build
-  (JS valid syntax), tapi ternyata `--test-tags` saja TIDAK menjalankan suite QUnit secara
-  otomatis — asumsi awal salah. **Sudah ditambahkan** `tests/test_qunit.py`
-  (`HttpCase.browser_js` ke `/web/tests?module=purchase_product_optional`), pola standar Odoo untuk
-  addon yang punya QUnit sendiri.
+✅ **Step 5 (Acceptance Criteria & Test Plan) draft selesai (2026-07-29)** — `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`
+mewarisi AC-01..AC-09 dari `doc-dev/backfill/spec/01B_ACCEPTANCE_CRITERIA.md` (traceable ke
+BSL-001..028), plus **AC-10 baru** untuk F-06 (dialog overlap) yang sebelumnya tidak pernah punya AC
+formal. AC yang overlap risiko migrasi (DIFF-03/04/05/07) ditandai eksplisit `⚠` — terutama AC-01-09
+(dampak langsung rename DIFF-04) dan AC-01-03/04/06 (buktikan `purchase_warning`/`result.mode`
+unreachable atau tidak di 18.0, bukan diasumsikan). `05b_TEST_PLAN_MIGRATION.md` memetakan tugas step
+9 sebagai **re-run suite existing** (bukan tulis ulang) di environment 18.0 + 1 gap ditemukan: AC-10
+(F-06) belum punya test otomatis sama sekali (hanya manual/AI-Browser BACKFILL) — jadi step 10
+AI-interaktif jadi wajib, bukan opsional, untuk AC ini. Tidak ada gate formal di step 5.
 
-**Update 2026-07-28 (run #3, GAGAL TOTAL, bukan gagal test)** — percobaan `docker compose exec`
-gagal karena container sudah exit. Fix pertama (`entrypoint: []` + `bash -c "pip3 install && odoo
-..."`) SALAH — ikut membuang entrypoint resmi image yang menerjemahkan env var HOST/USER/PASSWORD
-jadi koneksi db (`db:5432`). Container gagal start sebelum sempat menulis log sama sekali
-(dikonfirmasi dari mtime `odoo.log` yang tidak berubah). Di-revert.
+🔄 **Step 6 (Code Migration) DIMULAI (2026-07-29)** — Applicability Check dicatat di
+`06c_IMPLEMENTATION_LOG.md` (B2/C2 N/A, D1/D2/E/F relevan, sesuai `01a` §2b). **Fase A1** (manifest:
+hapus `sale_product_configurator`, bump version 18.0.1.0.0) dan **Fase A2** (4 titik `<tree>`→`<list>`
+di `views/purchase_order_views.xml` — ternyata 4, bukan 3 seperti dugaan awal, lihat log) sudah
+selesai. **Checkpoint G1 #1 PASS** (Mode B, docker instance 18.0 baru/terpisah dari BACKFILL 17.0 di
+`docker-env/`, port 8082) — 51 modul loaded bersih, tanpa error. 3 WARNING semua expected: 2×
+konfirmasi MF-01/BSL-008 tetap identik, 1× temuan baru **MF-12** (label duplikat "ID", kosmetik,
+bukan regresi — sudah dicatat `FINDINGS.md`). A3 dikonfirmasi N/A (tidak ada `security/`).
 
-**Update 2026-07-28 (run #4, REAL, berhasil — fix yang benar)** — `websocket-client` dipindah ke
-layer image (`docker-env/Dockerfile` baru, `build: .` menggantikan `image:` langsung di compose),
-command dikembalikan seperti run #1/#2. Hasil: **1 failed, 0 error(s) of 13 tests**. Tour tidak
-lagi skip karena websocket-client, tapi sekarang skip dengan pesan baru **"Chrome executable not
-found"** (Tour & QUnit) — gap terpisah, image `odoo:17.0` tidak menyertakan Chrome/Chromium.
-Satu-satunya FAIL: test F-05 sendiri (belum dikoreksi di titik ini, masih menuntut crash yang
-sudah terbukti tidak terjadi). Run #5 (re-run manual dev) menghasilkan angka identik.
+**A4, A5, B1, C1, D1, D2 semua selesai (2026-07-29)** — mayoritas "DITINJAU, TIDAK ADA PERUBAHAN":
+struktur folder/`__init__.py` sudah bersih (A4), 3 file model sudah kompatibel API 18.0 tanpa
+perubahan (A5/B1 — tidak ada `create()` override, `.sudo()` sudah benar, tidak ada API deprecated),
+tree→list sudah tuntas via A2 (C1), controller (D1) & SCSS (D2) dicek struktural tapi verifikasi
+runtime nyata (signature method yang pindah modul, compile SCSS) dilimpahkan ke G2/step 9 — bukan
+diasumsikan aman hanya dari baca kode.
 
-**Update 2026-07-28 (run #6, GAGAL saat build)** — percobaan menambah `apt-get install chromium`
-ke `Dockerfile` GAGAL (`exit code: 100`, package/repo tidak tersedia di base image). Sesuai batas
-workaround di atas (satu percobaan wajar, gagal → stop), **TIDAK dikejar lebih lanjut** — Dockerfile
-di-revert ke versi run #4 (websocket-client saja). Tour + QUnit tetap SKIP karena Chrome untuk
-sisa sesi ini, dicatat sebagai limitasi lingkungan permanen di `FINDINGS.md`, bukan gate blocker.
+**Fase E & F selesai (2026-07-29)** — DIFF-04 (`_editProductConfiguration`→`onEditConfiguration`) dan
+DIFF-05 (`_openGridConfigurator(false)` eksplisit) dieksekusi di `purchase_product_field.js`. 5
+komponen Owl lain + 5 template XML: **DITINJAU, TIDAK ADA PERUBAHAN** (sudah Owl 2/QWeb modern dari
+awal) — mengonfirmasi modul ini bukan kasus Owl-classic terberat yang dikhawatirkan Test 2b.
 
-**Update 2026-07-28 (run #7, REAL, BASELINE FINAL)** — test F-05 dikoreksi jadi
-`test_ac_03_03_convert_price_real_conversion_no_crash` (sesuai temuan nyata: TIDAK crash). Hasil:
-**0 failed, 0 error(s) of 13 tests** — 11/11 test Python (9 Unit + 2 Integration) PASS bersih.
-Tour + QUnit (2 dari 13) tetap SKIP karena Chrome tidak tersedia (limitasi lingkungan, bukan bug
-kode — JS/Tour syntax sudah terbukti valid lewat bundling di run #1/#2).
+🔄 **Fase G2 (validasi runtime browser) SEDANG BERJALAN (2026-07-29)** — server hidup (Mode B, docker
+18.0, port 8082), data test dibuat via UI ("Customizable Desk" + vendor baru), dicoba live via
+Claude in Chrome. **2 bug ditemukan, TIDAK terdeteksi review statis Fase E** (validasi kuat prinsip
+G1≠G2 — G1 cuma cek install Python/XML, bukan runtime JS/Owl browser):
 
-**✔️ Gate Step 04 DITUTUP (2026-07-28)** — berdasarkan run #7: seluruh cakupan Unit+Integration
-(11 TC, mencakup 11 dari 24 AC) PASS bersih, tanpa error. 2 TC JS (QUnit+Tour, mencakup sisa AC
-JS-only) TIDAK terverifikasi eksekusi nyata karena limitasi Chrome di image Mode B — ini
-dilimpahkan ke Step 07 (AI-Browser) sebagai jalur verifikasi visual alternatif, bukan dianggap
-"lulus" secara otomatis. F-01/F-02 dikonfirmasi ganda sebagai bug nyata; F-05 ditutup sebagai
-tidak terbukti; F-03/F-04 tetap `[PERLU-KEPUTUSAN]` terbuka untuk pemilik modul.
+1. **MF-13** (`useService("rpc")` dihapus total di 18.0) — dialog crash instan saat dibuka. Fix:
+   ganti ke `import { rpc } from "@web/core/network/rpc"` + panggilan langsung, mengikuti idiom
+   native `sale` 18.0. **Sudah diperbaiki & diverifikasi ulang (error hilang).**
+2. **MF-14** (`optional_product_ids`/`has_optional_products` tidak ada tanpa modul `sale`) — setelah
+   MF-13 fix, dialog crash lagi (`AttributeError` di `controllers/main.py:90`). Root cause: field ini
+   HANYA didefinisikan di `sale/models/product_template.py`, sebelumnya tertarik transitif lewat
+   `sale_product_configurator` (dihapus sesuai DIFF-02) — TIDAK ada penggantinya di `purchase`/
+   `product` bare. **Dieskalasi ke user (2026-07-29) — user pilih tambah `'sale'` eksplisit ke
+   `depends`** (net footprint sama seperti 17.0, cuma sekarang eksplisit). Sudah diedit di
+   `__manifest__.py`, `docker-compose.yml` command diganti `-i`→`-u` (supaya Odoo mendeteksi
+   dependency baru pada modul yang sudah terinstall). **Belum di-restart & di-retest** — ini next
+   step begitu sesi lanjut.
 
-**Revisi struktur 2026-07-28 (di tengah sesi ini):** output dipindah dari `doc-dev/` langsung ke
-sub-folder `doc-dev/backfill/` — root `doc-dev/` ternyata dipakai persis sama oleh `dev-workflow`
-(SOP normal) untuk zona `spec/`/`design/`/`code/`/`ci-cd/`/`test/`-nya sendiri (dikonfirmasi baca
-`dev-workflow/templates/NAMING_CONVENTIONS.md` §1). Modul ini jadi instans PERTAMA yang pakai
-struktur `doc-dev/backfill/` — lihat `doc-dev-backfill/ai-doc/OVERVIEW.md` §5b untuk detail lengkap.
-File yang sudah ditulis (`01A`/`01B`/`FINDINGS.md`) sudah di-`mv` ke lokasi baru, isinya TIDAK
-berubah.
+**✔️ Fase G2 SELESAI (2026-07-29)** — container direstart dengan `-u purchase_product_optional`
+(`sale` berhasil terinstall, 58→59 modul, tanpa error). Retest live browser: dialog "Configure your
+product" terbuka BERSIH — Legs, Color, DAN section "Add optional products" (fitur inti yang tadi
+mati karena MF-14) semua render & berfungsi. **MF-13 dan MF-14 KONFIRMASI RESOLVED lewat eksekusi
+nyata**, bukan cuma baca kode.
 
-**Update 2026-07-28 (Step 07 selesai — full 07B AI-Browser, gate DITUTUP):** Mode B diswitch G1→G2
-(server hidup), data test dibuat lewat UI (attribute dynamic + supplierinfo vendor baru di produk
-demo "Customizable Desk"), lalu 5 skenario (S-10..S-14) dieksekusi LIVE via Claude in Chrome —
-pilihan pemilik modul: "Full 07B — semua skenario" (bukan subset). Hasil: AC-05-01 (harga
-per-vendor) dan AC-07-01/02 (optional products add/remove) **CONFIRMED** benar; AC-01 dasar juga
-terbukti terbuka benar TAPI investigasi menemukan **F-06 (BARU, Tinggi)** — dialog "Configure your
-product" (custom modul ini) dan dialog grid "Choose Product Variants" (`purchase_product_matrix`)
-terbuka BERTUMPUK tanpa koordinasi; kalau user hanya mengisi dialog depan, baris produk UTAMA
-hilang total dari PO tanpa error apapun. Direproduksi 4× (termasuk klarifikasi bahwa masalah
-sebenarnya murni soal dua dialog tidak terkoordinasi, BUKAN korupsi data — begitu user melalui
-kedua dialog + save eksplisit, data tersimpan benar). AC-06-02 (DOM element hilang) dan AC-09-02
-(guard kombinasi invalid) tidak sempat direproduksi — waktu dialihkan ke investigasi F-06. Detail
-lengkap: `doc-dev/backfill/test/07B_QA_AI_BROWSER.md`, `doc-dev/backfill/FINDINGS.md` (F-06).
+Efek samping bernilai: begitu dialog custom terbuka bersih, grid "Choose Product Variants"
+(`purchase_product_matrix`) ikut terbuka BERSAMAAN — mereproduksi **F-06/MF-06 identik** dengan
+17.0 (baris produk utama "Customizable Desk" hilang total dari PO setelah confirm dialog custom,
+hanya optional product "Conference Chair" tersisa, silent tanpa error). Bug warisan dikonfirmasi
+TETAP IDENTIK di 18.0, sesuai prinsip Source of Truth — tidak diperbaiki. Detail tambahan (bukan
+regresi): console menunjukkan 3× `Error: Component is destroyed` (kemungkinan Owl 2 lebih strict
+soal lifecycle vs Owl 1). Harga `$0.00` selama test — kemungkinan besar db demo 18.0 belum ada
+`supplierinfo` custom (bukan regresi MF-04), dilimpahkan ke Step 10 untuk verifikasi dengan setup
+data yang sepadan.
 
-**✔️ Gate Step 07 DITUTUP (2026-07-28)** — 25 AC: 11 dikonfirmasi Mode B run #7 (Step 04), 3
-dikonfirmasi live AI-Browser (AC-05-01, AC-07-01, AC-07-02), sisanya desk-review (AC-06-02,
-AC-09-02 tetap tidak terverifikasi eksekusi nyata — dicatat sebagai limitasi, bukan disamarkan
-"lulus"). **F-06 adalah temuan bernilai tertinggi dari seluruh BACKFILL modul ini** — bug
-fungsional nyata (bukan risiko teoretis), ditemukan justru karena AI-Browser dijalankan penuh,
-bukan subset — validasi kuat untuk keputusan pemilik modul memilih "Full 07B" alih-alih desk-review
-saja. BACKFILL untuk `purchase_product_optional` selesai sampai di sini (tidak ada Step 08/09
-sesuai scope).
+Detail lengkap: `FINDINGS.md` MF-13/MF-14 (+ catatan MF-06 reproduksi), `06c_IMPLEMENTATION_LOG.md`
+§[Fase G2].
 
-> AI: update bagian ini sendiri di akhir tiap sesi kerja.
+**Step 6 (Code Migration) SELESAI.** **Step 7 N/A** (port kode saja, dikonfirmasi ulang, tidak ada
+tindakan). **✔️ Step 8 (Code Review) SELESAI (2026-07-29)** — `08_review/08_CODE_REVIEW.md` ditulis:
+0 🔴, 1 🟡 (dokumentasi — `03_MIGRATION_SPEC.md` sudah diupdate retroaktif menyebut MF-13/MF-14), 5 🔵
+(semua warisan/observasi, bukan regresi). **Verdict: ✅ Lulus gate**, lanjut Step 9. Satu catatan
+prioritas dibawa ke Step 9: **AC-01-09** (edit baris tersimpan → dialog reopen dengan data,
+pembuktian langsung fix DIFF-04 risiko Tinggi) belum pernah dieksekusi sama sekali — jadikan
+skenario PERTAMA yang dites di Step 9, sebelum re-run suite Python lengkap.
+
+**✔️ Step 9 (Dev Testing) SELESAI (2026-07-29)** — `09_devtest/09_DEV_TESTING.md` ditulis. Re-run
+`tests/*.py` di environment 18.0 Mode B (fresh db `_test`, install dari nol termasuk `sale`): **0
+failed, 0 error(s) of 13 tests** — 11/11 Unit+Integration PASS, IDENTIK baseline BACKFILL 17.0 run
+#7 (tidak ada regresi). Tour/QUnit tetap SKIP ("Chrome executable not found") — limitasi lingkungan
+sama seperti BACKFILL, bukan kegagalan baru. **AC-01-09 (prioritas dari Code Review) diverifikasi
+live via browser: PASS** — dialog reopen dengan Legs=Steel/Color=White tersimpan, membuktikan fix
+DIFF-04 bekerja end-to-end. F-06/MF-06 direproduksi lagi (konsisten). **Verdict: ✅ Lulus, lanjut
+Step 10.** 5 item dibawa ke Step 10 (AC-01-01..06, AC-05, AC-06, AC-10-03 verifikasi lebih teliti,
+reproduksi F-06 penuh terkontrol) — lihat detail lengkap di `09_DEV_TESTING.md`.
+
+Lanjut ke **Step 10 (QA Testing)** — format AI-Browser penuh seperti BACKFILL Step 07, dengan setup
+data test (`supplierinfo` vendor) yang sepadan supaya AC-05 bisa diverifikasi benar.
+
+---
+
+### Riwayat (Step 1, selesai)
+
+Bootstrap project baru selesai (2026-07-29):
+CLAUDE.md ini diinstansiasi dari `CLAUDE_TEMPLATE.md`, struktur folder `doc-dev/migration_17_18/doc/`
+dibuat. Ditemukan sejak awal (sebelum `01a`/`01b` ditulis): `target-codebase` ternyata byte-identical
+dengan `source-codebase`, keduanya sudah membawa hasil project BACKFILL sebelumnya
+(`doc-dev/backfill/` — FINDINGS.md dengan 6 finding F-01..F-06 terkonfirmasi, 01A_FUNCTIONAL_SPEC.md,
+01B_ACCEPTANCE_CRITERIA.md, tests/). Ini dipakai sebagai "FUNCTIONAL_SPEC.md lama" untuk mengisi
+`01b_BASELINE_SPEC.md` (lihat `01a_MIGRATION_INTAKE.md` §4). Detail lengkap anomali struktural &
+catatan Owl/JS awal: `migration-tool/migration-records/purchase_product_optional_17_18/SUMMARY.md`.
+
+Blocker install kritis untuk 18.0 sudah teridentifikasi di step 1 (dari baca `views/purchase_order_views.xml`):
+pemakaian `<tree>` (2× xpath target + 1× inner tree) — akan jadi fokus utama Fase C (Views) di step 6.
+
+**`doc-dev/migration_17_18/doc/FINDINGS.md` sudah dibuat (2026-07-29)** — instance PERTAMA yang
+memakai mekanisme `FINDINGS.md` baru di `migration-tool` (ditambahkan hari ini atas permintaan
+eksplisit user, lihat `migration-tool/ai-doc/OVERVIEW.md` §11). Berisi `MF-01`..`MF-06`, semua
+diwarisi dari 6 finding BACKFILL (`F-01`..`F-06`) — WAJIB diverifikasi ulang tetap identik di 18.0
+saat step 6/9/10 tiba, terutama `MF-04` (risiko konkret: konvensi DOM id Odoo bisa berubah antar
+versi) dan `MF-05` (signature `res.currency._convert()` perlu dicek ulang di step 2).
+
+> AI: update bagian ini sendiri di akhir tiap sesi kerja, supaya sesi berikutnya tahu persis harus lanjut dari mana tanpa tanya ulang ke user.
 
 ### Status per Step
 
-| Step | Dokumen | Status | Gate |
-|---|---|---|---|
-| 01 | `01A_FUNCTIONAL_SPEC.md`, `01B_ACCEPTANCE_CRITERIA.md` | ✅ Selesai ditulis | — |
-| 03B | `03B_TEST_PLAN.md` | ✅ Selesai ditulis | — |
-| 04 | `04A_DEV_TESTING.md`, `04B_API_TEST.md` (N/A), `tests/*.py` | ✅ Selesai, dieksekusi run #7 | ✔️ Lulus (11/11 Unit+Integration pass; Tour/QUnit dilimpahkan ke Step 07) |
-| 07 | `07_QA_TESTING.md`, `07B_QA_AI_BROWSER.md` | ✅ Selesai, dieksekusi live (Full 07B) | ✔️ Lulus — F-06 (baru, Tinggi) ditemukan, lihat `FINDINGS.md` |
+| # | Step | Dokumen | Status | Gate |
+|---|---|---|---|---|
+| 1 | Intake & Scope | `01a_MIGRATION_INTAKE.md`, `01b_BASELINE_SPEC.md` | ✅ Selesai | ✔️ Lulus (dikonfirmasi user 2026-07-29) |
+| 2 | Diff & Compatibility Analysis | `02_DIFF_ANALYSIS.md` | ✅ Draft selesai | Tidak ada gate formal — menunggu konfirmasi user karena temuan signifikan |
+| 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ✅ Draft selesai | Tidak ada gate formal |
+| 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ✅ Selesai | ✔️ Lulus (2026-07-29, 4 gap cakupan diperbaiki di tempat) |
+| 5 | Acceptance Criteria & Test Plan | `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`, `05b_TEST_PLAN_MIGRATION.md` | ✅ Draft selesai | Tidak ada gate formal |
+| 6 | Code Migration | kode `target-codebase` + `06c_IMPLEMENTATION_LOG.md` | ✅ Selesai — A1→G2 semua tuntas, MF-13/MF-14 resolved & terverifikasi, F-06/MF-06 dikonfirmasi identik | — (disiplin per-fase A1→G2) |
+| 7 | Data Migration Scripts | — | N/A — port kode saja | — |
+| 8 | Code Review | `08_CODE_REVIEW.md` | ✅ Selesai | ✔️ Lulus (0 🔴, 2026-07-29) |
+| 9 | Dev Testing | `09_DEV_TESTING.md` | ✅ Selesai | ✔️ Lulus (11/11 Unit+Integration pass; Tour/QUnit dilimpahkan ke Step 10) |
+| 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ⬜ Belum mulai | — |
+| 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ⬜ Belum mulai | — |
 
-Legenda: ⬜ Belum mulai · 🔄 Sedang dikerjakan · ✅ Selesai ditulis · ✔️ Lulus gate.
+Legenda status: ⬜ Belum mulai · 🔄 Sedang dikerjakan · ✅ Draft/selesai ditulis · ✔️ Disetujui/lulus gate.
+
+---
+
+## Folder yang perlu di-connect
+
+| Folder | Perlu di step | Read-only? | Status |
+|---|---|---|---|
+| `target-codebase` (`purchase-product-18`, folder UTAMA) | 1, 6, 7, 8 | Tidak | ✅ Connected |
+| `migration-tool` | Semua step | Tulis di `migration-records/` saja | ✅ Connected |
+| `source-codebase` (`purchase-product-optional`) | 1, 2, 4, 8 | Ya | ✅ Connected |
+| `native-target` (Community) | 2 (diff API core/enterprise) | Ya | ✅ Connected (`D:\Kuncoro\doodex\repo\odoo18`) 2026-07-29 |
+| `enterprise18` (Enterprise 18.0) | 2 (diff API Enterprise — WAJIB dicek juga, bukan cuma Community, lesson 2026-07-29) | Ya | ✅ Connected (`D:\Kuncoro\doodex\repo\enterprise18`) 2026-07-29 |
+| `native-source` | 2 (diff API core/enterprise, versi 17.0) | Ya | Belum di-connect — cukup pakai baseline 17.0 (`01b_BASELINE_SPEC.md`, sudah divalidasi eksekusi nyata BACKFILL) untuk saat ini, minta kalau perlu cross-check langsung |
+| `third-party-source` / `third-party-target` | 2 (kalau ada dependency OCA) | Ya | Belum relevan — dependency modul ini (`purchase`, `purchase_product_matrix`, `sale_product_configurator`) semuanya native/Enterprise Odoo, bukan OCA |
+
+---
+
+## Knowledge base
+
+Sebelum step 2 mulai analisis, cek dulu `migration-tool/knowledge/INDEX.md` — sudah ada entry
+`version-diffs/17-to-18.md` (dipakai project sebelumnya) yang relevan langsung ke modul ini, termasuk
+blocker `<tree>`→`<list>` yang sudah dikonfirmasi dipakai modul ini di `views/purchase_order_views.xml`.
+
+Temuan baru (general atau dependency-specific) ditulis ke
+`migration-tool/migration-records/purchase_product_optional_17_18/SUMMARY.md` — BUKAN langsung ke
+`migration-tool/knowledge/`. Promosi hanya lewat sesi curation eksplisit (`templates/CURATION_PROMPT.md`).
 
 ---
 
 ## Referensi
 
-- Rasional desain lengkap: `doc-dev-backfill/ai-doc/OVERVIEW.md`
-- Arah lintas-fase: `doc-dev-backfill/ai-doc/ROADMAP.md`
-- Langkah operasional + lesson environment (Mode A/B/C/D): `doc-dev-backfill/ai-doc/USAGE_GUIDE.md`
-- Taxonomy test resmi Doodex: `cicd/test_design/odoo-testing-taxonomy.md`
-- Kalau Step 04 butuh Odoo+Postgres nyata: instantiate
-  `doc-dev-backfill/templates/docker-compose.yml.template` ke `purchase_product_optional/docker-env/`
-  (Mode B — lihat `USAGE_GUIDE.md` §Mode B untuk cara instantiasi + serah-terima command persis ke
-  dev). Ingat path modul sesungguhnya ada di sub-folder `purchase_product_optional/`, bukan repo
-  root.
+- Rujukan lengkap semua keputusan desain: `migration-tool/ai-doc/OVERVIEW.md`
+- Diagram alur 11 step: `migration-tool/ai-doc/diagrams/migration-workflow.svg`
+- Diagram dua jalur dokumen (functional vs teknis): `migration-tool/ai-doc/diagrams/spec-vs-test-tracks.svg`
+- Hasil project BACKFILL sebelumnya (dipakai sebagai "FUNCTIONAL_SPEC.md lama" untuk step 1): `doc-dev/backfill/spec/01A_FUNCTIONAL_SPEC.md`, `doc-dev/backfill/spec/01B_ACCEPTANCE_CRITERIA.md`, `doc-dev/backfill/FINDINGS.md`
+- Catatan anomali struktural + Owl/JS project ini: `migration-tool/migration-records/purchase_product_optional_17_18/SUMMARY.md`
