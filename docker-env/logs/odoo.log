@@ -7289,3 +7289,4 @@ Traceback (most recent call last):
     with open(full_path, 'rb') as f:
          ^^^^^^^^^^^^^^^^^^^^^
 FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/odoo/filestore/purchase_product_optional_18_demo/f6/f6ef5c3e4f6b0bb9264106dfa871c53b8ccbaf73'
+2026-07-30 01:44:17,328 1 INFO purchase_product_optional_18_demo werkzeug: 172.19.0.1 - - [30/Jul/2026 01:44:17] "GET /web/image/res.users/2/avatar_128 HTTP/1.1" 200 - 9 0.004 0.083
