@@ -242,8 +242,34 @@ DIFF-04 bekerja end-to-end. F-06/MF-06 direproduksi lagi (konsisten). **Verdict:
 Step 10.** 5 item dibawa ke Step 10 (AC-01-01..06, AC-05, AC-06, AC-10-03 verifikasi lebih teliti,
 reproduksi F-06 penuh terkontrol) — lihat detail lengkap di `09_DEV_TESTING.md`.
 
-Lanjut ke **Step 10 (QA Testing)** — format AI-Browser penuh seperti BACKFILL Step 07, dengan setup
-data test (`supplierinfo` vendor) yang sepadan supaya AC-05 bisa diverifikasi benar.
+**✔️ Step 10 (QA Testing) SELESAI (2026-07-30)** — `10_qa/10_BUSINESS_FLOW_MIGRATION.md` ditulis
+dengan 10 skenario (S-01..S-10, ber-`Level` Smoke/Main Flow/Detail/Negative) + folder `human_qa/`
+(5 file) digenerate. Setup data test dilengkapi: `supplierinfo` Azure Interior @ $350.00 di
+"Customizable Desk", toggle "Warnings" diaktifkan di Settings > Purchase.
+
+Hasil kunci:
+- **AC-05/AC-06 (harga vendor + DOM `id_vendor_0`):** ✅ PASS — dengan `supplierinfo` lengkap, harga
+  tampil benar ($350.00), vendor id terbaca benar dari DOM. Anomali harga $500/variant-mismatch yang
+  sempat terlihat di Step 9 terbukti murni gap setup data, BUKAN bug.
+- **AC-01-03/04 (DIFF-03, `purchase_warning`)** dan **AC-01-06 (DIFF-07, `result.mode`):**
+  **CONFIRMED unreachable secara definitif** lewat baca kode (`get_single_product_variant` 18.0
+  tidak pernah mengisi `purchase_warning`/`mode`) DAN live test (dialog peringatan yang muncul saat
+  produk punya `purchase_line_warn` terbukti berasal dari mekanisme NATIVE core `purchase.order.line`
+  onchange, bukan dari `WarningDialog` custom modul ini — membuktikan cabang custom benar-benar dead
+  code). Bukan regresi migrasi — sesuai prediksi step 2/3.
+- **AC-10-01/02/03 (F-06/MF-06, dialog overlap):** direproduksi ulang terkontrol. Grid ditutup +
+  hanya dialog depan confirm → baris utama hilang total (P00016, identik 17.0). Grid confirm dulu
+  baru dialog depan → satu baris bersih, harga/varian konsisten (P00015) — resolusi bersih untuk
+  ambiguitas Step 9.
+- **AC-09-02** (guard kombinasi invalid): tidak berhasil direproduksi via UI manual (radio button
+  hanya menampilkan opsi valid) — dicatat sebagai limitasi eksekusi (bukan kegagalan), risiko rendah
+  karena kode terkait tidak disentuh migrasi.
+
+**Verdict: ✅ Lulus, lanjut Step 11 (UAT Sign-off).** 9/10 skenario dieksekusi live dan PASS. Detail
+lengkap: `10_qa/10_BUSINESS_FLOW_MIGRATION.md`, `FINDINGS.md` (MF-08/MF-11 resolved, MF-04/MF-06
+terkonfirmasi ulang).
+
+Lanjut ke **Step 11 (UAT Sign-off)** — belum dimulai.
 
 ---
 
@@ -283,7 +309,7 @@ versi) dan `MF-05` (signature `res.currency._convert()` perlu dicek ulang di ste
 | 7 | Data Migration Scripts | — | N/A — port kode saja | — |
 | 8 | Code Review | `08_CODE_REVIEW.md` | ✅ Selesai | ✔️ Lulus (0 🔴, 2026-07-29) |
 | 9 | Dev Testing | `09_DEV_TESTING.md` | ✅ Selesai | ✔️ Lulus (11/11 Unit+Integration pass; Tour/QUnit dilimpahkan ke Step 10) |
-| 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ⬜ Belum mulai | — |
+| 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` + `human_qa/` | ✅ Selesai | ✔️ Lulus (9/10 skenario PASS live, 2026-07-30; DIFF-03/DIFF-07 confirmed unreachable, F-06 direproduksi terkontrol) |
 | 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ⬜ Belum mulai | — |
 
 Legenda status: ⬜ Belum mulai · 🔄 Sedang dikerjakan · ✅ Draft/selesai ditulis · ✔️ Disetujui/lulus gate.

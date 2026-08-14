@@ -35,7 +35,7 @@ eksplisit — jangan bingung kedua skema ID ini.
 | MF-05 | `convert_price` TIDAK crash tanpa `company`/`date` di 17.0 (hipotesis awal salah) | 1 (warisan F-05) | `[DIWARISI-SOURCE]` | Rendah | **✅ RESOLVED (Step 2, 2026-07-29)** — dikonfirmasi via `native-target`: signature `_convert()` 18.0 identik (company/date tetap optional dengan fallback), lihat `02_DIFF_ANALYSIS.md` DIFF-01 |
 | MF-06 | Dialog configurator vs grid `purchase_product_matrix` tumpang tindih — baris utama bisa hilang | 1 (warisan F-06) | `[DIWARISI-SOURCE]` | **Tinggi** | Terbuka — pastikan tetap identik di 18.0, prioritas verifikasi step 9/10 |
 | MF-07 | `sale_product_configurator` dihapus total di 18.0 — manifest `depends` install-breaking | 2 (2026-07-29) | `[GAP-MIGRASI]` | **Kritis** | Terbuka — wajib fix Fase A1 (step 6), lihat `02_DIFF_ANALYSIS.md` DIFF-02 |
-| MF-08 | `result.purchase_warning` kemungkinan tidak pernah ada lagi di response 18.0 | 2 (2026-07-29) | `[GAP-MIGRASI]` | Tinggi | Terbuka — dicek `native-target` DAN `enterprise18`, keduanya tidak punya mekanismenya; tetap perlu verifikasi G1/G2 nyata, lihat DIFF-03 |
+| MF-08 | `result.purchase_warning` kemungkinan tidak pernah ada lagi di response 18.0 | 2 (2026-07-29) | `[GAP-MIGRASI]` | Tinggi | **✅ RESOLVED (Step 10, 2026-07-30)** — dikonfirmasi ganda (baca kode + live test): unreachable definitif, lihat detail |
 | MF-09 | `_editProductConfiguration` (dipatch modul) tidak ada lagi di base class 18.0 — jadi dead code | 2 (2026-07-29) | `[GAP-MIGRASI]` | Tinggi | Terbuka — wajib fix Fase E (rename ke `onEditConfiguration`), lihat DIFF-04 |
 | MF-10 | `_openGridConfigurator()` dipanggil tanpa argumen, base class 18.0 minta `edit` boolean | 2 (2026-07-29) | `[GAP-MIGRASI]` | Sedang | Terbuka — kemungkinan aman (falsy), verifikasi step 9, lihat DIFF-05 |
 | MF-11 | `product_add_mode`/`result.mode` (F-01/MF-01) — klarifikasi: mekanisme ini SENGAJA cuma ada di Sale, Purchase core tidak pernah dapat ini (dikonfirmasi komentar eksplisit di kode 18.0) | 2 (2026-07-29, setelah `enterprise18` connect) | `[GAP-MIGRASI]` | Tinggi (klarifikasi) | Terbuka — BSL-007/AC-01-06 kemungkinan tidak reachable sejak sumbernya (Enterprise 17.0) hilang; TIDAK diperbaiki (menambah override baru = di luar scope port kode), cukup didokumentasikan supaya tidak dikira regresi migrasi saat step 9/10, lihat DIFF-07 |
@@ -189,6 +189,21 @@ menambah `purchase_warning`, kalau dirasa perlu — ini keputusan scope yang but
 eksplisit, bukan default).
 **Keputusan pemilik modul:** *(kosong — tunggu verifikasi G1/G2)*
 
+**✅ RESOLVED (Step 10 QA, 2026-07-30, `10_BUSINESS_FLOW_MIGRATION.md` S-06):** Dikonfirmasi ganda,
+bukan sekadar diasumsikan. (1) **Baca kode:** `product/models/product_template.py::get_single_product_variant()`
+DAN override `sale/models/product_template.py` (18.0) — tidak ada satupun branch yang mengisi
+`res['purchase_warning']`, hanya `res['sale_warning']` (guard `self.sale_line_warn != 'no-message'`).
+(2) **Live test:** produk "Chair floor protection" diberi `purchase_line_warn` = Warning lalu
+Blocking Message dengan pesan custom, ditambahkan ke baris RFQ (vendor Azure Interior) — dialog
+peringatan MEMANG muncul dengan pesan persis, TAPI berasal dari mekanisme **native core
+`purchase.order.line` onchange** (independen dari RPC `get_single_product_variant`), BUKAN dari
+`WarningDialog` custom modul ini (`purchase_product_field.js:78-87`). Untuk tipe Blocking, baris
+tetap tersimpan (tidak di-reset seperti ekspektasi AC-01-03 dari mekanisme CUSTOM) — membuktikan
+cabang custom benar-benar dead code, bukan "kebetulan terlihat jalan" karena tertukar dengan
+mekanisme native. **Definitif CONFIRMED unreachable di 18.0, sesuai prediksi DIFF-03. Bukan regresi
+migrasi** (mekanisme sumbernya, Enterprise `sale_product_configurator` 17.0, hilang total dari
+platform). Dicatat sebagai limitasi warisan, TIDAK diperbaiki.
+
 ---
 
 ### MF-09 — `_editProductConfiguration` tidak ada lagi di base class 18.0
@@ -253,6 +268,15 @@ ter-trigger, itu DIKENALI sebagai konsekuensi hilangnya platform Enterprise 17.0
 bug migrasi/regresi kode modul ini.
 **Keputusan pemilik modul:** *(kosong — informasional, kemungkinan tidak perlu keputusan aktif kecuali
 ingin scope tambahan reimplementasi manual)*
+
+**✅ RESOLVED (Step 10 QA, 2026-07-30, `10_BUSINESS_FLOW_MIGRATION.md` S-07):** Dikonfirmasi lewat
+baca kode — `sale/models/product_template.py::get_single_product_variant()` (18.0) tidak memiliki
+satupun baris yang meng-assign `res['mode']`. Cross-check seluruh skenario Step 10 yang memilih
+produk configurable (S-01, S-04, S-08) — semuanya konsisten membuka "Configure your product"
+(`_openProductConfigurator()`), tidak pernah lewat `_openGridConfigurator(false)` dari jalur RPC ini.
+Grid `purchase_product_matrix` yang tampak bertumpuk di skenario tsb berasal dari mekanisme
+TERPISAH (widget matrix bawaan, lihat MF-06), bukan dipicu `result.mode`. **Definitif CONFIRMED
+unreachable, sesuai prediksi DIFF-07.**
 
 ---
 
@@ -377,6 +401,26 @@ tidak punya `supplierinfo` custom untuk vendor "Azure Interior" pada produk-prod
 per-vendor di BACKFILL 17.0 dibuat manual khusus untuk test itu, tidak otomatis terbawa ke db demo
 18.0 yang terpisah). Bukan bug kode — perlu setup data test yang sama untuk verifikasi AC-05-01 di
 Step 10 (QA Testing) nanti, bukan diasumsikan sebagai regresi MF-04.
+
+**✅ Terkonfirmasi (Step 10 QA, 2026-07-30):** dugaan di atas TERBUKTI BENAR — setelah `supplierinfo`
+Azure Interior @ $350.00 ditambahkan ke "Customizable Desk", harga tampil benar ($350.00) di semua
+skenario (S-01, S-04, S-08). Anomali harga $500/variant-mismatch yang sempat terlihat di Step 9 juga
+TERBUKTI murni gap setup data (bukan bug) — lihat `10_BUSINESS_FLOW_MIGRATION.md` S-08 (P00015):
+dengan supplierinfo lengkap, urutan grid-dulu-baru-configurator menghasilkan SATU baris bersih,
+harga & variant konsisten ($350.00, Steel/White). **MF-04 (DOM `id_vendor_0`) turut terkonfirmasi
+aman** — vendor id terbaca benar dari DOM di semua percobaan, skema `getElementById` tidak berubah
+di 18.0.
+
+**✅ Reproduksi terkontrol tambahan (Step 10 QA, 2026-07-30):** F-06/MF-06 direproduksi ulang secara
+sistematis (bukan ad-hoc) dengan skenario AC-10-01/02/03 penuh:
+- **AC-10-01/02** (P00016): dialog grid ditutup TANPA diisi, hanya dialog depan di-Confirm → baris
+  produk utama hilang TOTAL dari PO (RFQ tersimpan $0.00, tanpa baris sama sekali), tanpa error —
+  identik 17.0, dikonfirmasi lagi.
+- **AC-10-03** (P00015): grid di-Confirm DULU (qty diisi benar), baru dialog depan di-Confirm →
+  SATU baris tersimpan bersih, harga & varian konsisten — resolusi bersih untuk ambiguitas yang
+  sempat muncul di Step 9.
+
+Lihat `10_BUSINESS_FLOW_MIGRATION.md` S-08/S-10 untuk detail lengkap & bukti evidensi (nomor PO).
 
 ---
 
