@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name': "Purchase Product Optional",
-    'version': '17.0.1.0.0',
+    'version': '18.0.1.0.0',
     'category': 'Tools',
     'summary': "Configure your products",
     'author': 'Doodex',
@@ -17,7 +17,7 @@ The main purpose is to override the sale_order view to allow configuring product
 It also enables the "optional products" feature.
     """,
 
-    'depends': ['purchase', 'purchase_product_matrix', 'sale_product_configurator'],
+    'depends': ['purchase', 'purchase_product_matrix', 'sale'],
     'data': [
         'views/purchase_order_views.xml',
     ],

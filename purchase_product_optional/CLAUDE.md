@@ -100,7 +100,7 @@ Cross-cutting: `PROMPT_LOG.md`, `FINDINGS.md` di root `doc/`.
 
 ## Status saat ini
 
-**Step 1 selesai & disetujui (commit `9292ba5`). Step 2 selesai ditulis (draft, belum di-commit — tidak ada gate formal, menunggu dev putuskan lanjut ke Step 3 atau commit dulu).**
+**Step 1-9 selesai. Step 6 (kode) + Step 9 (test) sudah dieksekusi nyata via Docker (Mode C): G1 install PASS, Tour 15/15 PASS, 13/13 test PASS. Lanjut ke Step 10 (QA Testing, browser interaktif).**
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -112,12 +112,12 @@ Cross-cutting: `PROMPT_LOG.md`, `FINDINGS.md` di root `doc/`.
 | 2 | Diff & Compatibility Analysis | `02_DIFF_ANALYSIS.md` | ✅ Selesai | Tidak ada gate formal |
 | 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ✅ Selesai | — |
 | 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ✔️ Lulus | ✔️ Lulus 2026-08-24 |
-| 5 | Acceptance Criteria & Test Plan | `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`, `05b_TEST_PLAN_MIGRATION.md` | ⬜ Belum mulai | — |
-| 6 | Code Migration | kode `target-codebase` + `06c_IMPLEMENTATION_LOG.md` | ⬜ Belum mulai | — |
+| 5 | Acceptance Criteria & Test Plan | `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`, `05b_TEST_PLAN_MIGRATION.md` | ✅ Selesai | — |
+| 6 | Code Migration | kode `target-codebase` + `06c_IMPLEMENTATION_LOG.md` | ✅ Selesai, G1 PASS | — |
 | 7 | Data Migration Scripts | — (n/a, port kode saja) | — | — |
-| 8 | Code Review | `08_CODE_REVIEW.md` | ⬜ Belum mulai | — |
-| 9 | Dev Testing | `09_DEV_TESTING.md` | ⬜ Belum mulai | — |
-| 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ⬜ Belum mulai | — |
+| 8 | Code Review | `08_CODE_REVIEW.md` | ✔️ Lulus | ✔️ Lulus 2026-08-24 |
+| 9 | Dev Testing | `09_DEV_TESTING.md` | ✔️ Lulus (13/13 test, Tour 15/15) | ✔️ Lulus 2026-08-24 |
+| 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | 🔄 Sedang dikerjakan | — |
 | 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ⬜ Belum mulai | — |
 
 Legenda: ⬜ Belum mulai · 🔄 Sedang dikerjakan · ✅ Draft/selesai ditulis · ✔️ Disetujui/lulus gate.

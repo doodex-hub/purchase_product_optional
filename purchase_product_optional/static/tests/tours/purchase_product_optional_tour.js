@@ -29,7 +29,7 @@ registry.category("web_tour.tours").add("purchase_product_optional_configurator_
         {
             trigger: '.o_field_widget[name="partner_id"] input',
             content: "Type the BACKFILL QA vendor name",
-            run: "text BACKFILL QA Vendor",
+            run: "edit BACKFILL QA Vendor",
         },
         {
             trigger: '.ui-menu-item > a:contains("BACKFILL QA Vendor")',
@@ -44,7 +44,7 @@ registry.category("web_tour.tours").add("purchase_product_optional_configurator_
         {
             trigger: '.o_field_widget[name="product_template_id"] input',
             content: "Type the main product name",
-            run: "text BACKFILL QA Main Product",
+            run: "edit BACKFILL QA Main Product",
         },
         {
             trigger: '.ui-menu-item > a:contains("BACKFILL QA Main Product")',

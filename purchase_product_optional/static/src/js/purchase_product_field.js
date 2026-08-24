@@ -94,8 +94,8 @@ patch(PurchaseOrderLineProductField.prototype, {
         }
     },
 
-    _editProductConfiguration() {
-        super._editProductConfiguration(...arguments);
+    onEditConfiguration() {
+        super.onEditConfiguration(...arguments);
         if (this.props.record.data.is_configurable_product) {
             this._openProductConfigurator(true);
         }
