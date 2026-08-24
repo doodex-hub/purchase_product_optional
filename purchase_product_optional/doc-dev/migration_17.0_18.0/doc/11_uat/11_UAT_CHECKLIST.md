@@ -59,11 +59,13 @@
 
 ## Sign-off per Kelompok Fitur
 
+> **Catatan kejujuran (2026-08-24):** T-01..T-04 di atas **TIDAK dijalankan manual langkah-demi-langkah** oleh business user — pemilik modul (Kuncoro) secara eksplisit memutuskan menerima migrasi ini berdasarkan bukti otomatis yang sudah terkumpul di Step 9/10 (Tour 15/15 langkah PASS, 13/13 test PASS, G1 install bersih), bukan berdasarkan re-eksekusi T-01..T-04 dengan tangan sendiri. Baris di bawah mencatat KEPUTUSAN itu, bukan hasil checklist yang benar-benar ditandai satu-satu.
+
 | # | Kelompok fitur | Skenario tercakup | Status | Catatan |
 |---|---|---|---|---|
-| 1 | Instalasi & tampilan dasar | (dicek sebelum T-01) | [ ] Pass [ ] Fail | |
-| 2 | Dialog konfigurator (fitur inti) | T-01, T-03 | [ ] Pass [ ] Fail | |
-| 3 | Harga per-vendor | T-02 | [ ] Pass [ ] Fail | |
+| 1 | Instalasi & tampilan dasar | (dicek sebelum T-01) | [x] Pass (via evidence Step 9/10, bukan re-run manual) | G1 install bersih, dikonfirmasi |
+| 2 | Dialog konfigurator (fitur inti) | T-01, T-03 | [x] Pass (via evidence Tour Step 9, bukan re-run manual T-01/T-03) | Tour 15/15 langkah mencakup alur T-01; T-03 (edit ulang) TIDAK tercakup Tour — diterima tanpa verifikasi tambahan atas keputusan pemilik modul |
+| 3 | Harga per-vendor | T-02 | [x] Pass (via evidence test otomatis, bukan re-run manual T-02) | `TestPurchaseProductOptionalController`/`TestConvertPrice` |
 
 ## Item yang Sengaja Tidak Diperbaiki (Bug Lama, Dipertahankan)
 
@@ -75,20 +77,22 @@ Dikonfirmasi keputusan dev 2026-08-24 — item berikut adalah bug/quirk yang SUD
 - Harga di dialog konfigurator bisa tampil tanpa konversi currency (silent) kalau setting tertentu belum pernah disentuh.
 - Di lingkungan multi-company, harga optional product bisa ikut menghitung harga dari company lain.
 
-Stakeholder mengonfirmasi sadar & menerima kelima item di atas: [ ] Ya
+Stakeholder mengonfirmasi sadar & menerima kelima item di atas: [x] Ya (Kuncoro, pemilik modul, 2026-08-24)
 
 ## Prasyarat Sebelum Go-Live Produksi
 
-- [ ] Rehearsal upgrade sungguhan di staging (bukan cuma database Docker testing AI) — **belum dilakukan di sesi ini**, dicatat eksplisit sebagai prasyarat sebelum go-live produksi.
+> **Belum tercentang — sengaja, bukan lupa.** "UAT dianggap selesai" (keputusan pemilik modul 2026-08-24) menutup Step 11 sebagai gate dokumentasi, TAPI tidak menghilangkan kebutuhan 3 prasyarat teknis ini sebelum modul ini benar-benar dipasang ke database produksi asli. Kalau target sesi ini cuma sampai `migration/18.0` siap-review/siap-merge (bukan langsung go-live), item ini boleh menunggu sampai saat go-live sungguhan tiba.
+
+- [ ] Rehearsal upgrade sungguhan di staging (bukan cuma database Docker testing AI) — **belum dilakukan di sesi ini**.
 - [ ] Backup database produksi sebelum upgrade nyata.
-- [ ] T-03 dan T-04 (kombinasi matrix+optional) dijalankan minimal sekali secara manual sebelum go-live — belum tercakup otomatis (lihat `10_BUSINESS_FLOW_MIGRATION.md` S-05/S-06).
+- [ ] T-03 dan T-04 (kombinasi matrix+optional) dijalankan minimal sekali secara manual — belum tercakup otomatis (lihat `10_BUSINESS_FLOW_MIGRATION.md` S-05/S-06).
 
 ## Sign-off
 
 | Role | Nama | Tanggal | Tanda tangan |
 |---|---|---|---|
-| PM | | | |
-| FA | | | |
-| User | | | |
+| Pemilik modul / Dev | Kuncoro | 2026-08-24 | *(instruksi verbal via sesi CLI — "UAT anggap selesai", bukan tanda tangan fisik/digital formal)* |
+| PM | — | — | Tidak diisi — tidak ada PM terpisah disebutkan di project ini |
+| FA | — | — | Tidak diisi — tidak ada FA terpisah disebutkan di project ini |
 
 > Kosongkan sampai stakeholder benar-benar menjalankan skenario T-01 dst. dengan tangan sendiri dan menyetujui.

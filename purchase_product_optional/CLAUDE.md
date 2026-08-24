@@ -100,7 +100,7 @@ Cross-cutting: `PROMPT_LOG.md`, `FINDINGS.md` di root `doc/`.
 
 ## Status saat ini
 
-**Step 1-10 selesai & lulus gate. Step 11 — draft skrip UAT selesai ditulis (`11_UAT_CHECKLIST.md`), MENUNGGU dev/business user menjalankan sendiri dan sign-off — ini SATU-SATUNYA bagian yang tidak bisa diselesaikan AI (per aturan tool: UAT selalu manual, tangan manusia asli). Semua kerja teknis migrasi (Step 1-10) sudah selesai & terverifikasi eksekusi nyata.**
+**Migrasi 17.0 → 18.0 SELESAI (Step 1-11 semua ditutup).** Step 11 (UAT) ditutup atas keputusan eksplisit pemilik modul (Kuncoro, 2026-08-24) berdasarkan evidence Step 9/10 (Tour 15/15, 13/13 test) — bukan re-eksekusi T-01..T-04 manual (dicatat jujur di `11_UAT_CHECKLIST.md`). Branch `migration/18.0` sudah di-push ke remote. Prasyarat go-live produksi (rehearsal upgrade staging, backup DB) BELUM dilakukan — sengaja ditunda sampai go-live sungguhan tiba, dicatat eksplisit di `11_UAT_CHECKLIST.md`.
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -118,7 +118,7 @@ Cross-cutting: `PROMPT_LOG.md`, `FINDINGS.md` di root `doc/`.
 | 8 | Code Review | `08_CODE_REVIEW.md` | ✔️ Lulus | ✔️ Lulus 2026-08-24 |
 | 9 | Dev Testing | `09_DEV_TESTING.md` | ✔️ Lulus (13/13 test, Tour 15/15) | ✔️ Lulus 2026-08-24 |
 | 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ✔️ Lulus (S-01..S-06) | ✔️ Lulus 2026-08-24 |
-| 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ✅ Draft skrip test selesai — **menunggu eksekusi tangan manusia** | ⏳ Belum lulus — sign-off wajib dari business user asli, bukan AI |
+| 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ✔️ Diterima — keputusan eksplisit pemilik modul (Kuncoro, 2026-08-24), BUKAN dari re-eksekusi T-01..T-04 manual | ✔️ Ditutup 2026-08-24 (lihat catatan kejujuran di dokumen — evidence-nya Step 9/10, bukan checklist manual) |
 
 Legenda: ⬜ Belum mulai · 🔄 Sedang dikerjakan · ✅ Draft/selesai ditulis · ✔️ Disetujui/lulus gate.
 
