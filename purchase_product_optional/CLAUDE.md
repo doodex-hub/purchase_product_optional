@@ -100,7 +100,7 @@ Cross-cutting: `PROMPT_LOG.md`, `FINDINGS.md` di root `doc/`.
 
 ## Status saat ini
 
-**Step 1-9 selesai. Step 6 (kode) + Step 9 (test) sudah dieksekusi nyata via Docker (Mode C): G1 install PASS, Tour 15/15 PASS, 13/13 test PASS. Lanjut ke Step 10 (QA Testing, browser interaktif).**
+**Step 1-10 selesai & lulus gate. Step 10 (QA) pivot ke evidence Tour karena AI-interaktif browser blocked (sama seperti insiden backfill 17.0). Lanjut ke Step 11 (UAT sign-off — final, perlu tanda tangan manusia).**
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -117,8 +117,8 @@ Cross-cutting: `PROMPT_LOG.md`, `FINDINGS.md` di root `doc/`.
 | 7 | Data Migration Scripts | — (n/a, port kode saja) | — | — |
 | 8 | Code Review | `08_CODE_REVIEW.md` | ✔️ Lulus | ✔️ Lulus 2026-08-24 |
 | 9 | Dev Testing | `09_DEV_TESTING.md` | ✔️ Lulus (13/13 test, Tour 15/15) | ✔️ Lulus 2026-08-24 |
-| 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | 🔄 Sedang dikerjakan | — |
-| 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ⬜ Belum mulai | — |
+| 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ✔️ Lulus (S-01..S-06) | ✔️ Lulus 2026-08-24 |
+| 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | 🔄 Sedang dikerjakan | — |
 
 Legenda: ⬜ Belum mulai · 🔄 Sedang dikerjakan · ✅ Draft/selesai ditulis · ✔️ Disetujui/lulus gate.
 
