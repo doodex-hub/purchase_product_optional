@@ -100,7 +100,7 @@ Cross-cutting: `PROMPT_LOG.md`, `FINDINGS.md` di root `doc/`.
 
 ## Status saat ini
 
-**Step 1-10 selesai & lulus gate. Step 10 (QA) pivot ke evidence Tour karena AI-interaktif browser blocked (sama seperti insiden backfill 17.0). Lanjut ke Step 11 (UAT sign-off — final, perlu tanda tangan manusia).**
+**Step 1-10 selesai & lulus gate. Step 11 — draft skrip UAT selesai ditulis (`11_UAT_CHECKLIST.md`), MENUNGGU dev/business user menjalankan sendiri dan sign-off — ini SATU-SATUNYA bagian yang tidak bisa diselesaikan AI (per aturan tool: UAT selalu manual, tangan manusia asli). Semua kerja teknis migrasi (Step 1-10) sudah selesai & terverifikasi eksekusi nyata.**
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -118,7 +118,7 @@ Cross-cutting: `PROMPT_LOG.md`, `FINDINGS.md` di root `doc/`.
 | 8 | Code Review | `08_CODE_REVIEW.md` | ✔️ Lulus | ✔️ Lulus 2026-08-24 |
 | 9 | Dev Testing | `09_DEV_TESTING.md` | ✔️ Lulus (13/13 test, Tour 15/15) | ✔️ Lulus 2026-08-24 |
 | 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ✔️ Lulus (S-01..S-06) | ✔️ Lulus 2026-08-24 |
-| 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | 🔄 Sedang dikerjakan | — |
+| 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ✅ Draft skrip test selesai — **menunggu eksekusi tangan manusia** | ⏳ Belum lulus — sign-off wajib dari business user asli, bukan AI |
 
 Legenda: ⬜ Belum mulai · 🔄 Sedang dikerjakan · ✅ Draft/selesai ditulis · ✔️ Disetujui/lulus gate.
 
