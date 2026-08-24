@@ -100,7 +100,7 @@ Cross-cutting: `PROMPT_LOG.md`, `FINDINGS.md` di root `doc/`.
 
 ## Status saat ini
 
-**Step 1 — Intake & Scope, sedang berjalan (dokumen draft, menunggu review user).**
+**Step 1 selesai & disetujui (commit `9292ba5`). Step 2 selesai ditulis (draft, belum di-commit — tidak ada gate formal, menunggu dev putuskan lanjut ke Step 3 atau commit dulu).**
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -108,10 +108,10 @@ Cross-cutting: `PROMPT_LOG.md`, `FINDINGS.md` di root `doc/`.
 
 | # | Step | Dokumen | Status | Gate |
 |---|---|---|---|---|
-| 1 | Intake & Scope | `01a_MIGRATION_INTAKE.md`, `01b_BASELINE_SPEC.md` | 🔄 Draft ditulis | ⏳ Menunggu review user |
-| 2 | Diff & Compatibility Analysis | `02_DIFF_ANALYSIS.md` | ⬜ Belum mulai | Tidak ada gate formal |
-| 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ⬜ Belum mulai | — |
-| 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ⬜ Belum mulai | — |
+| 1 | Intake & Scope | `01a_MIGRATION_INTAKE.md`, `01b_BASELINE_SPEC.md` | ✔️ Disetujui (commit `9292ba5`) | ✔️ Lulus 2026-08-24 |
+| 2 | Diff & Compatibility Analysis | `02_DIFF_ANALYSIS.md` | ✅ Selesai | Tidak ada gate formal |
+| 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ✅ Selesai | — |
+| 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ✔️ Lulus | ✔️ Lulus 2026-08-24 |
 | 5 | Acceptance Criteria & Test Plan | `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`, `05b_TEST_PLAN_MIGRATION.md` | ⬜ Belum mulai | — |
 | 6 | Code Migration | kode `target-codebase` + `06c_IMPLEMENTATION_LOG.md` | ⬜ Belum mulai | — |
 | 7 | Data Migration Scripts | — (n/a, port kode saja) | — | — |
