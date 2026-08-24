@@ -1,0 +1,1490 @@
+2026-07-29 10:03:12,011 1 INFO ? odoo: Odoo version 17.0-20260630 
+2026-07-29 10:03:12,012 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-07-29 10:03:12,013 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/17.0', '/mnt/extra-addons'] 
+2026-07-29 10:03:12,013 1 INFO ? odoo: database: odoo@db:5432 
+2026-07-29 10:03:12,471 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-07-29 10:03:12,587 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on f27de7fb7e51:8069 
+2026-07-29 10:03:12,593 1 INFO purchase_product_optional_test odoo.modules.loading: init db 
+2026-07-29 10:03:13,577 1 INFO purchase_product_optional_test odoo.modules.loading: loading 1 modules... 
+2026-07-29 10:03:13,578 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module base (1/1) 
+2026-07-29 10:03:13,591 1 INFO purchase_product_optional_test odoo.modules.registry: module base: creating or updating database tables 
+2026-07-29 10:03:14,849 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-07-29 10:03:14,851 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-07-29 10:03:14,851 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-07-29 10:03:15,127 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.partner.user_id 
+2026-07-29 10:03:15,128 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-07-29 10:03:15,137 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.partner.complete_name 
+2026-07-29 10:03:15,142 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.partner.company_registry 
+2026-07-29 10:03:15,153 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-07-29 10:03:15,159 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.partner.partner_share 
+2026-07-29 10:03:15,238 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.currency.decimal_places 
+2026-07-29 10:03:15,274 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-07-29 10:03:15,275 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.company.logo_web 
+2026-07-29 10:03:15,281 1 INFO purchase_product_optional_test odoo.models: Computing parent_path for table res_company... 
+2026-07-29 10:03:15,329 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.users.signature 
+2026-07-29 10:03:15,330 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.users.share 
+2026-07-29 10:03:16,721 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_bank.xml 
+2026-07-29 10:03:16,724 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res.lang.csv 
+2026-07-29 10:03:16,745 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-07-29 10:03:16,767 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-07-29 10:03:16,824 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-07-29 10:03:17,104 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-07-29 10:03:17,115 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-07-29 10:03:17,685 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-07-29 10:03:17,690 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-07-29 10:03:17,933 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-07-29 10:03:17,940 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/security/base_groups.xml 
+2026-07-29 10:03:18,107 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/security/base_security.xml 
+2026-07-29 10:03:18,178 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/base_menus.xml 
+2026-07-29 10:03:18,217 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-07-29 10:03:18,226 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-07-29 10:03:18,232 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-07-29 10:03:18,459 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-07-29 10:03:18,530 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-07-29 10:03:18,543 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-07-29 10:03:18,554 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-07-29 10:03:18,571 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-07-29 10:03:18,581 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-07-29 10:03:18,592 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-07-29 10:03:18,603 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-07-29 10:03:18,678 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-07-29 10:03:18,692 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-07-29 10:03:18,706 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-07-29 10:03:18,716 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-07-29 10:03:18,727 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-07-29 10:03:18,752 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-07-29 10:03:18,763 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-07-29 10:03:18,769 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-07-29 10:03:18,772 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-07-29 10:03:18,777 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-07-29 10:03:18,787 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-07-29 10:03:18,794 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-07-29 10:03:18,820 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-07-29 10:03:18,859 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-07-29 10:03:18,893 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-07-29 10:03:18,896 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-07-29 10:03:18,900 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-07-29 10:03:18,910 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-07-29 10:03:18,917 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-07-29 10:03:18,925 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-07-29 10:03:18,934 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-07-29 10:03:18,938 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-07-29 10:03:18,945 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-07-29 10:03:18,963 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-07-29 10:03:18,973 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-07-29 10:03:18,985 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-07-29 10:03:18,997 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-07-29 10:03:19,013 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-07-29 10:03:19,073 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-07-29 10:03:19,089 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-07-29 10:03:19,111 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-07-29 10:03:19,132 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-07-29 10:03:19,193 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-07-29 10:03:19,202 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/ir_property_views.xml 
+2026-07-29 10:03:19,213 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-07-29 10:03:19,217 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-07-29 10:03:19,232 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-07-29 10:03:19,282 1 INFO purchase_product_optional_test odoo.modules.loading: Module base: loading demo 
+2026-07-29 10:03:19,288 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_users_demo.xml 
+2026-07-29 10:03:20,185 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_partner_bank_demo.xml 
+2026-07-29 10:03:20,190 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_currency_demo.xml 
+2026-07-29 10:03:20,195 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_currency_rate_demo.xml 
+2026-07-29 10:03:20,334 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_bank_demo.xml 
+2026-07-29 10:03:20,338 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_partner_demo.xml 
+2026-07-29 10:03:20,460 1 INFO purchase_product_optional_test odoo.modules.loading: loading base/data/res_partner_image_demo.xml 
+2026-07-29 10:03:20,765 1 INFO purchase_product_optional_test odoo.modules.loading: Module base loaded in 7.19s, 9089 queries (+9089 other) 
+2026-07-29 10:03:20,766 1 INFO purchase_product_optional_test odoo.modules.loading: 1 modules loaded in 7.19s, 9089 queries (+9089 extra) 
+2026-07-29 10:03:20,775 1 INFO purchase_product_optional_test odoo.modules.loading: updating modules list 
+2026-07-29 10:03:20,777 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-07-29 10:03:21,120 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Purchase Product Optional'] to user __system__ #1 via n/a 
+2026-07-29 10:03:21,236 1 INFO purchase_product_optional_test odoo.modules.loading: loading 56 modules... 
+2026-07-29 10:03:21,237 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module uom (2/56) 
+2026-07-29 10:03:21,248 1 INFO purchase_product_optional_test odoo.modules.registry: module uom: creating or updating database tables 
+2026-07-29 10:03:21,358 1 INFO purchase_product_optional_test odoo.modules.loading: loading uom/data/uom_data.xml 
+2026-07-29 10:03:21,405 1 INFO purchase_product_optional_test odoo.modules.loading: loading uom/security/uom_security.xml 
+2026-07-29 10:03:21,416 1 INFO purchase_product_optional_test odoo.modules.loading: loading uom/security/ir.model.access.csv 
+2026-07-29 10:03:21,424 1 INFO purchase_product_optional_test odoo.modules.loading: loading uom/views/uom_uom_views.xml 
+2026-07-29 10:03:21,450 1 INFO purchase_product_optional_test odoo.modules.loading: Module uom loaded in 0.21s, 287 queries (+287 other) 
+2026-07-29 10:03:21,451 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module web (3/56) 
+2026-07-29 10:03:21,463 1 INFO purchase_product_optional_test odoo.modules.registry: module web: creating or updating database tables 
+2026-07-29 10:03:21,724 1 INFO purchase_product_optional_test odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-07-29 10:03:21,730 1 INFO purchase_product_optional_test odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-07-29 10:03:21,757 1 INFO purchase_product_optional_test odoo.modules.loading: loading web/views/report_templates.xml 
+2026-07-29 10:03:21,798 1 INFO purchase_product_optional_test odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-07-29 10:03:21,805 1 INFO purchase_product_optional_test odoo.modules.loading: loading web/views/partner_view.xml 
+2026-07-29 10:03:21,808 1 INFO purchase_product_optional_test odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-07-29 10:03:21,811 1 INFO purchase_product_optional_test odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-07-29 10:03:21,815 1 INFO purchase_product_optional_test odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-07-29 10:03:21,818 1 INFO purchase_product_optional_test odoo.modules.loading: loading web/data/report_layout.xml 
+2026-07-29 10:03:21,949 1 INFO purchase_product_optional_test odoo.modules.loading: Module web loaded in 0.50s, 1018 queries (+1018 other) 
+2026-07-29 10:03:21,950 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module auth_totp (4/56) 
+2026-07-29 10:03:21,964 1 INFO purchase_product_optional_test odoo.modules.registry: module auth_totp: creating or updating database tables 
+2026-07-29 10:03:22,024 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-07-29 10:03:22,039 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-07-29 10:03:22,046 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-07-29 10:03:22,051 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-07-29 10:03:22,067 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-07-29 10:03:22,071 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-07-29 10:03:22,087 1 INFO purchase_product_optional_test odoo.modules.loading: Module auth_totp loaded in 0.14s, 179 queries (+179 other) 
+2026-07-29 10:03:22,088 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module base_import (5/56) 
+2026-07-29 10:03:22,108 1 INFO purchase_product_optional_test odoo.modules.registry: module base_import: creating or updating database tables 
+2026-07-29 10:03:22,395 1 INFO purchase_product_optional_test odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-07-29 10:03:22,409 1 INFO purchase_product_optional_test odoo.modules.loading: Module base_import loaded in 0.32s, 830 queries (+830 other) 
+2026-07-29 10:03:22,409 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module base_import_module (6/56) 
+2026-07-29 10:03:22,420 1 INFO purchase_product_optional_test odoo.modules.registry: module base_import_module: creating or updating database tables 
+2026-07-29 10:03:22,471 1 INFO purchase_product_optional_test odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-07-29 10:03:22,476 1 INFO purchase_product_optional_test odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-07-29 10:03:22,486 1 INFO purchase_product_optional_test odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-07-29 10:03:22,530 1 INFO purchase_product_optional_test odoo.modules.loading: Module base_import_module loaded in 0.12s, 154 queries (+154 other) 
+2026-07-29 10:03:22,530 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module base_setup (7/56) 
+2026-07-29 10:03:22,543 1 INFO purchase_product_optional_test odoo.modules.registry: module base_setup: creating or updating database tables 
+2026-07-29 10:03:22,571 1 INFO purchase_product_optional_test odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-07-29 10:03:22,575 1 INFO purchase_product_optional_test odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-07-29 10:03:22,593 1 INFO purchase_product_optional_test odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-07-29 10:03:22,609 1 INFO purchase_product_optional_test odoo.modules.loading: Module base_setup loaded in 0.08s, 143 queries (+143 other) 
+2026-07-29 10:03:22,610 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module bus (8/56) 
+2026-07-29 10:03:22,621 1 INFO purchase_product_optional_test odoo.modules.registry: module bus: creating or updating database tables 
+2026-07-29 10:03:22,712 1 INFO purchase_product_optional_test odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-07-29 10:03:22,762 1 INFO purchase_product_optional_test odoo.modules.loading: Module bus loaded in 0.15s, 119 queries (+119 other) 
+2026-07-29 10:03:22,766 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module http_routing (9/56) 
+2026-07-29 10:03:22,776 1 INFO purchase_product_optional_test odoo.modules.registry: module http_routing: creating or updating database tables 
+2026-07-29 10:03:22,782 1 INFO purchase_product_optional_test odoo.modules.loading: loading http_routing/views/http_routing_template.xml 
+2026-07-29 10:03:22,799 1 INFO purchase_product_optional_test odoo.modules.loading: loading http_routing/views/res_lang_views.xml 
+2026-07-29 10:03:22,813 1 INFO purchase_product_optional_test odoo.modules.loading: Module http_routing loaded in 0.05s, 71 queries (+71 other) 
+2026-07-29 10:03:22,814 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module onboarding (10/56) 
+2026-07-29 10:03:22,826 1 INFO purchase_product_optional_test odoo.modules.registry: module onboarding: creating or updating database tables 
+2026-07-29 10:03:22,968 1 INFO purchase_product_optional_test odoo.modules.loading: loading onboarding/views/onboarding_templates.xml 
+2026-07-29 10:03:22,977 1 INFO purchase_product_optional_test odoo.modules.loading: loading onboarding/views/onboarding_views.xml 
+2026-07-29 10:03:22,989 1 INFO purchase_product_optional_test odoo.modules.loading: loading onboarding/views/onboarding_menus.xml 
+2026-07-29 10:03:22,995 1 INFO purchase_product_optional_test odoo.modules.loading: loading onboarding/security/ir.model.access.csv 
+2026-07-29 10:03:23,030 1 INFO purchase_product_optional_test odoo.modules.loading: Module onboarding loaded in 0.22s, 237 queries (+237 other) 
+2026-07-29 10:03:23,031 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module resource (11/56) 
+2026-07-29 10:03:23,047 1 INFO purchase_product_optional_test odoo.modules.registry: module resource: creating or updating database tables 
+2026-07-29 10:03:23,196 1 INFO purchase_product_optional_test odoo.modules.loading: loading resource/data/resource_data.xml 
+2026-07-29 10:03:23,221 1 INFO purchase_product_optional_test odoo.modules.loading: loading resource/security/ir.model.access.csv 
+2026-07-29 10:03:23,228 1 INFO purchase_product_optional_test odoo.modules.loading: loading resource/security/resource_security.xml 
+2026-07-29 10:03:23,244 1 INFO purchase_product_optional_test odoo.modules.loading: loading resource/views/resource_resource_views.xml 
+2026-07-29 10:03:23,257 1 INFO purchase_product_optional_test odoo.modules.loading: loading resource/views/resource_calendar_leaves_views.xml 
+2026-07-29 10:03:23,273 1 INFO purchase_product_optional_test odoo.modules.loading: loading resource/views/resource_calendar_attendance_views.xml 
+2026-07-29 10:03:23,282 1 INFO purchase_product_optional_test odoo.modules.loading: loading resource/views/resource_calendar_views.xml 
+2026-07-29 10:03:23,298 1 INFO purchase_product_optional_test odoo.modules.loading: loading resource/views/menuitems.xml 
+2026-07-29 10:03:23,310 1 INFO purchase_product_optional_test odoo.modules.loading: Module resource: loading demo 
+2026-07-29 10:03:23,317 1 INFO purchase_product_optional_test odoo.modules.loading: loading resource/data/resource_demo.xml 
+2026-07-29 10:03:23,341 1 INFO purchase_product_optional_test odoo.modules.loading: Module resource loaded in 0.31s, 419 queries (+419 other) 
+2026-07-29 10:03:23,341 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module utm (12/56) 
+2026-07-29 10:03:23,355 1 INFO purchase_product_optional_test odoo.modules.registry: module utm: creating or updating database tables 
+2026-07-29 10:03:23,502 1 INFO purchase_product_optional_test odoo.modules.loading: loading utm/data/utm_medium_data.xml 
+2026-07-29 10:03:23,517 1 INFO purchase_product_optional_test odoo.modules.loading: loading utm/data/utm_source_data.xml 
+2026-07-29 10:03:23,529 1 INFO purchase_product_optional_test odoo.modules.loading: loading utm/data/utm_stage_data.xml 
+2026-07-29 10:03:23,532 1 INFO purchase_product_optional_test odoo.modules.loading: loading utm/data/utm_tag_data.xml 
+2026-07-29 10:03:23,535 1 INFO purchase_product_optional_test odoo.modules.loading: loading utm/views/utm_campaign_views.xml 
+2026-07-29 10:03:23,556 1 INFO purchase_product_optional_test odoo.modules.loading: loading utm/views/utm_medium_views.xml 
+2026-07-29 10:03:23,565 1 INFO purchase_product_optional_test odoo.modules.loading: loading utm/views/utm_source_views.xml 
+2026-07-29 10:03:23,572 1 INFO purchase_product_optional_test odoo.modules.loading: loading utm/views/utm_stage_views.xml 
+2026-07-29 10:03:23,581 1 INFO purchase_product_optional_test odoo.modules.loading: loading utm/views/utm_tag_views.xml 
+2026-07-29 10:03:23,586 1 INFO purchase_product_optional_test odoo.modules.loading: loading utm/views/utm_menus.xml 
+2026-07-29 10:03:23,599 1 INFO purchase_product_optional_test odoo.modules.loading: loading utm/security/ir.model.access.csv 
+2026-07-29 10:03:23,610 1 INFO purchase_product_optional_test odoo.modules.loading: Module utm: loading demo 
+2026-07-29 10:03:23,612 1 INFO purchase_product_optional_test odoo.modules.loading: loading utm/data/utm_campaign_demo.xml 
+2026-07-29 10:03:23,621 1 INFO purchase_product_optional_test odoo.modules.loading: loading utm/data/utm_stage_demo.xml 
+2026-07-29 10:03:23,668 1 INFO purchase_product_optional_test odoo.modules.loading: Module utm loaded in 0.33s, 435 queries (+435 other) 
+2026-07-29 10:03:23,669 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module web_tour (13/56) 
+2026-07-29 10:03:23,679 1 INFO purchase_product_optional_test odoo.modules.registry: module web_tour: creating or updating database tables 
+2026-07-29 10:03:23,712 1 INFO purchase_product_optional_test odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-07-29 10:03:23,718 1 INFO purchase_product_optional_test odoo.modules.loading: loading web_tour/security/ir.rule.csv 
+2026-07-29 10:03:23,724 1 INFO purchase_product_optional_test odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-07-29 10:03:23,743 1 INFO purchase_product_optional_test odoo.modules.loading: Module web_tour loaded in 0.07s, 104 queries (+104 other) 
+2026-07-29 10:03:23,743 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module iap (14/56) 
+2026-07-29 10:03:23,753 1 INFO purchase_product_optional_test odoo.modules.registry: module iap: creating or updating database tables 
+2026-07-29 10:03:23,820 1 INFO purchase_product_optional_test odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-07-29 10:03:23,827 1 INFO purchase_product_optional_test odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-07-29 10:03:23,832 1 INFO purchase_product_optional_test odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-07-29 10:03:23,847 1 INFO purchase_product_optional_test odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-07-29 10:03:23,866 1 INFO purchase_product_optional_test odoo.modules.loading: Module iap loaded in 0.12s, 151 queries (+151 other) 
+2026-07-29 10:03:23,867 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module mail (15/56) 
+2026-07-29 10:03:23,890 1 INFO purchase_product_optional_test odoo.modules.registry: module mail: creating or updating database tables 
+2026-07-29 10:03:24,624 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.partner_ids 
+2026-07-29 10:03:24,624 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.template_id 
+2026-07-29 10:03:24,625 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.activity_type_id 
+2026-07-29 10:03:24,625 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.activity_date_deadline_range 
+2026-07-29 10:03:24,626 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.activity_user_id 
+2026-07-29 10:03:24,626 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.mail_post_method 
+2026-07-29 10:03:24,628 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.activity_summary 
+2026-07-29 10:03:24,628 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.activity_date_deadline_range_type 
+2026-07-29 10:03:24,628 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.activity_user_type 
+2026-07-29 10:03:24,629 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.activity_user_field_name 
+2026-07-29 10:03:24,629 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.activity_note 
+2026-07-29 10:03:24,629 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.mail_post_autofollow 
+2026-07-29 10:03:24,650 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.company.email_primary_color 
+2026-07-29 10:03:24,651 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.company.email_secondary_color 
+2026-07-29 10:03:24,659 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.users.notification_type 
+2026-07-29 10:03:24,930 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.partner.email_normalized 
+2026-07-29 10:03:26,403 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/data/mail_groups.xml 
+2026-07-29 10:03:26,475 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/wizard/mail_activity_schedule_views.xml 
+2026-07-29 10:03:26,481 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/wizard/mail_blacklist_remove_views.xml 
+2026-07-29 10:03:26,487 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/wizard/mail_compose_message_views.xml 
+2026-07-29 10:03:26,498 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/wizard/mail_resend_message_views.xml 
+2026-07-29 10:03:26,508 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/wizard/mail_resend_partner_views.xml 
+2026-07-29 10:03:26,515 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/wizard/mail_template_preview_views.xml 
+2026-07-29 10:03:26,523 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/wizard/mail_wizard_invite_views.xml 
+2026-07-29 10:03:26,528 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/wizard/mail_template_reset_views.xml 
+2026-07-29 10:03:26,534 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/fetchmail_views.xml 
+2026-07-29 10:03:26,546 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_message_subtype_views.xml 
+2026-07-29 10:03:26,554 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_tracking_value_views.xml 
+2026-07-29 10:03:26,562 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_notification_views.xml 
+2026-07-29 10:03:26,570 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_message_views.xml 
+2026-07-29 10:03:26,586 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_message_schedule_views.xml 
+2026-07-29 10:03:26,596 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_mail_views.xml 
+2026-07-29 10:03:26,611 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_followers_views.xml 
+2026-07-29 10:03:26,618 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_ice_server_views.xml 
+2026-07-29 10:03:26,627 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/discuss_channel_member_views.xml 
+2026-07-29 10:03:26,635 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/discuss_channel_rtc_session_views.xml 
+2026-07-29 10:03:26,649 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_link_preview_views.xml 
+2026-07-29 10:03:26,660 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/discuss/discuss_gif_favorite_views.xml 
+2026-07-29 10:03:26,669 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/discuss_channel_views.xml 
+2026-07-29 10:03:26,687 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_shortcode_views.xml 
+2026-07-29 10:03:26,699 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_activity_views.xml 
+2026-07-29 10:03:26,784 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_activity_plan_views.xml 
+2026-07-29 10:03:26,802 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_activity_plan_template_views.xml 
+2026-07-29 10:03:26,809 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/res_config_settings_views.xml 
+2026-07-29 10:03:26,825 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/data/ir_config_parameter_data.xml 
+2026-07-29 10:03:26,830 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/data/res_partner_data.xml 
+2026-07-29 10:03:26,874 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/data/mail_message_subtype_data.xml 
+2026-07-29 10:03:26,881 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/data/mail_templates_chatter.xml 
+2026-07-29 10:03:26,892 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/data/mail_templates_email_layouts.xml 
+2026-07-29 10:03:26,905 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/data/mail_templates_mailgateway.xml 
+2026-07-29 10:03:26,911 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/data/discuss_channel_data.xml 
+2026-07-29 10:03:26,931 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/data/mail_activity_data.xml 
+2026-07-29 10:03:26,947 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/data/security_notifications_templates.xml 
+2026-07-29 10:03:26,951 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/data/ir_cron_data.xml 
+2026-07-29 10:03:26,975 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/security/mail_security.xml 
+2026-07-29 10:03:27,051 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/security/ir.model.access.csv 
+2026-07-29 10:03:27,084 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/discuss_public_templates.xml 
+2026-07-29 10:03:27,088 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_alias_domain_views.xml 
+2026-07-29 10:03:27,097 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_alias_views.xml 
+2026-07-29 10:03:27,109 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_gateway_allowed_views.xml 
+2026-07-29 10:03:27,116 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_guest_views.xml 
+2026-07-29 10:03:27,127 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_message_reaction_views.xml 
+2026-07-29 10:03:27,136 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_templates_public.xml 
+2026-07-29 10:03:27,145 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/res_users_views.xml 
+2026-07-29 10:03:27,155 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/res_users_settings_views.xml 
+2026-07-29 10:03:27,164 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_template_views.xml 
+2026-07-29 10:03:27,183 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/ir_actions_server_views.xml 
+2026-07-29 10:03:27,190 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/ir_model_views.xml 
+2026-07-29 10:03:27,208 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/res_partner_views.xml 
+2026-07-29 10:03:27,235 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_blacklist_views.xml 
+2026-07-29 10:03:27,245 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/mail_menus.xml 
+2026-07-29 10:03:27,311 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/views/res_company_views.xml 
+2026-07-29 10:03:27,317 1 INFO purchase_product_optional_test odoo.modules.loading: Module mail: loading demo 
+2026-07-29 10:03:27,318 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail/data/discuss_channel_demo.xml 
+2026-07-29 10:03:27,388 1 INFO purchase_product_optional_test odoo.modules.loading: Module mail loaded in 3.52s, 4297 queries (+4298 other) 
+2026-07-29 10:03:27,389 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module web_editor (16/56) 
+2026-07-29 10:03:27,420 1 INFO purchase_product_optional_test odoo.modules.registry: module web_editor: creating or updating database tables 
+2026-07-29 10:03:28,028 1 INFO purchase_product_optional_test odoo.modules.loading: loading web_editor/security/ir.model.access.csv 
+2026-07-29 10:03:28,181 1 INFO purchase_product_optional_test odoo.modules.loading: loading web_editor/data/editor_assets.xml 
+2026-07-29 10:03:28,277 1 INFO purchase_product_optional_test odoo.modules.loading: loading web_editor/views/editor.xml 
+2026-07-29 10:03:28,292 1 INFO purchase_product_optional_test odoo.modules.loading: loading web_editor/views/snippets.xml 
+2026-07-29 10:03:28,449 1 INFO purchase_product_optional_test odoo.modules.loading: Module web_editor loaded in 1.06s, 1404 queries (+1404 other) 
+2026-07-29 10:03:28,450 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module analytic (17/56) 
+2026-07-29 10:03:28,473 1 INFO purchase_product_optional_test odoo.modules.registry: module analytic: creating or updating database tables 
+2026-07-29 10:03:28,868 1 INFO purchase_product_optional_test odoo.modules.loading: loading analytic/security/analytic_security.xml 
+2026-07-29 10:03:28,891 1 INFO purchase_product_optional_test odoo.modules.loading: loading analytic/security/ir.model.access.csv 
+2026-07-29 10:03:28,901 1 INFO purchase_product_optional_test odoo.modules.loading: loading analytic/views/analytic_line_views.xml 
+2026-07-29 10:03:28,925 1 INFO purchase_product_optional_test odoo.modules.loading: loading analytic/views/analytic_account_views.xml 
+2026-07-29 10:03:28,945 1 INFO purchase_product_optional_test odoo.modules.loading: loading analytic/views/analytic_plan_views.xml 
+2026-07-29 10:03:28,956 1 INFO purchase_product_optional_test odoo.modules.loading: loading analytic/views/analytic_distribution_model_views.xml 
+2026-07-29 10:03:28,964 1 INFO purchase_product_optional_test odoo.modules.loading: loading analytic/data/analytic_data.xml 
+2026-07-29 10:03:28,993 1 INFO purchase_product_optional_test odoo.modules.loading: Module analytic: loading demo 
+2026-07-29 10:03:28,995 1 INFO purchase_product_optional_test odoo.modules.loading: loading analytic/data/analytic_account_demo.xml 
+2026-07-29 10:03:29,233 1 INFO purchase_product_optional_test odoo.modules.loading: Module analytic loaded in 0.78s, 654 queries (+654 other) 
+2026-07-29 10:03:29,234 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module auth_signup (18/56) 
+2026-07-29 10:03:29,259 1 INFO purchase_product_optional_test odoo.modules.registry: module auth_signup: creating or updating database tables 
+2026-07-29 10:03:29,299 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_signup/data/ir_config_parameter_data.xml 
+2026-07-29 10:03:29,303 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_signup/data/ir_cron_data.xml 
+2026-07-29 10:03:29,309 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_signup/data/mail_template_data.xml 
+2026-07-29 10:03:29,317 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_signup/views/res_config_settings_views.xml 
+2026-07-29 10:03:29,327 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_signup/views/res_users_views.xml 
+2026-07-29 10:03:29,340 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_signup/views/auth_signup_login_templates.xml 
+2026-07-29 10:03:29,351 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_signup/views/auth_signup_templates_email.xml 
+2026-07-29 10:03:29,359 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_signup/views/webclient_templates.xml 
+2026-07-29 10:03:29,378 1 INFO purchase_product_optional_test odoo.modules.loading: Module auth_signup loaded in 0.14s, 202 queries (+202 other) 
+2026-07-29 10:03:29,378 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module auth_totp_mail (19/56) 
+2026-07-29 10:03:29,397 1 INFO purchase_product_optional_test odoo.modules.registry: module auth_totp_mail: creating or updating database tables 
+2026-07-29 10:03:29,417 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_totp_mail/data/ir_action_data.xml 
+2026-07-29 10:03:29,465 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_totp_mail/data/mail_template_data.xml 
+2026-07-29 10:03:29,470 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_totp_mail/data/security_notifications_template.xml 
+2026-07-29 10:03:29,477 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_totp_mail/views/res_users_views.xml 
+2026-07-29 10:03:29,505 1 INFO purchase_product_optional_test odoo.modules.loading: Module auth_totp_mail loaded in 0.13s, 112 queries (+112 other) 
+2026-07-29 10:03:29,506 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module base_install_request (20/56) 
+2026-07-29 10:03:29,527 1 INFO purchase_product_optional_test odoo.modules.registry: module base_install_request: creating or updating database tables 
+2026-07-29 10:03:29,589 1 INFO purchase_product_optional_test odoo.modules.loading: loading base_install_request/security/ir.model.access.csv 
+2026-07-29 10:03:29,607 1 INFO purchase_product_optional_test odoo.modules.loading: loading base_install_request/wizard/base_module_install_request_views.xml 
+2026-07-29 10:03:29,617 1 INFO purchase_product_optional_test odoo.modules.loading: loading base_install_request/data/mail_template_data.xml 
+2026-07-29 10:03:29,621 1 INFO purchase_product_optional_test odoo.modules.loading: loading base_install_request/data/mail_templates_module_install.xml 
+2026-07-29 10:03:29,625 1 INFO purchase_product_optional_test odoo.modules.loading: loading base_install_request/views/ir_module_module_views.xml 
+2026-07-29 10:03:29,644 1 INFO purchase_product_optional_test odoo.modules.loading: Module base_install_request loaded in 0.14s, 144 queries (+144 other) 
+2026-07-29 10:03:29,644 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module google_gmail (21/56) 
+2026-07-29 10:03:29,666 1 INFO purchase_product_optional_test odoo.modules.registry: module google_gmail: creating or updating database tables 
+2026-07-29 10:03:29,697 1 INFO purchase_product_optional_test odoo.modules.loading: loading google_gmail/views/fetchmail_server_views.xml 
+2026-07-29 10:03:29,708 1 INFO purchase_product_optional_test odoo.modules.loading: loading google_gmail/views/ir_mail_server_views.xml 
+2026-07-29 10:03:29,716 1 INFO purchase_product_optional_test odoo.modules.loading: loading google_gmail/views/res_config_settings_views.xml 
+2026-07-29 10:03:29,738 1 INFO purchase_product_optional_test odoo.modules.loading: Module google_gmail loaded in 0.09s, 118 queries (+118 other) 
+2026-07-29 10:03:29,738 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module iap_mail (22/56) 
+2026-07-29 10:03:29,760 1 INFO purchase_product_optional_test odoo.modules.registry: module iap_mail: creating or updating database tables 
+2026-07-29 10:03:29,774 1 INFO purchase_product_optional_test odoo.modules.loading: loading iap_mail/data/mail_templates.xml 
+2026-07-29 10:03:29,805 1 INFO purchase_product_optional_test odoo.modules.loading: Module iap_mail loaded in 0.07s, 40 queries (+40 other) 
+2026-07-29 10:03:29,807 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module mail_bot (23/56) 
+2026-07-29 10:03:29,832 1 INFO purchase_product_optional_test odoo.modules.registry: module mail_bot: creating or updating database tables 
+2026-07-29 10:03:29,889 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail_bot/views/res_users_views.xml 
+2026-07-29 10:03:29,904 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail_bot/data/mailbot_data.xml 
+2026-07-29 10:03:29,908 1 INFO purchase_product_optional_test odoo.modules.loading: Module mail_bot: loading demo 
+2026-07-29 10:03:29,909 1 INFO purchase_product_optional_test odoo.modules.loading: loading mail_bot/data/mailbot_demo.xml 
+2026-07-29 10:03:29,921 1 INFO purchase_product_optional_test odoo.modules.loading: Module mail_bot loaded in 0.11s, 165 queries (+165 other) 
+2026-07-29 10:03:29,922 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module phone_validation (24/56) 
+2026-07-29 10:03:29,964 1 INFO purchase_product_optional_test odoo.modules.registry: module phone_validation: creating or updating database tables 
+2026-07-29 10:03:30,436 1 INFO purchase_product_optional_test odoo.modules.loading: loading phone_validation/security/ir.model.access.csv 
+2026-07-29 10:03:30,446 1 INFO purchase_product_optional_test odoo.modules.loading: loading phone_validation/views/phone_blacklist_views.xml 
+2026-07-29 10:03:30,460 1 INFO purchase_product_optional_test odoo.modules.loading: loading phone_validation/wizard/phone_blacklist_remove_view.xml 
+2026-07-29 10:03:30,516 1 INFO purchase_product_optional_test odoo.modules.loading: Module phone_validation loaded in 0.59s, 1473 queries (+1473 other) 
+2026-07-29 10:03:30,517 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module privacy_lookup (25/56) 
+2026-07-29 10:03:30,538 1 INFO purchase_product_optional_test odoo.modules.registry: module privacy_lookup: creating or updating database tables 
+2026-07-29 10:03:30,636 1 INFO purchase_product_optional_test odoo.modules.loading: loading privacy_lookup/wizard/privacy_lookup_wizard_views.xml 
+2026-07-29 10:03:30,656 1 INFO purchase_product_optional_test odoo.modules.loading: loading privacy_lookup/views/privacy_log_views.xml 
+2026-07-29 10:03:30,668 1 INFO purchase_product_optional_test odoo.modules.loading: loading privacy_lookup/security/ir.model.access.csv 
+2026-07-29 10:03:30,678 1 INFO purchase_product_optional_test odoo.modules.loading: loading privacy_lookup/data/ir_actions_server_data.xml 
+2026-07-29 10:03:30,697 1 INFO purchase_product_optional_test odoo.modules.loading: Module privacy_lookup loaded in 0.18s, 245 queries (+245 other) 
+2026-07-29 10:03:30,700 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module product (26/56) 
+2026-07-29 10:03:30,787 1 INFO purchase_product_optional_test odoo.modules.registry: module product: creating or updating database tables 
+2026-07-29 10:03:31,642 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/data/product_data.xml 
+2026-07-29 10:03:31,656 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/security/product_security.xml 
+2026-07-29 10:03:31,718 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/security/ir.model.access.csv 
+2026-07-29 10:03:31,737 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/wizard/product_label_layout_views.xml 
+2026-07-29 10:03:31,744 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/product_tag_views.xml 
+2026-07-29 10:03:31,753 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/product_views.xml 
+2026-07-29 10:03:31,810 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/res_config_settings_views.xml 
+2026-07-29 10:03:31,827 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/product_attribute_views.xml 
+2026-07-29 10:03:31,846 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/product_attribute_value_views.xml 
+2026-07-29 10:03:31,850 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/product_category_views.xml 
+2026-07-29 10:03:31,863 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/product_document_views.xml 
+2026-07-29 10:03:31,878 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/product_packaging_views.xml 
+2026-07-29 10:03:31,894 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/product_pricelist_item_views.xml 
+2026-07-29 10:03:31,909 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/product_pricelist_views.xml 
+2026-07-29 10:03:31,924 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/product_supplierinfo_views.xml 
+2026-07-29 10:03:31,940 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/product_template_views.xml 
+2026-07-29 10:03:31,963 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/res_country_group_views.xml 
+2026-07-29 10:03:31,968 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/views/res_partner_views.xml 
+2026-07-29 10:03:31,976 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/report/product_reports.xml 
+2026-07-29 10:03:31,992 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/report/product_product_templates.xml 
+2026-07-29 10:03:32,012 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/report/product_template_templates.xml 
+2026-07-29 10:03:32,026 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/report/product_packaging.xml 
+2026-07-29 10:03:32,030 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/report/product_pricelist_report_templates.xml 
+2026-07-29 10:03:32,037 1 INFO purchase_product_optional_test odoo.modules.loading: Module product: loading demo 
+2026-07-29 10:03:32,039 1 INFO purchase_product_optional_test odoo.modules.loading: loading product/data/product_demo.xml 
+2026-07-29 10:03:32,320 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.message records with IDs: [47] 
+2026-07-29 10:03:32,328 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted ir.property records with IDs: [11] 
+2026-07-29 10:03:32,328 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted product.product records with IDs: [9] 
+2026-07-29 10:03:32,366 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.message records with IDs: [49, 48] 
+2026-07-29 10:03:32,369 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted product.product records with IDs: [10, 11] 
+2026-07-29 10:03:32,708 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.message records with IDs: [67] 
+2026-07-29 10:03:32,714 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted ir.property records with IDs: [21] 
+2026-07-29 10:03:32,714 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted product.product records with IDs: [22] 
+2026-07-29 10:03:32,774 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.message records with IDs: [53] 
+2026-07-29 10:03:32,780 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted product.product records with IDs: [15] 
+2026-07-29 10:03:33,226 1 INFO purchase_product_optional_test odoo.modules.loading: Module product loaded in 2.53s, 3198 queries (+3198 other) 
+2026-07-29 10:03:33,227 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module sales_team (27/56) 
+2026-07-29 10:03:33,261 1 INFO purchase_product_optional_test odoo.modules.registry: module sales_team: creating or updating database tables 
+2026-07-29 10:03:33,375 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.users.sale_team_id 
+2026-07-29 10:03:33,462 1 INFO purchase_product_optional_test odoo.modules.loading: loading sales_team/security/sales_team_security.xml 
+2026-07-29 10:03:33,561 1 INFO purchase_product_optional_test odoo.modules.loading: loading sales_team/security/ir.model.access.csv 
+2026-07-29 10:03:33,572 1 INFO purchase_product_optional_test odoo.modules.loading: loading sales_team/data/crm_team_data.xml 
+2026-07-29 10:03:33,606 1 INFO purchase_product_optional_test odoo.modules.loading: loading sales_team/views/crm_tag_views.xml 
+2026-07-29 10:03:33,619 1 INFO purchase_product_optional_test odoo.modules.loading: loading sales_team/views/crm_team_views.xml 
+2026-07-29 10:03:33,646 1 INFO purchase_product_optional_test odoo.modules.loading: loading sales_team/views/crm_team_member_views.xml 
+2026-07-29 10:03:33,670 1 INFO purchase_product_optional_test odoo.modules.loading: loading sales_team/views/mail_activity_views.xml 
+2026-07-29 10:03:33,673 1 INFO purchase_product_optional_test odoo.modules.loading: loading sales_team/views/res_partner_views.xml 
+2026-07-29 10:03:33,683 1 INFO purchase_product_optional_test odoo.modules.loading: Module sales_team: loading demo 
+2026-07-29 10:03:33,684 1 INFO purchase_product_optional_test odoo.modules.loading: loading sales_team/data/crm_team_demo.xml 
+2026-07-29 10:03:33,713 1 INFO purchase_product_optional_test odoo.modules.loading: loading sales_team/data/crm_tag_demo.xml 
+2026-07-29 10:03:33,742 1 INFO purchase_product_optional_test odoo.modules.loading: Module sales_team loaded in 0.51s, 675 queries (+675 other) 
+2026-07-29 10:03:33,743 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module web_unsplash (28/56) 
+2026-07-29 10:03:33,771 1 INFO purchase_product_optional_test odoo.modules.registry: module web_unsplash: creating or updating database tables 
+2026-07-29 10:03:33,807 1 INFO purchase_product_optional_test odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-07-29 10:03:33,837 1 INFO purchase_product_optional_test odoo.modules.loading: Module web_unsplash loaded in 0.09s, 98 queries (+98 other) 
+2026-07-29 10:03:33,837 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module partner_autocomplete (29/56) 
+2026-07-29 10:03:33,866 1 INFO purchase_product_optional_test odoo.modules.registry: module partner_autocomplete: creating or updating database tables 
+2026-07-29 10:03:33,933 1 INFO purchase_product_optional_test odoo.modules.loading: loading partner_autocomplete/security/ir.model.access.csv 
+2026-07-29 10:03:33,946 1 INFO purchase_product_optional_test odoo.modules.loading: loading partner_autocomplete/views/res_partner_views.xml 
+2026-07-29 10:03:33,967 1 INFO purchase_product_optional_test odoo.modules.loading: loading partner_autocomplete/views/res_company_views.xml 
+2026-07-29 10:03:33,979 1 INFO purchase_product_optional_test odoo.modules.loading: loading partner_autocomplete/views/res_config_settings_views.xml 
+2026-07-29 10:03:33,997 1 INFO purchase_product_optional_test odoo.modules.loading: loading partner_autocomplete/data/cron.xml 
+2026-07-29 10:03:34,025 1 INFO purchase_product_optional_test odoo.modules.loading: Module partner_autocomplete loaded in 0.19s, 196 queries (+196 other) 
+2026-07-29 10:03:34,025 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module portal (30/56) 
+2026-07-29 10:03:34,055 1 INFO purchase_product_optional_test odoo.modules.registry: module portal: creating or updating database tables 
+2026-07-29 10:03:34,319 1 INFO purchase_product_optional_test odoo.modules.loading: loading portal/security/ir.model.access.csv 
+2026-07-29 10:03:34,329 1 INFO purchase_product_optional_test odoo.modules.loading: loading portal/data/mail_template_data.xml 
+2026-07-29 10:03:34,338 1 INFO purchase_product_optional_test odoo.modules.loading: loading portal/data/mail_templates.xml 
+2026-07-29 10:03:34,345 1 INFO purchase_product_optional_test odoo.modules.loading: loading portal/views/mail_templates_public.xml 
+2026-07-29 10:03:34,351 1 INFO purchase_product_optional_test odoo.modules.loading: loading portal/views/portal_templates.xml 
+2026-07-29 10:03:34,425 1 INFO purchase_product_optional_test odoo.modules.loading: loading portal/views/res_config_settings_views.xml 
+2026-07-29 10:03:34,437 1 INFO purchase_product_optional_test odoo.modules.loading: loading portal/wizard/portal_share_views.xml 
+2026-07-29 10:03:34,446 1 INFO purchase_product_optional_test odoo.modules.loading: loading portal/wizard/portal_wizard_views.xml 
+2026-07-29 10:03:34,474 1 INFO purchase_product_optional_test odoo.modules.loading: Module portal loaded in 0.45s, 502 queries (+502 other) 
+2026-07-29 10:03:34,475 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module sms (31/56) 
+2026-07-29 10:03:34,525 1 INFO purchase_product_optional_test odoo.modules.registry: module sms: creating or updating database tables 
+2026-07-29 10:03:34,531 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.sms_template_id 
+2026-07-29 10:03:34,532 1 INFO purchase_product_optional_test odoo.models: Prepare computation of ir.actions.server.sms_method 
+2026-07-29 10:03:34,552 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.partner.phone_sanitized 
+2026-07-29 10:03:35,555 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/data/ir_cron_data.xml 
+2026-07-29 10:03:35,561 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/wizard/sms_composer_views.xml 
+2026-07-29 10:03:35,573 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/wizard/sms_template_preview_views.xml 
+2026-07-29 10:03:35,580 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/wizard/sms_resend_views.xml 
+2026-07-29 10:03:35,591 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/wizard/sms_template_reset_views.xml 
+2026-07-29 10:03:35,599 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/views/ir_actions_server_views.xml 
+2026-07-29 10:03:35,607 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/views/mail_notification_views.xml 
+2026-07-29 10:03:35,616 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/views/res_config_settings_views.xml 
+2026-07-29 10:03:35,626 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/views/res_partner_views.xml 
+2026-07-29 10:03:35,645 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/views/sms_sms_views.xml 
+2026-07-29 10:03:35,662 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/views/sms_template_views.xml 
+2026-07-29 10:03:35,678 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/security/ir.model.access.csv 
+2026-07-29 10:03:35,695 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/security/sms_security.xml 
+2026-07-29 10:03:35,700 1 INFO purchase_product_optional_test odoo.modules.loading: Module sms: loading demo 
+2026-07-29 10:03:35,701 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/data/sms_demo.xml 
+2026-07-29 10:03:35,705 1 INFO purchase_product_optional_test odoo.modules.loading: loading sms/data/mail_demo.xml 
+2026-07-29 10:03:35,751 1 INFO purchase_product_optional_test odoo.modules.loading: Module sms loaded in 1.28s, 2139 queries (+2139 other) 
+2026-07-29 10:03:35,751 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module snailmail (32/56) 
+2026-07-29 10:03:35,783 1 INFO purchase_product_optional_test odoo.modules.registry: module snailmail: creating or updating database tables 
+2026-07-29 10:03:36,009 1 INFO purchase_product_optional_test odoo.modules.loading: loading snailmail/data/snailmail_data.xml 
+2026-07-29 10:03:36,016 1 INFO purchase_product_optional_test odoo.modules.loading: loading snailmail/views/report_assets.xml 
+2026-07-29 10:03:36,028 1 INFO purchase_product_optional_test odoo.modules.loading: loading snailmail/views/snailmail_views.xml 
+2026-07-29 10:03:36,045 1 INFO purchase_product_optional_test odoo.modules.loading: loading snailmail/wizard/snailmail_letter_format_error_views.xml 
+2026-07-29 10:03:36,053 1 INFO purchase_product_optional_test odoo.modules.loading: loading snailmail/wizard/snailmail_letter_missing_required_fields_views.xml 
+2026-07-29 10:03:36,060 1 INFO purchase_product_optional_test odoo.modules.loading: loading snailmail/security/ir.model.access.csv 
+2026-07-29 10:03:36,160 1 INFO purchase_product_optional_test odoo.modules.loading: Module snailmail loaded in 0.41s, 443 queries (+443 other) 
+2026-07-29 10:03:36,161 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module auth_totp_portal (33/56) 
+2026-07-29 10:03:36,191 1 INFO purchase_product_optional_test odoo.modules.registry: module auth_totp_portal: creating or updating database tables 
+2026-07-29 10:03:36,214 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_totp_portal/security/security.xml 
+2026-07-29 10:03:36,230 1 INFO purchase_product_optional_test odoo.modules.loading: loading auth_totp_portal/views/templates.xml 
+2026-07-29 10:03:36,247 1 INFO purchase_product_optional_test odoo.modules.loading: Module auth_totp_portal loaded in 0.09s, 66 queries (+66 other) 
+2026-07-29 10:03:36,248 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module digest (34/56) 
+2026-07-29 10:03:36,277 1 INFO purchase_product_optional_test odoo.modules.registry: module digest: creating or updating database tables 
+2026-07-29 10:03:36,436 1 INFO purchase_product_optional_test odoo.modules.loading: loading digest/security/ir.model.access.csv 
+2026-07-29 10:03:36,444 1 INFO purchase_product_optional_test odoo.modules.loading: loading digest/data/digest_data.xml 
+2026-07-29 10:03:36,461 1 INFO purchase_product_optional_test odoo.modules.loading: loading digest/data/digest_tips_data.xml 
+2026-07-29 10:03:36,472 1 INFO purchase_product_optional_test odoo.modules.loading: loading digest/data/ir_cron_data.xml 
+2026-07-29 10:03:36,485 1 INFO purchase_product_optional_test odoo.modules.loading: loading digest/data/res_config_settings_data.xml 
+2026-07-29 10:03:36,490 1 INFO purchase_product_optional_test odoo.modules.loading: loading digest/views/digest_views.xml 
+2026-07-29 10:03:36,518 1 INFO purchase_product_optional_test odoo.modules.loading: loading digest/views/digest_templates.xml 
+2026-07-29 10:03:36,524 1 INFO purchase_product_optional_test odoo.modules.loading: loading digest/views/res_config_settings_views.xml 
+2026-07-29 10:03:36,555 1 INFO purchase_product_optional_test odoo.modules.loading: Module digest loaded in 0.31s, 296 queries (+296 other) 
+2026-07-29 10:03:36,556 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module payment (35/56) 
+2026-07-29 10:03:36,630 1 INFO purchase_product_optional_test odoo.modules.registry: module payment: creating or updating database tables 
+2026-07-29 10:03:37,155 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/data/onboarding_data.xml 
+2026-07-29 10:03:37,163 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/data/payment_method_data.xml 
+2026-07-29 10:03:38,067 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/data/payment_provider_data.xml 
+2026-07-29 10:03:38,141 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/data/payment_cron.xml 
+2026-07-29 10:03:38,493 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/views/express_checkout_templates.xml 
+2026-07-29 10:03:38,498 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/views/payment_form_templates.xml 
+2026-07-29 10:03:38,514 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/views/portal_templates.xml 
+2026-07-29 10:03:38,542 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/views/payment_provider_views.xml 
+2026-07-29 10:03:38,559 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/views/payment_method_views.xml 
+2026-07-29 10:03:38,575 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/views/payment_transaction_views.xml 
+2026-07-29 10:03:38,591 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/views/payment_token_views.xml 
+2026-07-29 10:03:38,603 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/views/res_partner_views.xml 
+2026-07-29 10:03:38,610 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/security/ir.model.access.csv 
+2026-07-29 10:03:38,621 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/security/payment_security.xml 
+2026-07-29 10:03:38,641 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/wizards/payment_capture_wizard_views.xml 
+2026-07-29 10:03:38,646 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/wizards/payment_link_wizard_views.xml 
+2026-07-29 10:03:38,650 1 INFO purchase_product_optional_test odoo.modules.loading: loading payment/wizards/payment_onboarding_views.xml 
+2026-07-29 10:03:38,700 1 INFO purchase_product_optional_test odoo.modules.loading: Module payment loaded in 2.14s, 2222 queries (+2222 other) 
+2026-07-29 10:03:38,701 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module spreadsheet (36/56) 
+2026-07-29 10:03:38,730 1 INFO purchase_product_optional_test odoo.modules.registry: module spreadsheet: creating or updating database tables 
+2026-07-29 10:03:38,762 1 INFO purchase_product_optional_test odoo.modules.loading: loading spreadsheet/views/public_readonly_spreadsheet_templates.xml 
+2026-07-29 10:03:38,779 1 INFO purchase_product_optional_test odoo.modules.loading: Module spreadsheet loaded in 0.08s, 83 queries (+83 other) 
+2026-07-29 10:03:38,782 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module account (37/56) 
+2026-07-29 10:03:38,863 1 INFO purchase_product_optional_test odoo.modules.registry: module account: creating or updating database tables 
+2026-07-29 10:03:39,132 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.partner.bank.has_iban_warning 
+2026-07-29 10:03:39,133 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.partner.bank.has_money_transfer_warning 
+2026-07-29 10:03:40,170 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.company.account_fiscal_country_id 
+2026-07-29 10:03:40,171 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.company.invoice_terms_html 
+2026-07-29 10:03:42,427 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/security/account_security.xml 
+2026-07-29 10:03:42,677 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/security/ir.model.access.csv 
+2026-07-29 10:03:42,725 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/data/account_data.xml 
+2026-07-29 10:03:42,771 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/data/digest_data.xml 
+2026-07-29 10:03:42,776 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_report.xml 
+2026-07-29 10:03:42,790 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/data/mail_template_data.xml 
+2026-07-29 10:03:42,800 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/data/onboarding_data.xml 
+2026-07-29 10:03:42,826 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_payment_view.xml 
+2026-07-29 10:03:42,871 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/wizard/account_automatic_entry_wizard_views.xml 
+2026-07-29 10:03:42,879 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/wizard/account_unreconcile_view.xml 
+2026-07-29 10:03:42,886 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/wizard/account_move_reversal_view.xml 
+2026-07-29 10:03:42,893 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/wizard/account_resequence_views.xml 
+2026-07-29 10:03:42,899 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/wizard/account_payment_register_views.xml 
+2026-07-29 10:03:42,905 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_move_views.xml 
+2026-07-29 10:03:43,108 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/wizard/setup_wizards_view.xml 
+2026-07-29 10:03:43,118 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_account_views.xml 
+2026-07-29 10:03:43,133 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_group_views.xml 
+2026-07-29 10:03:43,141 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_journal_views.xml 
+2026-07-29 10:03:43,168 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_account_tag_views.xml 
+2026-07-29 10:03:43,176 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_bank_statement_views.xml 
+2026-07-29 10:03:43,193 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_reconcile_model_views.xml 
+2026-07-29 10:03:43,212 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_tax_views.xml 
+2026-07-29 10:03:43,251 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_full_reconcile_views.xml 
+2026-07-29 10:03:43,259 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_payment_term_views.xml 
+2026-07-29 10:03:43,272 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_payment_method.xml 
+2026-07-29 10:03:43,277 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/res_partner_bank_views.xml 
+2026-07-29 10:03:43,292 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/report_statement.xml 
+2026-07-29 10:03:43,300 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/terms_template.xml 
+2026-07-29 10:03:43,310 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/wizard/account_validate_move_view.xml 
+2026-07-29 10:03:43,324 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/res_company_views.xml 
+2026-07-29 10:03:43,339 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/product_view.xml 
+2026-07-29 10:03:43,355 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_analytic_plan_views.xml 
+2026-07-29 10:03:43,361 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_analytic_account_views.xml 
+2026-07-29 10:03:43,374 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_analytic_distribution_model_views.xml 
+2026-07-29 10:03:43,382 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_analytic_line_views.xml 
+2026-07-29 10:03:43,401 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/report_invoice.xml 
+2026-07-29 10:03:43,423 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/report/account_invoice_report_view.xml 
+2026-07-29 10:03:43,449 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_cash_rounding_view.xml 
+2026-07-29 10:03:43,460 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/ir_module_views.xml 
+2026-07-29 10:03:43,466 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/res_config_settings_views.xml 
+2026-07-29 10:03:43,487 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/partner_view.xml 
+2026-07-29 10:03:43,524 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_journal_dashboard_view.xml 
+2026-07-29 10:03:43,537 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_portal_templates.xml 
+2026-07-29 10:03:43,568 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/report_payment_receipt_templates.xml 
+2026-07-29 10:03:43,574 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/data/service_cron.xml 
+2026-07-29 10:03:43,582 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_incoterms_view.xml 
+2026-07-29 10:03:43,593 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/data/account_incoterms_data.xml 
+2026-07-29 10:03:43,606 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/digest_views.xml 
+2026-07-29 10:03:43,611 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/wizard/account_move_send_views.xml 
+2026-07-29 10:03:43,620 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/report/account_hash_integrity_templates.xml 
+2026-07-29 10:03:43,624 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/res_currency.xml 
+2026-07-29 10:03:43,630 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/account_menuitem.xml 
+2026-07-29 10:03:43,755 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/wizard/account_tour_upload_bill.xml 
+2026-07-29 10:03:43,762 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/wizard/accrued_orders.xml 
+2026-07-29 10:03:43,766 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/bill_preview_template.xml 
+2026-07-29 10:03:43,772 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/data/account_reports_data.xml 
+2026-07-29 10:03:44,007 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/views/uom_uom_views.xml 
+2026-07-29 10:03:44,015 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/data/ir_config_parameter_data.xml 
+2026-07-29 10:03:44,021 1 INFO purchase_product_optional_test odoo.modules.loading: Module account: loading demo 
+2026-07-29 10:03:44,022 1 INFO purchase_product_optional_test odoo.modules.loading: loading account/demo/account_demo.xml 
+2026-07-29 10:03:45,220 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 1 and Message-Id '<290438184680355.1785319425.171962022781372-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'a****@yourcompany.example.com' successfully sent 
+2026-07-29 10:03:45,221 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:45,269 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [1] 
+2026-07-29 10:03:45,271 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:45,311 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 2 and Message-Id '<142781934442075.1785319425.278960227966309-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'a****@yourcompany.example.com' successfully sent 
+2026-07-29 10:03:45,312 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:45,317 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [2] 
+2026-07-29 10:03:45,318 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:45,357 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 3 and Message-Id '<742933889192942.1785319425.323453664779663-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'a****@yourcompany.example.com' successfully sent 
+2026-07-29 10:03:45,358 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:45,363 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [3] 
+2026-07-29 10:03:45,363 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:45,388 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 4 and Message-Id '<409966359540902.1785319425.369941473007202-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'a****@yourcompany.example.com' successfully sent 
+2026-07-29 10:03:45,389 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:45,393 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [4] 
+2026-07-29 10:03:45,394 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:45,823 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Check Printing Base'] to user __system__ #1 via n/a 
+2026-07-29 10:03:45,906 1 INFO purchase_product_optional_test odoo.modules.loading: Module account loaded in 7.12s, 8612 queries (+8613 other) 
+2026-07-29 10:03:45,908 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module spreadsheet_dashboard (38/56) 
+2026-07-29 10:03:46,009 1 INFO purchase_product_optional_test odoo.modules.registry: module spreadsheet_dashboard: creating or updating database tables 
+2026-07-29 10:03:46,185 1 INFO purchase_product_optional_test odoo.modules.loading: loading spreadsheet_dashboard/security/security.xml 
+2026-07-29 10:03:46,226 1 INFO purchase_product_optional_test odoo.modules.loading: loading spreadsheet_dashboard/security/ir.model.access.csv 
+2026-07-29 10:03:46,237 1 INFO purchase_product_optional_test odoo.modules.loading: loading spreadsheet_dashboard/views/spreadsheet_dashboard_views.xml 
+2026-07-29 10:03:46,248 1 INFO purchase_product_optional_test odoo.modules.loading: loading spreadsheet_dashboard/views/menu_views.xml 
+2026-07-29 10:03:46,271 1 INFO purchase_product_optional_test odoo.modules.loading: loading spreadsheet_dashboard/data/dashboard.xml 
+2026-07-29 10:03:46,345 1 INFO purchase_product_optional_test odoo.modules.loading: Module spreadsheet_dashboard loaded in 0.44s, 267 queries (+267 other) 
+2026-07-29 10:03:46,345 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module account_add_gln (39/56) 
+2026-07-29 10:03:46,388 1 INFO purchase_product_optional_test odoo.modules.registry: module account_add_gln: creating or updating database tables 
+2026-07-29 10:03:46,429 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_add_gln/views/res_partner_views.xml 
+2026-07-29 10:03:46,449 1 INFO purchase_product_optional_test odoo.modules.loading: Module account_add_gln loaded in 0.10s, 94 queries (+94 other) 
+2026-07-29 10:03:46,450 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module account_edi_ubl_cii (40/56) 
+2026-07-29 10:03:46,514 1 INFO purchase_product_optional_test odoo.modules.registry: module account_edi_ubl_cii: creating or updating database tables 
+2026-07-29 10:03:46,527 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.partner.ubl_cii_format 
+2026-07-29 10:03:46,527 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.partner.peppol_endpoint 
+2026-07-29 10:03:46,528 1 INFO purchase_product_optional_test odoo.models: Prepare computation of res.partner.peppol_eas 
+2026-07-29 10:03:46,613 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_edi_ubl_cii/data/cii_22_templates.xml 
+2026-07-29 10:03:46,628 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_edi_ubl_cii/data/ubl_20_templates.xml 
+2026-07-29 10:03:46,683 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_edi_ubl_cii/data/ubl_21_templates.xml 
+2026-07-29 10:03:46,703 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_edi_ubl_cii/views/account_move_views.xml 
+2026-07-29 10:03:46,708 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_edi_ubl_cii/views/res_config_settings_views.xml 
+2026-07-29 10:03:46,717 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_edi_ubl_cii/views/res_partner_views.xml 
+2026-07-29 10:03:46,735 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_edi_ubl_cii/wizard/account_move_send_views.xml 
+2026-07-29 10:03:46,756 1 INFO purchase_product_optional_test odoo.modules.loading: Module account_edi_ubl_cii loaded in 0.31s, 437 queries (+437 other) 
+2026-07-29 10:03:46,757 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module account_payment (41/56) 
+2026-07-29 10:03:46,806 1 INFO purchase_product_optional_test odoo.modules.registry: module account_payment: creating or updating database tables 
+2026-07-29 10:03:46,848 1 INFO purchase_product_optional_test odoo.models: Prepare computation of account.payment.method.line.payment_provider_id 
+2026-07-29 10:03:47,018 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/data/ir_config_parameter.xml 
+2026-07-29 10:03:47,022 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/data/onboarding_data.xml 
+2026-07-29 10:03:47,029 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/security/ir.model.access.csv 
+2026-07-29 10:03:47,037 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/security/ir_rules.xml 
+2026-07-29 10:03:47,043 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/views/account_payment_menus.xml 
+2026-07-29 10:03:47,058 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/views/account_portal_templates.xml 
+2026-07-29 10:03:47,082 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/views/account_move_views.xml 
+2026-07-29 10:03:47,091 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/views/account_journal_views.xml 
+2026-07-29 10:03:47,097 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/views/account_payment_views.xml 
+2026-07-29 10:03:47,105 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/views/payment_provider_views.xml 
+2026-07-29 10:03:47,111 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/views/payment_transaction_views.xml 
+2026-07-29 10:03:47,117 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/wizards/account_payment_register_views.xml 
+2026-07-29 10:03:47,123 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/wizards/payment_link_wizard_views.xml 
+2026-07-29 10:03:47,127 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/wizards/payment_refund_wizard_views.xml 
+2026-07-29 10:03:47,130 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment/wizards/res_config_settings_views.xml 
+2026-07-29 10:03:47,162 1 INFO purchase_product_optional_test odoo.modules.loading: Module account_payment loaded in 0.41s, 472 queries (+472 other) 
+2026-07-29 10:03:47,162 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module account_payment_term (42/56) 
+2026-07-29 10:03:47,207 1 INFO purchase_product_optional_test odoo.modules.registry: module account_payment_term: creating or updating database tables 
+2026-07-29 10:03:47,233 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment_term/views/account_payment_term_views.xml 
+2026-07-29 10:03:47,241 1 INFO purchase_product_optional_test odoo.modules.loading: Module account_payment_term: loading demo 
+2026-07-29 10:03:47,246 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_payment_term/demo/account_payment_term_demo.xml 
+2026-07-29 10:03:47,267 1 INFO purchase_product_optional_test odoo.modules.loading: Module account_payment_term loaded in 0.11s, 64 queries (+64 other) 
+2026-07-29 10:03:47,269 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module product_matrix (43/56) 
+2026-07-29 10:03:47,320 1 INFO purchase_product_optional_test odoo.modules.registry: module product_matrix: creating or updating database tables 
+2026-07-29 10:03:47,347 1 INFO purchase_product_optional_test odoo.modules.loading: loading product_matrix/views/matrix_templates.xml 
+2026-07-29 10:03:47,364 1 INFO purchase_product_optional_test odoo.modules.loading: Module product_matrix: loading demo 
+2026-07-29 10:03:47,366 1 INFO purchase_product_optional_test odoo.modules.loading: loading product_matrix/data/product_matrix_demo.xml 
+2026-07-29 10:03:47,517 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.message records with IDs: [112] 
+2026-07-29 10:03:47,526 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted ir.property records with IDs: [62] 
+2026-07-29 10:03:47,529 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted product.product records with IDs: [36] 
+2026-07-29 10:03:47,578 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.message records with IDs: [117, 116, 115, 114, 113] 
+2026-07-29 10:03:47,582 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted product.product records with IDs: [37, 38, 39, 40, 41] 
+2026-07-29 10:03:47,659 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.message records with IDs: [127, 126, 125, 124, 123, 122, 121, 120, 119, 118] 
+2026-07-29 10:03:47,663 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted product.product records with IDs: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51] 
+2026-07-29 10:03:47,678 1 INFO purchase_product_optional_test odoo.modules.loading: Module product_matrix loaded in 0.41s, 488 queries (+488 other) 
+2026-07-29 10:03:47,682 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module purchase (44/56) 
+2026-07-29 10:03:47,737 1 INFO purchase_product_optional_test odoo.modules.registry: module purchase: creating or updating database tables 
+2026-07-29 10:03:47,837 1 INFO purchase_product_optional_test odoo.models: Prepare computation of product.template.purchase_method 
+2026-07-29 10:03:48,160 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/security/purchase_security.xml 
+2026-07-29 10:03:48,322 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/security/ir.model.access.csv 
+2026-07-29 10:03:48,344 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/data/digest_data.xml 
+2026-07-29 10:03:48,358 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/views/account_move_views.xml 
+2026-07-29 10:03:48,428 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/data/purchase_data.xml 
+2026-07-29 10:03:48,447 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/data/ir_cron_data.xml 
+2026-07-29 10:03:48,453 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/report/purchase_reports.xml 
+2026-07-29 10:03:48,463 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/views/purchase_views.xml 
+2026-07-29 10:03:48,590 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/views/res_config_settings_views.xml 
+2026-07-29 10:03:48,607 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/views/product_views.xml 
+2026-07-29 10:03:48,660 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/views/res_partner_views.xml 
+2026-07-29 10:03:48,702 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/report/purchase_bill_views.xml 
+2026-07-29 10:03:48,709 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/report/purchase_report_views.xml 
+2026-07-29 10:03:48,732 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/data/mail_templates.xml 
+2026-07-29 10:03:48,740 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/data/mail_template_data.xml 
+2026-07-29 10:03:48,750 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/views/portal_templates.xml 
+2026-07-29 10:03:48,780 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/report/purchase_order_templates.xml 
+2026-07-29 10:03:48,790 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/report/purchase_quotation_templates.xml 
+2026-07-29 10:03:48,800 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/views/product_packaging_views.xml 
+2026-07-29 10:03:48,810 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/views/analytic_account_views.xml 
+2026-07-29 10:03:48,818 1 INFO purchase_product_optional_test odoo.modules.loading: Module purchase: loading demo 
+2026-07-29 10:03:48,821 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase/data/purchase_demo.xml 
+2026-07-29 10:03:49,390 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 5 and Message-Id '<750442106676323.1785319429.351576566696167-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'a****@yourcompany.example.com' successfully sent 
+2026-07-29 10:03:49,396 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:49,431 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [5] 
+2026-07-29 10:03:49,434 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:49,465 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 6 and Message-Id '<047289154461259.1785319429.447913408279419-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'a****@yourcompany.example.com' successfully sent 
+2026-07-29 10:03:49,467 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:49,472 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [6] 
+2026-07-29 10:03:49,473 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:49,504 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 7 and Message-Id '<020928978291568.1785319429.483284235000610-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'a****@yourcompany.example.com' successfully sent 
+2026-07-29 10:03:49,505 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:49,510 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [7] 
+2026-07-29 10:03:49,510 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:49,543 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 8 and Message-Id '<874312535873884.1785319429.521676063537598-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'a****@yourcompany.example.com' successfully sent 
+2026-07-29 10:03:49,545 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:49,551 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [8] 
+2026-07-29 10:03:49,553 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:49,588 1 INFO purchase_product_optional_test odoo.modules.loading: Module purchase loaded in 1.91s, 2799 queries (+2800 other) 
+2026-07-29 10:03:49,589 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module snailmail_account (45/56) 
+2026-07-29 10:03:49,640 1 INFO purchase_product_optional_test odoo.modules.registry: module snailmail_account: creating or updating database tables 
+2026-07-29 10:03:49,714 1 INFO purchase_product_optional_test odoo.modules.loading: loading snailmail_account/views/res_config_settings_views.xml 
+2026-07-29 10:03:49,729 1 INFO purchase_product_optional_test odoo.modules.loading: loading snailmail_account/wizard/account_move_send_views.xml 
+2026-07-29 10:03:49,745 1 INFO purchase_product_optional_test odoo.modules.loading: Module snailmail_account loaded in 0.16s, 130 queries (+130 other) 
+2026-07-29 10:03:49,746 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module spreadsheet_account (46/56) 
+2026-07-29 10:03:49,808 1 INFO purchase_product_optional_test odoo.modules.registry: module spreadsheet_account: creating or updating database tables 
+2026-07-29 10:03:49,858 1 INFO purchase_product_optional_test odoo.modules.loading: Module spreadsheet_account loaded in 0.11s, 53 queries (+53 other) 
+2026-07-29 10:03:49,859 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module spreadsheet_dashboard_account (47/56) 
+2026-07-29 10:03:49,920 1 INFO purchase_product_optional_test odoo.modules.loading: loading spreadsheet_dashboard_account/data/dashboards.xml 
+2026-07-29 10:03:49,957 1 INFO purchase_product_optional_test odoo.modules.loading: Module spreadsheet_dashboard_account loaded in 0.10s, 27 queries (+27 other) 
+2026-07-29 10:03:49,957 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module purchase_product_matrix (48/56) 
+2026-07-29 10:03:50,011 1 INFO purchase_product_optional_test odoo.modules.registry: module purchase_product_matrix: creating or updating database tables 
+2026-07-29 10:03:50,147 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase_product_matrix/views/purchase_views.xml 
+2026-07-29 10:03:50,157 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase_product_matrix/report/purchase_quotation_templates.xml 
+2026-07-29 10:03:50,164 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase_product_matrix/report/purchase_order_templates.xml 
+2026-07-29 10:03:50,181 1 INFO purchase_product_optional_test odoo.modules.loading: Module purchase_product_matrix loaded in 0.22s, 105 queries (+105 other) 
+2026-07-29 10:03:50,182 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module sale (49/56) 
+2026-07-29 10:03:50,241 1 INFO purchase_product_optional_test odoo.modules.registry: module sale: creating or updating database tables 
+2026-07-29 10:03:50,254 1 INFO purchase_product_optional_test odoo.models: Prepare computation of account.move.team_id 
+2026-07-29 10:03:50,352 1 INFO purchase_product_optional_test odoo.models: Prepare computation of product.template.service_type 
+2026-07-29 10:03:50,356 1 INFO purchase_product_optional_test odoo.models: Prepare computation of product.template.expense_policy 
+2026-07-29 10:03:50,356 1 INFO purchase_product_optional_test odoo.models: Prepare computation of product.template.invoice_policy 
+2026-07-29 10:03:51,185 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/security/ir.model.access.csv 
+2026-07-29 10:03:51,238 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/security/res_groups.xml 
+2026-07-29 10:03:51,273 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/security/ir_rules.xml 
+2026-07-29 10:03:51,369 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/report/account_invoice_report_views.xml 
+2026-07-29 10:03:51,380 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/report/ir_actions_report_templates.xml 
+2026-07-29 10:03:51,397 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/report/ir_actions_report.xml 
+2026-07-29 10:03:51,403 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/report/sale_report_views.xml 
+2026-07-29 10:03:51,434 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/data/ir_cron.xml 
+2026-07-29 10:03:51,442 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/data/ir_sequence_data.xml 
+2026-07-29 10:03:51,446 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/data/mail_activity_type_data.xml 
+2026-07-29 10:03:51,452 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/data/mail_message_subtype_data.xml 
+2026-07-29 10:03:51,462 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/data/mail_template_data.xml 
+2026-07-29 10:03:51,473 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/data/ir_config_parameter.xml 
+2026-07-29 10:03:51,481 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/data/onboarding_data.xml 
+2026-07-29 10:03:51,493 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/wizard/account_accrued_orders_wizard_views.xml 
+2026-07-29 10:03:51,499 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/wizard/mass_cancel_orders_views.xml 
+2026-07-29 10:03:51,507 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/wizard/payment_link_wizard_views.xml 
+2026-07-29 10:03:51,516 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/wizard/res_config_settings_views.xml 
+2026-07-29 10:03:51,537 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/wizard/sale_make_invoice_advance_views.xml 
+2026-07-29 10:03:51,544 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/wizard/sale_order_cancel_views.xml 
+2026-07-29 10:03:51,549 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/wizard/sale_order_discount_views.xml 
+2026-07-29 10:03:51,554 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/sale_order_views.xml 
+2026-07-29 10:03:51,644 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/account_views.xml 
+2026-07-29 10:03:51,671 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/crm_team_views.xml 
+2026-07-29 10:03:51,691 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/mail_activity_views.xml 
+2026-07-29 10:03:51,694 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/mail_activity_plan_views.xml 
+2026-07-29 10:03:51,698 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/payment_views.xml 
+2026-07-29 10:03:51,710 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/product_document_views.xml 
+2026-07-29 10:03:51,725 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/product_packaging_views.xml 
+2026-07-29 10:03:51,735 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/product_views.xml 
+2026-07-29 10:03:51,773 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/res_partner_views.xml 
+2026-07-29 10:03:51,807 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/sale_order_line_views.xml 
+2026-07-29 10:03:51,820 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/sale_portal_templates.xml 
+2026-07-29 10:03:51,851 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/utm_campaign_views.xml 
+2026-07-29 10:03:51,861 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/views/sale_menus.xml 
+2026-07-29 10:03:51,964 1 INFO purchase_product_optional_test odoo.modules.loading: Module sale: loading demo 
+2026-07-29 10:03:51,965 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/data/product_demo.xml 
+2026-07-29 10:03:52,114 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale/data/sale_demo.xml 
+2026-07-29 10:03:52,964 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 9 and Message-Id '<795242381729826.1785319432.929997920989990-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'a****@yourcompany.example.com' successfully sent 
+2026-07-29 10:03:52,964 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:52,973 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [9] 
+2026-07-29 10:03:52,974 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:53,004 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 10 and Message-Id '<039660745515524.1785319432.983946561813354-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'a****@yourcompany.example.com' successfully sent 
+2026-07-29 10:03:53,005 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:53,010 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [10] 
+2026-07-29 10:03:53,010 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:53,040 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 11 and Message-Id '<152647665049937.1785319433.021117210388184-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'm*********23@example.com' successfully sent 
+2026-07-29 10:03:53,040 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:53,045 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [11] 
+2026-07-29 10:03:53,046 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:53,076 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 12 and Message-Id '<279676530696637.1785319433.056833505630493-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'a****@yourcompany.example.com' successfully sent 
+2026-07-29 10:03:53,076 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:53,081 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [12] 
+2026-07-29 10:03:53,082 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:53,110 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 13 and Message-Id '<322529072022795.1785319433.092606544494629-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'm*********23@example.com' successfully sent 
+2026-07-29 10:03:53,111 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:53,116 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [13] 
+2026-07-29 10:03:53,117 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:53,145 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 14 and Message-Id '<475292756738922.1785319433.127034425735474-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'm*********23@example.com' successfully sent 
+2026-07-29 10:03:53,146 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:53,153 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [14] 
+2026-07-29 10:03:53,158 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:53,188 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 15 and Message-Id '<235923021589378.1785319433.170714855194092-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'm*********23@example.com' successfully sent 
+2026-07-29 10:03:53,189 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:53,194 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [15] 
+2026-07-29 10:03:53,194 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:53,223 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 16 and Message-Id '<771663480215128.1785319433.205343723297119-openerp-message-notify@f27de7fb7e51>' from 'odoobot@example.com' to (redacted) 'a****@yourcompany.example.com' successfully sent 
+2026-07-29 10:03:53,226 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-07-29 10:03:53,231 1 INFO purchase_product_optional_test odoo.models.unlink: User #1 deleted mail.mail records with IDs: [16] 
+2026-07-29 10:03:53,232 1 INFO purchase_product_optional_test odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-07-29 10:03:53,308 1 INFO purchase_product_optional_test odoo.modules.loading: Module sale loaded in 3.13s, 4649 queries (+4650 other) 
+2026-07-29 10:03:53,309 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module spreadsheet_dashboard_purchase (50/56) 
+2026-07-29 10:03:53,366 1 INFO purchase_product_optional_test odoo.modules.loading: loading spreadsheet_dashboard_purchase/data/dashboards.xml 
+2026-07-29 10:03:53,395 1 INFO purchase_product_optional_test odoo.modules.loading: Module spreadsheet_dashboard_purchase loaded in 0.09s, 26 queries (+26 other) 
+2026-07-29 10:03:53,397 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module sale_async_emails (51/56) 
+2026-07-29 10:03:53,502 1 INFO purchase_product_optional_test odoo.modules.registry: module sale_async_emails: creating or updating database tables 
+2026-07-29 10:03:53,536 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale_async_emails/data/ir_config_parameter.xml 
+2026-07-29 10:03:53,540 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale_async_emails/data/ir_cron.xml 
+2026-07-29 10:03:53,556 1 INFO purchase_product_optional_test odoo.modules.loading: Module sale_async_emails loaded in 0.16s, 76 queries (+76 other) 
+2026-07-29 10:03:53,562 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module sale_product_configurator (52/56) 
+2026-07-29 10:03:53,615 1 INFO purchase_product_optional_test odoo.modules.registry: module sale_product_configurator: creating or updating database tables 
+2026-07-29 10:03:53,686 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale_product_configurator/views/product_template_views.xml 
+2026-07-29 10:03:53,695 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale_product_configurator/views/sale_order_views.xml 
+2026-07-29 10:03:53,703 1 INFO purchase_product_optional_test odoo.modules.loading: Module sale_product_configurator: loading demo 
+2026-07-29 10:03:53,704 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale_product_configurator/data/sale_demo.xml 
+2026-07-29 10:03:53,777 1 INFO purchase_product_optional_test odoo.modules.loading: Module sale_product_configurator loaded in 0.22s, 212 queries (+212 other) 
+2026-07-29 10:03:53,778 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module sale_purchase (53/56) 
+2026-07-29 10:03:53,828 1 INFO purchase_product_optional_test odoo.modules.registry: module sale_purchase: creating or updating database tables 
+2026-07-29 10:03:53,901 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale_purchase/data/mail_templates.xml 
+2026-07-29 10:03:53,910 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale_purchase/views/product_views.xml 
+2026-07-29 10:03:53,917 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale_purchase/views/sale_order_views.xml 
+2026-07-29 10:03:53,924 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale_purchase/views/purchase_order_views.xml 
+2026-07-29 10:03:53,931 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale_purchase/wizards/sale_order_cancel_views.xml 
+2026-07-29 10:03:53,944 1 INFO purchase_product_optional_test odoo.modules.loading: Module sale_purchase loaded in 0.17s, 208 queries (+208 other) 
+2026-07-29 10:03:53,944 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module sale_sms (54/56) 
+2026-07-29 10:03:54,001 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale_sms/security/ir.model.access.csv 
+2026-07-29 10:03:54,020 1 INFO purchase_product_optional_test odoo.modules.loading: loading sale_sms/security/security.xml 
+2026-07-29 10:03:54,033 1 INFO purchase_product_optional_test odoo.modules.loading: Module sale_sms loaded in 0.09s, 41 queries (+41 other) 
+2026-07-29 10:03:54,034 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module spreadsheet_dashboard_sale (55/56) 
+2026-07-29 10:03:54,149 1 INFO purchase_product_optional_test odoo.modules.loading: loading spreadsheet_dashboard_sale/data/dashboards.xml 
+2026-07-29 10:03:54,186 1 INFO purchase_product_optional_test odoo.modules.loading: Module spreadsheet_dashboard_sale loaded in 0.15s, 31 queries (+31 other) 
+2026-07-29 10:03:54,186 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module purchase_product_optional (56/56) 
+2026-07-29 10:03:54,258 1 WARNING purchase_product_optional_test odoo.fields: Field purchase.order.line.product_no_variant_attribute_value_ids: unknown parameter 'product_add_mode', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-29 10:03:54,271 1 INFO purchase_product_optional_test odoo.modules.registry: module purchase_product_optional: creating or updating database tables 
+2026-07-29 10:03:54,288 1 WARNING purchase_product_optional_test odoo.addons.base.models.ir_model: Two fields (id_vendor, id) of purchase.order() have the same label: ID. [Modules: purchase_product_optional and purchase] 
+2026-07-29 10:03:54,353 1 INFO purchase_product_optional_test odoo.modules.loading: loading purchase_product_optional/views/purchase_order_views.xml 
+2026-07-29 10:03:54,388 1 INFO purchase_product_optional_test odoo.modules.loading: Module purchase_product_optional loaded in 0.20s, 120 queries (+120 other) 
+2026-07-29 10:03:54,389 1 INFO purchase_product_optional_test odoo.modules.loading: 56 modules loaded in 33.15s, 41830 queries (+41834 extra) 
+2026-07-29 10:03:54,390 1 INFO purchase_product_optional_test odoo.modules.loading: loading 57 modules... 
+2026-07-29 10:03:54,394 1 INFO purchase_product_optional_test odoo.modules.loading: Loading module account_check_printing (40/57) 
+2026-07-29 10:03:54,436 1 WARNING purchase_product_optional_test odoo.fields: Field purchase.order.line.product_no_variant_attribute_value_ids: unknown parameter 'product_add_mode', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-29 10:03:54,451 1 INFO purchase_product_optional_test odoo.modules.registry: module account_check_printing: creating or updating database tables 
+2026-07-29 10:03:54,592 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_check_printing/security/ir.model.access.csv 
+2026-07-29 10:03:54,599 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_check_printing/data/account_check_printing_data.xml 
+2026-07-29 10:03:54,613 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_check_printing/views/account_journal_views.xml 
+2026-07-29 10:03:54,626 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_check_printing/views/account_move_views.xml 
+2026-07-29 10:03:54,632 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_check_printing/views/account_payment_views.xml 
+2026-07-29 10:03:54,643 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_check_printing/views/res_config_settings_views.xml 
+2026-07-29 10:03:54,662 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_check_printing/views/res_partner_views.xml 
+2026-07-29 10:03:54,672 1 INFO purchase_product_optional_test odoo.modules.loading: loading account_check_printing/wizard/print_prenumbered_checks_views.xml 
+2026-07-29 10:03:54,697 1 INFO purchase_product_optional_test odoo.modules.loading: Module account_check_printing loaded in 0.30s, 353 queries (+353 other) 
+2026-07-29 10:03:54,698 1 INFO purchase_product_optional_test odoo.modules.loading: 57 modules loaded in 0.30s, 353 queries (+353 extra) 
+2026-07-29 10:03:54,737 1 WARNING purchase_product_optional_test odoo.fields: Field purchase.order.line.product_no_variant_attribute_value_ids: unknown parameter 'product_add_mode', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-29 10:03:54,786 1 WARNING purchase_product_optional_test odoo.fields: Field purchase.order.line.product_no_variant_attribute_value_ids: unknown parameter 'product_add_mode', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-29 10:03:55,246 1 INFO purchase_product_optional_test odoo.modules.loading: Modules loaded. 
+2026-07-29 10:03:55,398 1 INFO purchase_product_optional_test odoo.modules.registry: Registry loaded in 42.811s 
+2026-07-29 10:03:55,399 1 INFO purchase_product_optional_test odoo.service.server: Starting post tests 
+2026-07-29 10:03:55,411 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-07-29 10:03:55,499 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_qweb: Pregenerating assets bundles 
+2026-07-29 10:03:55,499 1 INFO purchase_product_optional_test werkzeug: 172.20.0.1 - - [29/Jul/2026 10:03:55] "GET /websocket?version=17.0-3 HTTP/1.1" 101 - 13 0.019 18.966
+2026-07-29 10:03:55,821 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-07-29 10:03:55,833 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/ba037c6/bus.websocket_worker_assets.min.js (id:776) 
+2026-07-29 10:03:55,857 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/7db0921/mail.assets_discuss_public_test_tours.min.js (id:777) 
+2026-07-29 10:03:55,861 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/fbfedd4/mail.assets_lamejs.min.js (id:778) 
+2026-07-29 10:03:55,926 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/d356a65/mail.assets_odoo_sfu.min.js (id:779) 
+2026-07-29 10:03:56,208 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/e55c220/mail.assets_public.min.js (id:780) 
+2026-07-29 10:03:56,219 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/534ee8f/snailmail.report_assets_snailmail.min.js (id:781) 
+2026-07-29 10:03:56,221 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/spreadsheet.assets_print.min.js (id:782) 
+2026-07-29 10:03:56,297 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/4ef58e2/spreadsheet.o_spreadsheet.min.js (id:783) 
+2026-07-29 10:03:56,376 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/27311e9/spreadsheet.public_spreadsheet.min.js (id:784) 
+2026-07-29 10:03:56,409 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/ae87b0a/web.__assets_tests_call__.min.js (id:785) 
+2026-07-29 10:03:56,415 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/72982c0/web.ace_lib.min.js (id:786) 
+2026-07-29 10:03:56,422 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/3252673/web.assets_clickbot.min.js (id:787) 
+2026-07-29 10:03:56,485 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/1bcd000/web.assets_emoji.min.js (id:788) 
+2026-07-29 10:03:56,702 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/0aae2f8/web.assets_frontend_lazy.min.js (id:789) 
+2026-07-29 10:03:56,706 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/5ec42d9/web.assets_frontend_minimal.min.js (id:790) 
+2026-07-29 10:03:56,735 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/76f0132/web.assets_tests.min.js (id:791) 
+2026-07-29 10:03:57,680 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/ea3f3a8/web.assets_web.min.js (id:792) 
+2026-07-29 10:03:58,450 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/ea3f3a8/web.assets_web_dark.min.js (id:793) 
+2026-07-29 10:03:58,456 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/e8b87f8/web.chartjs_lib.min.js (id:794) 
+2026-07-29 10:03:58,551 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/73346f8/web.qunit_mobile_suite_tests.min.js (id:795) 
+2026-07-29 10:04:00,049 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/a0dc665/web.qunit_suite_tests.min.js (id:796) 
+2026-07-29 10:04:00,063 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/3e02f90/web.report_assets_common.min.js (id:797) 
+2026-07-29 10:04:00,065 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.report_assets_pdf.min.js (id:798) 
+2026-07-29 10:04:00,965 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/99a9fec/web.tests_assets.min.js (id:799) 
+2026-07-29 10:04:01,039 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/34c31f0/web_editor.assets_legacy_wysiwyg.min.js (id:800) 
+2026-07-29 10:04:01,159 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/ab4eed7/web_editor.assets_wysiwyg.min.js (id:801) 
+2026-07-29 10:04:01,291 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/54e3003/web_editor.backend_assets_wysiwyg.min.js (id:802) 
+2026-07-29 10:04:01,586 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/626872b/web_editor.mocha_tests.min.js (id:803) 
+2026-07-29 10:04:01,634 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/d47b6ee/web_editor.wysiwyg_iframe_editor_assets.min.js (id:804) 
+2026-07-29 10:04:01,636 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_qweb: JS Assets bundles generated in 5.83227801322937 seconds 
+2026-07-29 10:04:01,643 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/bus.websocket_worker_assets.min.css (id:805) 
+2026-07-29 10:04:01,647 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/mail.assets_discuss_public_test_tours.min.css (id:806) 
+2026-07-29 10:04:01,650 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/mail.assets_lamejs.min.css (id:807) 
+2026-07-29 10:04:01,653 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/mail.assets_odoo_sfu.min.css (id:808) 
+2026-07-29 10:04:01,963 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/b397897/mail.assets_public.min.css (id:809) 
+2026-07-29 10:04:01,996 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/bfb9b1e/snailmail.report_assets_snailmail.min.css (id:810) 
+2026-07-29 10:04:02,000 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/a2f57a7/spreadsheet.assets_print.min.css (id:811) 
+2026-07-29 10:04:02,003 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/spreadsheet.o_spreadsheet.min.css (id:812) 
+2026-07-29 10:04:02,258 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/b272aec/spreadsheet.public_spreadsheet.min.css (id:813) 
+2026-07-29 10:04:02,261 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.__assets_tests_call__.min.css (id:814) 
+2026-07-29 10:04:02,264 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.ace_lib.min.css (id:815) 
+2026-07-29 10:04:02,268 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_clickbot.min.css (id:816) 
+2026-07-29 10:04:02,270 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_emoji.min.css (id:817) 
+2026-07-29 10:04:02,706 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/5942896/web.assets_frontend.min.css (id:818) 
+2026-07-29 10:04:02,708 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_tests.min.css (id:819) 
+2026-07-29 10:04:03,338 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c780d5b/web.assets_web.min.css (id:820) 
+2026-07-29 10:04:03,973 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/1953504/web.assets_web_dark.min.css (id:821) 
+2026-07-29 10:04:03,975 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.chartjs_lib.min.css (id:822) 
+2026-07-29 10:04:03,978 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.qunit_mobile_suite_tests.min.css (id:823) 
+2026-07-29 10:04:04,060 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/e2789c0/web.qunit_suite_tests.min.css (id:824) 
+2026-07-29 10:04:04,415 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/107bc27/web.report_assets_common.min.css (id:825) 
+2026-07-29 10:04:04,419 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c37d51a/web.report_assets_pdf.min.css (id:826) 
+2026-07-29 10:04:05,021 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/5287dea/web.tests_assets.min.css (id:827) 
+2026-07-29 10:04:05,024 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web_editor.assets_legacy_wysiwyg.min.css (id:828) 
+2026-07-29 10:04:05,055 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/7812316/web_editor.assets_tests_styles.min.css (id:829) 
+2026-07-29 10:04:05,134 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/e2789c0/web_editor.assets_wysiwyg.min.css (id:830) 
+2026-07-29 10:04:05,218 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/e2789c0/web_editor.backend_assets_wysiwyg.min.css (id:831) 
+2026-07-29 10:04:05,221 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web_editor.mocha_tests.min.css (id:832) 
+2026-07-29 10:04:05,315 1 INFO purchase_product_optional_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/2b4a7db/web_editor.wysiwyg_iframe_editor_assets.min.css (id:833) 
+2026-07-29 10:04:05,316 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_qweb: CSS Assets bundles generated in 3.6744422912597656 seconds 
+2026-07-29 10:04:05,338 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: Starting TestAttributeValueCompute.test_attribute_values_cleared_without_product ... 
+2026-07-29 10:04:05,374 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: Starting TestAttributeValueCompute.test_custom_attribute_values_pruned_on_product_change ... 
+2026-07-29 10:04:05,474 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: Starting TestAttributeValueCompute.test_no_variant_attribute_values_pruned_on_product_change ... 
+2026-07-29 10:04:05,599 1 WARNING purchase_product_optional_test odoo.fields: Field purchase.order.line.product_no_variant_attribute_value_ids: unknown parameter 'product_add_mode', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-29 10:04:05,620 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_attachment: filestore gc 562 checked, 0 removed 
+2026-07-29 10:04:05,622 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: Starting TestConvertPrice.test_convert_price_different_currency_converts ... 
+2026-07-29 10:04:05,728 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: Starting TestConvertPrice.test_convert_price_param_not_set_returns_without_raising ... 
+2026-07-29 10:04:05,734 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: BACKFILL F-05: convert_price(100.0, ...) with unset 'currency_id' param returned 100.0 without raising 
+2026-07-29 10:04:05,735 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: Starting TestConvertPrice.test_convert_price_same_currency_no_conversion ... 
+2026-07-29 10:04:05,740 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-07-29 10:04:05,742 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: Starting TestOnchangePartnerCurrency.test_currency_not_synced_to_partner_purchase_currency ... 
+2026-07-29 10:04:05,841 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: Starting TestOnchangePartnerCurrency.test_onchange_partner_id_mro_shadowing_candidates ... 
+2026-07-29 10:04:05,843 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: BACKFILL F-02: classes defining purchase.order.onchange_partner_id: ['odoo.addons.purchase_product_optional.models.purchase_order.PurchaseOrder', 'odoo.addons.purchase.models.purchase_order.PurchaseOrder'] 
+2026-07-29 10:04:05,847 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-07-29 10:04:05,848 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: Starting TestProductAddModeField.test_product_add_mode_not_registered_as_field ... 
+2026-07-29 10:04:05,851 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-07-29 10:04:05,852 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: Starting TestPurchaseOrderFormViewColumns.test_product_template_and_variant_columns ... 
+2026-07-29 10:04:05,866 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-07-29 10:04:05,868 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: Starting TestPurchaseProductOptionalController.test_create_product_creates_dynamic_variant ... 
+2026-07-29 10:04:06,214 1 INFO purchase_product_optional_test odoo.addons.base.models.res_users: Login successful for db:purchase_product_optional_test login:admin from n/a 
+2026-07-29 10:04:06,253 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-07-29 10:04:06,357 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:06] "POST /purchase_product_optional/create_product HTTP/1.1" 200 - 53 0.013 0.091
+2026-07-29 10:04:06,360 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional.TestPurchaseProductOptionalController: waiting for threads: [<Thread(odoo.service.http.request.139660803712576, started 139660803712576)>] 
+2026-07-29 10:04:16,358 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional.TestPurchaseProductOptionalController: Stop waiting for thread odoo.service.http.request.139660803712576 handling request for url http://localhost:8079/websocket?version=17.0-3 
+2026-07-29 10:04:16,360 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional.TestPurchaseProductOptionalController: remaining requests 
+2026-07-29 10:04:16,368 1 INFO purchase_product_optional_test odoo.tools.misc: 
+# Thread: <ImDispatch(odoo.addons.bus.models.bus.Bus, started daemon 139660704605760)> (db:n/a) (uid:n/a) (url:n/a) (qc:n/a qt:n/a pt:n/a)
+File: "/usr/lib/python3.10/threading.py", line 973, in _bootstrap
+  self._bootstrap_inner()
+File: "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+  self.run()
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 256, in run
+  self.loop()
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 240, in loop
+  if sel.select(TIMEOUT):
+File: "/usr/lib/python3.10/selectors.py", line 469, in select
+  fd_event_list = self._selector.poll(timeout, max_ev)
+
+# Thread: <Thread(odoo.service.http.request.139660803712576, started 139660803712576)> (db:purchase_product_optional_test) (uid:4) (url:http://localhost:8079/websocket?version=17.0-3) (qc:n/a qt:0.019 pt:39.832)
+File: "/usr/lib/python3.10/threading.py", line 973, in _bootstrap
+  self._bootstrap_inner()
+File: "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+  self.run()
+File: "/usr/lib/python3.10/threading.py", line 953, in run
+  self._target(*self._args, **self._kwargs)
+File: "/usr/lib/python3.10/socketserver.py", line 683, in process_request_thread
+  self.finish_request(request, client_address)
+File: "/usr/lib/python3.10/socketserver.py", line 360, in finish_request
+  self.RequestHandlerClass(request, client_address, self)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 127, in __init__
+  super().__init__(*args, **kwargs)
+File: "/usr/lib/python3.10/socketserver.py", line 747, in __init__
+  self.handle()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 342, in handle
+  BaseHTTPRequestHandler.handle(self)
+File: "/usr/lib/python3.10/http/server.py", line 433, in handle
+  self.handle_one_request()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 374, in handle_one_request
+  self.run_wsgi()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 319, in run_wsgi
+  execute(self.server.app)
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 316, in execute
+  application_iter.close()  # type: ignore
+File: "/usr/lib/python3/dist-packages/werkzeug/wsgi.py", line 466, in close
+  callback()
+File: "/usr/lib/python3/dist-packages/werkzeug/wrappers/response.py", line 439, in close
+  func()
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 921, in <lambda>
+  response.call_on_close(lambda: cls._serve_forever(
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 1027, in _serve_forever
+  for message in websocket.get_messages():
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 308, in get_messages
+  for selector_key in self.__selector.select(TimeoutManager.TIMEOUT)
+File: "/usr/lib/python3.10/selectors.py", line 469, in select
+  fd_event_list = self._selector.poll(timeout, max_ev)
+
+# Thread: <Thread(odoo.service.httpd, started daemon 139660857366080)> (db:n/a) (uid:n/a) (url:n/a) (qc:n/a qt:n/a pt:n/a)
+File: "/usr/lib/python3.10/threading.py", line 973, in _bootstrap
+  self._bootstrap_inner()
+File: "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+  self.run()
+File: "/usr/lib/python3.10/threading.py", line 953, in run
+  self._target(*self._args, **self._kwargs)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 562, in http_thread
+  self.httpd.serve_forever()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 719, in serve_forever
+  super().serve_forever(poll_interval=poll_interval)
+File: "/usr/lib/python3.10/socketserver.py", line 232, in serve_forever
+  ready = selector.select(poll_interval)
+File: "/usr/lib/python3.10/selectors.py", line 416, in select
+  fd_event_list = self._selector.poll(timeout)
+
+# Thread: <_MainThread(MainThread, started 139660991582208)> (db:purchase_product_optional_test) (uid:n/a) (url:n/a) (qc:n/a qt:n/a pt:n/a)
+File: "/usr/bin/odoo", line 8, in <module>
+  odoo.cli.main()
+File: "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 76, in main
+  o.run(args)
+File: "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 186, in run
+  main(args)
+File: "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 179, in main
+  rc = odoo.service.server.start(preload=preload, stop=stop)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1492, in start
+  rc = server.run(preload, stop)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 640, in run
+  rc = preload_registries(preload)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1418, in preload_registries
+  result = loader.run_suite(post_install_suite, global_report=registry._assertion_report)
+File: "/usr/lib/python3/dist-packages/odoo/tests/loader.py", line 86, in run_suite
+  suite(results)
+File: "/usr/lib/python3.10/unittest/suite.py", line 84, in __call__
+  return self.run(*args, **kwds)
+File: "/usr/lib/python3/dist-packages/odoo/tests/suite.py", line 47, in run
+  test(result)
+File: "/usr/lib/python3.10/unittest/case.py", line 650, in __call__
+  return self.run(*args, **kwds)
+File: "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 319, in run
+  super().run(result)
+File: "/usr/lib/python3/dist-packages/odoo/tests/case.py", line 220, in run
+  self.doCleanups()
+File: "/usr/lib/python3/dist-packages/odoo/tests/case.py", line 237, in doCleanups
+  self._callCleanup(function, *args, **kwargs)
+File: "/usr/lib/python3/dist-packages/odoo/tests/case.py", line 190, in _callCleanup
+  function(*args, **kwargs)
+File: "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 2020, in _wait_remaining_requests
+  odoo.tools.misc.dumpstacks()
+File: "/usr/lib/python3/dist-packages/odoo/tools/misc.py", line 990, in dumpstacks
+  for line in extract_stack(stack): 
+2026-07-29 10:04:16,372 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional: Starting TestPurchaseProductOptionalController.test_get_values_purchase_returns_optional_product ... 
+2026-07-29 10:04:16,740 1 INFO purchase_product_optional_test odoo.addons.base.models.res_users: Login successful for db:purchase_product_optional_test login:admin from n/a 
+2026-07-29 10:04:16,747 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-07-29 10:04:16,787 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:16] "POST /purchase_product_optional/get_values_purchase HTTP/1.1" 200 - 49 0.013 0.027
+2026-07-29 10:04:16,788 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional.TestPurchaseProductOptionalController: waiting for threads: [<Thread(odoo.service.http.request.139660803712576, started 139660803712576)>] 
+2026-07-29 10:04:26,788 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional.TestPurchaseProductOptionalController: Stop waiting for thread odoo.service.http.request.139660803712576 handling request for url http://localhost:8079/websocket?version=17.0-3 
+2026-07-29 10:04:26,792 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional.TestPurchaseProductOptionalController: remaining requests 
+2026-07-29 10:04:26,796 1 INFO purchase_product_optional_test odoo.tools.misc: 
+# Thread: <ImDispatch(odoo.addons.bus.models.bus.Bus, started daemon 139660704605760)> (db:n/a) (uid:n/a) (url:n/a) (qc:n/a qt:n/a pt:n/a)
+File: "/usr/lib/python3.10/threading.py", line 973, in _bootstrap
+  self._bootstrap_inner()
+File: "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+  self.run()
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 256, in run
+  self.loop()
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 240, in loop
+  if sel.select(TIMEOUT):
+File: "/usr/lib/python3.10/selectors.py", line 469, in select
+  fd_event_list = self._selector.poll(timeout, max_ev)
+
+# Thread: <Thread(odoo.service.http.request.139660803712576, started 139660803712576)> (db:purchase_product_optional_test) (uid:4) (url:http://localhost:8079/websocket?version=17.0-3) (qc:n/a qt:0.019 pt:50.262)
+File: "/usr/lib/python3.10/threading.py", line 973, in _bootstrap
+  self._bootstrap_inner()
+File: "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+  self.run()
+File: "/usr/lib/python3.10/threading.py", line 953, in run
+  self._target(*self._args, **self._kwargs)
+File: "/usr/lib/python3.10/socketserver.py", line 683, in process_request_thread
+  self.finish_request(request, client_address)
+File: "/usr/lib/python3.10/socketserver.py", line 360, in finish_request
+  self.RequestHandlerClass(request, client_address, self)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 127, in __init__
+  super().__init__(*args, **kwargs)
+File: "/usr/lib/python3.10/socketserver.py", line 747, in __init__
+  self.handle()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 342, in handle
+  BaseHTTPRequestHandler.handle(self)
+File: "/usr/lib/python3.10/http/server.py", line 433, in handle
+  self.handle_one_request()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 374, in handle_one_request
+  self.run_wsgi()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 319, in run_wsgi
+  execute(self.server.app)
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 316, in execute
+  application_iter.close()  # type: ignore
+File: "/usr/lib/python3/dist-packages/werkzeug/wsgi.py", line 466, in close
+  callback()
+File: "/usr/lib/python3/dist-packages/werkzeug/wrappers/response.py", line 439, in close
+  func()
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 921, in <lambda>
+  response.call_on_close(lambda: cls._serve_forever(
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 1027, in _serve_forever
+  for message in websocket.get_messages():
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 308, in get_messages
+  for selector_key in self.__selector.select(TimeoutManager.TIMEOUT)
+File: "/usr/lib/python3.10/selectors.py", line 469, in select
+  fd_event_list = self._selector.poll(timeout, max_ev)
+
+# Thread: <Thread(odoo.service.httpd, started daemon 139660857366080)> (db:n/a) (uid:n/a) (url:n/a) (qc:n/a qt:n/a pt:n/a)
+File: "/usr/lib/python3.10/threading.py", line 973, in _bootstrap
+  self._bootstrap_inner()
+File: "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+  self.run()
+File: "/usr/lib/python3.10/threading.py", line 953, in run
+  self._target(*self._args, **self._kwargs)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 562, in http_thread
+  self.httpd.serve_forever()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 719, in serve_forever
+  super().serve_forever(poll_interval=poll_interval)
+File: "/usr/lib/python3.10/socketserver.py", line 232, in serve_forever
+  ready = selector.select(poll_interval)
+File: "/usr/lib/python3.10/selectors.py", line 416, in select
+  fd_event_list = self._selector.poll(timeout)
+
+# Thread: <_MainThread(MainThread, started 139660991582208)> (db:purchase_product_optional_test) (uid:n/a) (url:n/a) (qc:n/a qt:n/a pt:n/a)
+File: "/usr/bin/odoo", line 8, in <module>
+  odoo.cli.main()
+File: "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 76, in main
+  o.run(args)
+File: "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 186, in run
+  main(args)
+File: "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 179, in main
+  rc = odoo.service.server.start(preload=preload, stop=stop)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1492, in start
+  rc = server.run(preload, stop)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 640, in run
+  rc = preload_registries(preload)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1418, in preload_registries
+  result = loader.run_suite(post_install_suite, global_report=registry._assertion_report)
+File: "/usr/lib/python3/dist-packages/odoo/tests/loader.py", line 86, in run_suite
+  suite(results)
+File: "/usr/lib/python3.10/unittest/suite.py", line 84, in __call__
+  return self.run(*args, **kwds)
+File: "/usr/lib/python3/dist-packages/odoo/tests/suite.py", line 47, in run
+  test(result)
+File: "/usr/lib/python3.10/unittest/case.py", line 650, in __call__
+  return self.run(*args, **kwds)
+File: "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 319, in run
+  super().run(result)
+File: "/usr/lib/python3/dist-packages/odoo/tests/case.py", line 220, in run
+  self.doCleanups()
+File: "/usr/lib/python3/dist-packages/odoo/tests/case.py", line 237, in doCleanups
+  self._callCleanup(function, *args, **kwargs)
+File: "/usr/lib/python3/dist-packages/odoo/tests/case.py", line 190, in _callCleanup
+  function(*args, **kwargs)
+File: "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 2020, in _wait_remaining_requests
+  odoo.tools.misc.dumpstacks()
+File: "/usr/lib/python3/dist-packages/odoo/tools/misc.py", line 990, in dumpstacks
+  for line in extract_stack(stack): 
+2026-07-29 10:04:26,802 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-07-29 10:04:26,806 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour: Starting TestPurchaseProductOptionalTour.test_product_configurator_dialog_tour ... 
+2026-07-29 10:04:27,193 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Chrome pid: 20 
+2026-07-29 10:04:27,193 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Chrome headless temporary user profile dir: /tmp/tmp38wtjvdd_chrome_odoo 
+2026-07-29 10:04:27,194 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Issuing json command http://127.0.0.1:44303/json/version 
+2026-07-29 10:04:27,195 1 INFO purchase_product_optional_test odoo.tests.common.requests: request http://127.0.0.1:44303/json/version with timeout 3 increased to 10s during tests 
+2026-07-29 10:04:27,236 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Browser version: Chrome/150.0.7871.186 
+2026-07-29 10:04:27,239 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Issuing json command http://127.0.0.1:44303/json 
+2026-07-29 10:04:27,239 1 INFO purchase_product_optional_test odoo.tests.common.requests: request http://127.0.0.1:44303/json with timeout 3 increased to 10s during tests 
+2026-07-29 10:04:27,249 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Websocket url found: ws://127.0.0.1:44303/devtools/page/28CAE9CE306741640FC76FC6CFB88E05 
+2026-07-29 10:04:27,251 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Enable chrome headless console log notification 
+2026-07-29 10:04:27,252 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Chrome headless enable page notifications 
+2026-07-29 10:04:27,571 1 INFO purchase_product_optional_test odoo.addons.base.models.res_users: Login successful for db:purchase_product_optional_test login:admin from n/a 
+2026-07-29 10:04:27,575 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Setting session cookie in browser 
+2026-07-29 10:04:27,642 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Open "http://127.0.0.1:8069/web" in browser 
+2026-07-29 10:04:27,643 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Navigating to: "http://127.0.0.1:8069/web" 
+2026-07-29 10:04:27,650 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-07-29 10:04:27,818 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:27] "GET /web HTTP/1.1" 200 - 79 0.021 0.147
+2026-07-29 10:04:27,821 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Navigation result: {'frameId': '28CAE9CE306741640FC76FC6CFB88E05', 'loaderId': '97CE3AC49F20845975F4495D5C514CDF', 'isDownload': False} 
+2026-07-29 10:04:27,822 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Evaluate ready code "odoo.isTourReady('purchase_product_optional_configurator_tour')" 
+2026-07-29 10:04:27,838 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:27] "GET /web/assets/ea3f3a8/web.assets_web.min.js HTTP/1.1" 200 - 4 0.002 0.004
+2026-07-29 10:04:27,841 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:27] "GET /web/assets/c780d5b/web.assets_web.min.css HTTP/1.1" 200 - 4 0.001 0.009
+2026-07-29 10:04:27,845 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:27] "GET /web/webclient/load_menus/ec91782fd70f36dcac5f171429505f79f6d5ce69a50f0b75ce92fbc087180754 HTTP/1.1" 200 - 3 0.001 0.008
+2026-07-29 10:04:27,853 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:27] "GET /web/webclient/translations/974b396e339ee444c7aa6647db2d4e0881d9f351?lang=en_US HTTP/1.1" 200 - 4 0.006 0.010
+2026-07-29 10:04:27,859 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:27] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 10 0.003 0.019
+2026-07-29 10:04:27,873 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:27] "GET /web/assets/76f0132/web.assets_tests.min.js HTTP/1.1" 200 - 4 0.001 0.003
+2026-07-29 10:04:28,053 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "GET /bus/websocket_worker_bundle?v=17.0-3 HTTP/1.1" 200 - 5 0.001 0.003
+2026-07-29 10:04:28,087 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Evaluate test code "odoo.startTour('purchase_product_optional_configurator_tour', {"stepDelay": 0, "keepWatchBrowser": false, "startUrl": "/web"})" 
+2026-07-29 10:04:28,103 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "POST /mail/init_messaging HTTP/1.1" 200 - 57 0.024 0.020
+2026-07-29 10:04:28,115 1 INFO purchase_product_optional_test odoo.addons.partner_autocomplete.models.res_company: Starting enrich of company YourCompany (1) 
+2026-07-29 10:04:28,155 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "POST /web/dataset/call_kw/res.company/iap_enrich_auto HTTP/1.1" 200 - 15 0.037 0.058
+2026-07-29 10:04:28,207 1 INFO ? werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "GET /web/static/img/odoo-icon-192x192.png HTTP/1.1" 200 - 0 0.000 0.110
+2026-07-29 10:04:28,233 1 INFO ? werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 0 0.000 0.135
+2026-07-29 10:04:28,241 1 INFO ? werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "GET /web/static/lib/odoo_ui_icons/fonts/odoo_ui_icons.woff2 HTTP/1.1" 200 - 0 0.000 0.129
+2026-07-29 10:04:28,261 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "POST /web/dataset/call_kw/res.users/systray_get_activities HTTP/1.1" 200 - 26 0.089 0.092
+2026-07-29 10:04:28,270 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "GET /web/service-worker.js HTTP/1.1" 200 - 2 0.004 0.171
+2026-07-29 10:04:28,271 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "GET /websocket?version=17.0-3 HTTP/1.1" 503 - 3 0.000 0.164
+2026-07-29 10:04:28,273 1 INFO ? werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 0 0.000 0.077
+2026-07-29 10:04:28,277 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "POST /web/action/load HTTP/1.1" 200 - 7 0.002 0.053
+2026-07-29 10:04:28,286 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "POST /mail/load_message_failures HTTP/1.1" 200 - 11 0.003 0.035
+2026-07-29 10:04:28,299 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 200 - 17 0.005 0.041
+2026-07-29 10:04:28,304 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "GET /web/offline HTTP/1.1" 200 - 7 0.001 0.022
+2026-07-29 10:04:28,312 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "GET /websocket?version=17.0-3 HTTP/1.1" 503 - 3 0.001 0.001
+2026-07-29 10:04:28,318 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "POST /mail/inbox/messages HTTP/1.1" 200 - 7 0.002 0.002
+2026-07-29 10:04:28,334 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:28] "GET /discuss/channel/1/avatar_128?unique=66f7d70d02b461c92896cc86bac94d4bfcbd08970ca5696bd7a4802de275456bb5824356e30a103b1637f5c414aa036da0e76d3d41477ed6f35faf833f39fbf9 HTTP/1.1" 200 - 10 0.005 0.006
+2026-07-29 10:04:29,089 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'Open the apps menu (trigger: .o_navbar_apps_menu button)' 
+2026-07-29 10:04:29,106 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'Open the Purchase app (trigger: .o_app[data-menu-xmlid="purchase.menu_purchase_root"])' 
+2026-07-29 10:04:29,116 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:29] "POST /web/action/load HTTP/1.1" 200 - 11 0.002 0.005
+2026-07-29 10:04:29,122 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'Create a new purchase order (trigger: .o_list_button_add)' 
+2026-07-29 10:04:29,194 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:29] "POST /web/dataset/call_kw/purchase.order/get_views HTTP/1.1" 200 - 91 0.019 0.033
+2026-07-29 10:04:29,218 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:29] "POST /web/dataset/call_kw/purchase.order/web_search_read HTTP/1.1" 200 - 12 0.003 0.008
+2026-07-29 10:04:29,219 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:29] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 3 0.001 0.011
+2026-07-29 10:04:29,252 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:29] "POST /web/dataset/call_kw/purchase.order/retrieve_dashboard HTTP/1.1" 200 - 18 0.004 0.005
+2026-07-29 10:04:29,290 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:29] "GET /web/image/res.users/2/avatar_128 HTTP/1.1" 200 - 10 0.002 0.006
+2026-07-29 10:04:30,042 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'Type the BACKFILL QA vendor name (trigger: .o_field_widget[name="partner_id"] input)' 
+2026-07-29 10:04:30,059 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:30] "POST /web/dataset/call_kw/purchase.order/onchange HTTP/1.1" 200 - 20 0.005 0.007
+2026-07-29 10:04:30,115 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:30] "GET /web/bundle/web_editor.backend_assets_wysiwyg?lang=en_US HTTP/1.1" 200 - 13 0.003 0.010
+2026-07-29 10:04:30,123 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:30] "GET /web/assets/54e3003/web_editor.backend_assets_wysiwyg.min.js HTTP/1.1" 200 - 5 0.001 0.002
+2026-07-29 10:04:30,125 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:30] "GET /web/assets/e2789c0/web_editor.backend_assets_wysiwyg.min.css HTTP/1.1" 200 - 4 0.001 0.006
+2026-07-29 10:04:30,159 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:30] "POST /web/dataset/call_kw/ir.ui.view/render_public_asset HTTP/1.1" 200 - 10 0.002 0.008
+2026-07-29 10:04:30,253 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:30] "GET /web/image?field=avatar_128&id=3&model=res.partner&unique=2026-07-29%2010%3A03%3A47 HTTP/1.1" 200 - 18 0.005 0.008
+2026-07-29 10:04:30,514 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:30] "GET /websocket?version=17.0-3 HTTP/1.1" 503 - 3 0.000 0.001
+2026-07-29 10:04:30,994 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'Select the vendor from the dropdown (trigger: .ui-menu-item > a:contains("BACKFILL QA Vendor"))' 
+2026-07-29 10:04:31,003 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:31] "POST /web/dataset/call_kw/res.partner/name_search HTTP/1.1" 200 - 12 0.004 0.006
+2026-07-29 10:04:31,249 1 INFO ? werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:31] "GET /partner_autocomplete/static/lib/jsvat.js HTTP/1.1" 200 - 0 0.000 0.003
+2026-07-29 10:04:31,253 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:31] "POST /web/dataset/call_kw/res.partner/name_search HTTP/1.1" 200 - 5 0.002 0.005
+2026-07-29 10:04:31,268 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:31] "POST /web/dataset/call_kw/res.partner/autocomplete_by_name HTTP/1.1" 200 - 10 0.003 0.005
+2026-07-29 10:04:32,036 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:32] "POST /web/dataset/call_kw/purchase.order/onchange HTTP/1.1" 200 - 9 0.003 0.005
+2026-07-29 10:04:32,038 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'Add a new order line (trigger: .o_field_x2many_list_row_add > a)' 
+2026-07-29 10:04:32,054 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'Type the main product name (trigger: .o_field_widget[name="product_template_id"] input)' 
+2026-07-29 10:04:32,063 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:32] "POST /web/dataset/call_kw/purchase.order.line/onchange HTTP/1.1" 200 - 10 0.004 0.008
+2026-07-29 10:04:32,089 1 INFO ? werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:32] "GET /web/static/img/openhand.cur HTTP/1.1" 200 - 0 0.000 0.001
+2026-07-29 10:04:32,197 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:32] "GET /websocket?version=17.0-3 HTTP/1.1" 503 - 3 0.000 0.001
+2026-07-29 10:04:32,854 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'Select the main product from the dropdown (trigger: .ui-menu-item > a:contains("BACKFILL QA Main Product"))' 
+2026-07-29 10:04:32,863 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:32] "POST /web/dataset/call_kw/product.template/name_search HTTP/1.1" 200 - 8 0.004 0.006
+2026-07-29 10:04:33,120 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:33] "POST /web/dataset/call_kw/product.template/name_search HTTP/1.1" 200 - 21 0.006 0.010
+2026-07-29 10:04:33,897 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:33] "POST /web/dataset/call_kw/purchase.order.line/onchange HTTP/1.1" 200 - 3 0.001 0.003
+2026-07-29 10:04:34,021 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'BR-01: product configurator dialog opened automatically (trigger: .modal-title:contains("Configure your product"))' 
+2026-07-29 10:04:34,056 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "POST /web/dataset/call_kw/product.template/get_single_product_variant HTTP/1.1" 200 - 24 0.010 0.016
+2026-07-29 10:04:34,074 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "POST /web/dataset/call_kw/product.template/get_single_product_variant HTTP/1.1" 200 - 20 0.007 0.030
+2026-07-29 10:04:34,102 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "POST /web/dataset/call_kw/purchase.order.line/onchange HTTP/1.1" 200 - 34 0.010 0.028
+2026-07-29 10:04:34,126 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "POST /purchase_product_optional/get_values_purchase HTTP/1.1" 200 - 27 0.010 0.031
+2026-07-29 10:04:34,146 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "POST /web/dataset/call_kw/purchase.order/onchange HTTP/1.1" 200 - 24 0.008 0.020
+2026-07-29 10:04:34,205 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "POST /web/dataset/call_kw/product.template/search_read HTTP/1.1" 200 - 98 0.027 0.043
+2026-07-29 10:04:34,216 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "POST /web/dataset/call_kw/product.template/search_read HTTP/1.1" 200 - 9 0.002 0.005
+2026-07-29 10:04:34,222 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "POST /web/dataset/call_kw/product.supplierinfo/search_read HTTP/1.1" 200 - 2 0.000 0.001
+2026-07-29 10:04:34,228 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "POST /web/dataset/call_kw/product.template/convert_price HTTP/1.1" 200 - 3 0.000 0.001
+2026-07-29 10:04:34,239 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "POST /web/dataset/call_kw/product.template/search_read HTTP/1.1" 200 - 9 0.002 0.005
+2026-07-29 10:04:34,244 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "POST /web/dataset/call_kw/product.supplierinfo/search_read HTTP/1.1" 200 - 2 0.000 0.001
+2026-07-29 10:04:34,249 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "POST /web/dataset/call_kw/product.template/convert_price HTTP/1.1" 200 - 2 0.000 0.001
+2026-07-29 10:04:34,255 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Checking configuration: Proxy(Array) 
+2026-07-29 10:04:34,281 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "GET /web/image/product.product/106/image_128 HTTP/1.1" 200 - 14 0.005 0.014
+2026-07-29 10:04:34,294 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "GET /web/image/product.product/105/image_128 HTTP/1.1" 200 - 8 0.002 0.028
+2026-07-29 10:04:34,516 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:34] "GET /websocket?version=17.0-3 HTTP/1.1" 503 - 3 0.000 0.001
+2026-07-29 10:04:35,020 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'BR-01: the optional product is listed in the dialog (trigger: td:contains("BACKFILL QA Optional Product"))' 
+2026-07-29 10:04:35,022 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'Add the optional product (trigger: tr:has(td:contains("BACKFILL QA Optional Product")) button:contains("Add"))' 
+2026-07-29 10:04:35,024 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Checking configuration: Proxy(Array) 
+2026-07-29 10:04:35,029 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:35] "POST /purchase_product_optional/get_optional_products HTTP/1.1" 200 - 5 0.001 0.003
+2026-07-29 10:04:35,032 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Checking configuration: Proxy(Array) 
+2026-07-29 10:04:35,038 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'Confirm the configuration (trigger: button.btn-primary:contains("Confirm"))' 
+2026-07-29 10:04:35,042 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Checking configuration: Proxy(Array) 
+2026-07-29 10:04:35,055 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'Optional product line is on the purchase order (trigger: .o_data_row:contains("BACKFILL QA Optional Product"))' 
+2026-07-29 10:04:35,068 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:35] "POST /web/dataset/call_kw/purchase.order.line/onchange HTTP/1.1" 200 - 23 0.007 0.016
+2026-07-29 10:04:35,096 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:35] "POST /web/dataset/call_kw/purchase.order/onchange HTTP/1.1" 200 - 16 0.004 0.011
+2026-07-29 10:04:35,123 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:35] "POST /web/dataset/call_kw/purchase.order.line/onchange HTTP/1.1" 200 - 21 0.006 0.012
+2026-07-29 10:04:35,150 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:35] "POST /web/dataset/call_kw/purchase.order/onchange HTTP/1.1" 200 - 16 0.004 0.011
+2026-07-29 10:04:35,156 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Main Product Quantity: 1 
+2026-07-29 10:04:35,164 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:35] "POST /web/dataset/call_kw/purchase.order.line/onchange HTTP/1.1" 200 - 4 0.001 0.005
+2026-07-29 10:04:35,202 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:35] "POST /web/dataset/call_kw/purchase.order.line/onchange HTTP/1.1" 200 - 26 0.007 0.017
+2026-07-29 10:04:35,230 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:35] "POST /web/dataset/call_kw/purchase.order/onchange HTTP/1.1" 200 - 16 0.004 0.013
+2026-07-29 10:04:35,260 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:35] "POST /web/dataset/call_kw/purchase.order.line/onchange HTTP/1.1" 200 - 24 0.006 0.013
+2026-07-29 10:04:35,282 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:35] "POST /web/dataset/call_kw/purchase.order/onchange HTTP/1.1" 200 - 16 0.004 0.011
+2026-07-29 10:04:35,289 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: tes 
+2026-07-29 10:04:36,060 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'Save the purchase order (trigger: .o_form_button_save)' 
+2026-07-29 10:04:36,072 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour on step: 'Wait for the purchase order to actually finish saving (trigger: .o_breadcrumb .active:not(:contains('New')))' 
+2026-07-29 10:04:36,122 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:36] "POST /web/dataset/call_kw/purchase.order/web_save HTTP/1.1" 200 - 68 0.021 0.035
+2026-07-29 10:04:36,152 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:36] "POST /mail/thread/data HTTP/1.1" 200 - 28 0.008 0.012
+2026-07-29 10:04:36,163 1 INFO purchase_product_optional_test werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:36] "POST /mail/thread/messages HTTP/1.1" 200 - 22 0.005 0.015
+2026-07-29 10:04:36,940 1 WARNING purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: Tour purchase_product_optional_configurator_tour: ignoring action (auto) of last step 
+2026-07-29 10:04:36,942 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour.browser: test successful 
+2026-07-29 10:04:36,946 1 INFO ? werkzeug: 127.0.0.1 - - [29/Jul/2026 10:04:36] "GET /web/static/img/smile.svg HTTP/1.1" 200 - 0 0.000 0.001
+2026-07-29 10:04:36,951 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Closing chrome headless with pid 20 
+2026-07-29 10:04:36,952 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Closing websocket connection 
+2026-07-29 10:04:36,953 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Terminating chrome headless with pid 20 
+2026-07-29 10:04:37,073 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Chrome Log in: /tmp/odoo_tests/purchase_product_optional_test/chrome_logs/chrome_log_20260729_100437_072804_TestPurchaseProductOptionalTour.txt 
+2026-07-29 10:04:37,074 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Removing chrome user profile "/tmp/tmp38wtjvdd_chrome_odoo" 
+2026-07-29 10:04:37,080 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: waiting for threads: [<Thread(odoo.service.http.request.139660803712576, started 139660803712576)>] 
+2026-07-29 10:04:47,080 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Stop waiting for thread odoo.service.http.request.139660803712576 handling request for url http://localhost:8079/websocket?version=17.0-3 
+2026-07-29 10:04:47,081 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: remaining requests 
+2026-07-29 10:04:47,083 1 INFO purchase_product_optional_test odoo.tools.misc: 
+# Thread: <ImDispatch(odoo.addons.bus.models.bus.Bus, started daemon 139660704605760)> (db:n/a) (uid:n/a) (url:n/a) (qc:n/a qt:n/a pt:n/a)
+File: "/usr/lib/python3.10/threading.py", line 973, in _bootstrap
+  self._bootstrap_inner()
+File: "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+  self.run()
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 256, in run
+  self.loop()
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 240, in loop
+  if sel.select(TIMEOUT):
+File: "/usr/lib/python3.10/selectors.py", line 469, in select
+  fd_event_list = self._selector.poll(timeout, max_ev)
+
+# Thread: <Thread(odoo.service.http.request.139660803712576, started 139660803712576)> (db:purchase_product_optional_test) (uid:4) (url:http://localhost:8079/websocket?version=17.0-3) (qc:n/a qt:0.019 pt:70.548)
+File: "/usr/lib/python3.10/threading.py", line 973, in _bootstrap
+  self._bootstrap_inner()
+File: "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+  self.run()
+File: "/usr/lib/python3.10/threading.py", line 953, in run
+  self._target(*self._args, **self._kwargs)
+File: "/usr/lib/python3.10/socketserver.py", line 683, in process_request_thread
+  self.finish_request(request, client_address)
+File: "/usr/lib/python3.10/socketserver.py", line 360, in finish_request
+  self.RequestHandlerClass(request, client_address, self)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 127, in __init__
+  super().__init__(*args, **kwargs)
+File: "/usr/lib/python3.10/socketserver.py", line 747, in __init__
+  self.handle()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 342, in handle
+  BaseHTTPRequestHandler.handle(self)
+File: "/usr/lib/python3.10/http/server.py", line 433, in handle
+  self.handle_one_request()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 374, in handle_one_request
+  self.run_wsgi()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 319, in run_wsgi
+  execute(self.server.app)
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 316, in execute
+  application_iter.close()  # type: ignore
+File: "/usr/lib/python3/dist-packages/werkzeug/wsgi.py", line 466, in close
+  callback()
+File: "/usr/lib/python3/dist-packages/werkzeug/wrappers/response.py", line 439, in close
+  func()
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 921, in <lambda>
+  response.call_on_close(lambda: cls._serve_forever(
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 1027, in _serve_forever
+  for message in websocket.get_messages():
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 308, in get_messages
+  for selector_key in self.__selector.select(TimeoutManager.TIMEOUT)
+File: "/usr/lib/python3.10/selectors.py", line 469, in select
+  fd_event_list = self._selector.poll(timeout, max_ev)
+
+# Thread: <Thread(odoo.service.httpd, started daemon 139660857366080)> (db:n/a) (uid:n/a) (url:n/a) (qc:n/a qt:n/a pt:n/a)
+File: "/usr/lib/python3.10/threading.py", line 973, in _bootstrap
+  self._bootstrap_inner()
+File: "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+  self.run()
+File: "/usr/lib/python3.10/threading.py", line 953, in run
+  self._target(*self._args, **self._kwargs)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 562, in http_thread
+  self.httpd.serve_forever()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 719, in serve_forever
+  super().serve_forever(poll_interval=poll_interval)
+File: "/usr/lib/python3.10/socketserver.py", line 232, in serve_forever
+  ready = selector.select(poll_interval)
+File: "/usr/lib/python3.10/selectors.py", line 416, in select
+  fd_event_list = self._selector.poll(timeout)
+
+# Thread: <_MainThread(MainThread, started 139660991582208)> (db:purchase_product_optional_test) (uid:n/a) (url:n/a) (qc:n/a qt:n/a pt:n/a)
+File: "/usr/bin/odoo", line 8, in <module>
+  odoo.cli.main()
+File: "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 76, in main
+  o.run(args)
+File: "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 186, in run
+  main(args)
+File: "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 179, in main
+  rc = odoo.service.server.start(preload=preload, stop=stop)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1492, in start
+  rc = server.run(preload, stop)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 640, in run
+  rc = preload_registries(preload)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1418, in preload_registries
+  result = loader.run_suite(post_install_suite, global_report=registry._assertion_report)
+File: "/usr/lib/python3/dist-packages/odoo/tests/loader.py", line 86, in run_suite
+  suite(results)
+File: "/usr/lib/python3.10/unittest/suite.py", line 84, in __call__
+  return self.run(*args, **kwds)
+File: "/usr/lib/python3/dist-packages/odoo/tests/suite.py", line 47, in run
+  test(result)
+File: "/usr/lib/python3.10/unittest/case.py", line 650, in __call__
+  return self.run(*args, **kwds)
+File: "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 319, in run
+  super().run(result)
+File: "/usr/lib/python3/dist-packages/odoo/tests/case.py", line 216, in run
+  self._callTestMethod(testMethod)
+File: "/usr/lib/python3/dist-packages/odoo/tests/case.py", line 184, in _callTestMethod
+  method()
+File: "/mnt/extra-addons/purchase_product_optional/tests/test_purchase_product_optional_tour.py", line 35, in test_product_configurator_dialog_tour
+  self.start_tour("/web", "purchase_product_optional_configurator_tour", login="admin")
+File: "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 2209, in start_tour
+  return self.browser_js(url_path=url_path, code=code, ready=ready, **kwargs)
+File: "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 2190, in browser_js
+  self._wait_remaining_requests()
+File: "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 2020, in _wait_remaining_requests
+  odoo.tools.misc.dumpstacks()
+File: "/usr/lib/python3/dist-packages/odoo/tools/misc.py", line 990, in dumpstacks
+  for line in extract_stack(stack): 
+2026-07-29 10:04:47,083 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: waiting for threads: [<Thread(odoo.service.http.request.139660803712576, started 139660803712576)>] 
+2026-07-29 10:04:57,083 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: Stop waiting for thread odoo.service.http.request.139660803712576 handling request for url http://localhost:8079/websocket?version=17.0-3 
+2026-07-29 10:04:57,084 1 INFO purchase_product_optional_test odoo.addons.purchase_product_optional.tests.test_purchase_product_optional_tour.TestPurchaseProductOptionalTour: remaining requests 
+2026-07-29 10:04:57,085 1 INFO purchase_product_optional_test odoo.tools.misc: 
+# Thread: <ImDispatch(odoo.addons.bus.models.bus.Bus, started daemon 139660704605760)> (db:n/a) (uid:n/a) (url:n/a) (qc:n/a qt:n/a pt:n/a)
+File: "/usr/lib/python3.10/threading.py", line 973, in _bootstrap
+  self._bootstrap_inner()
+File: "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+  self.run()
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 256, in run
+  self.loop()
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 240, in loop
+  if sel.select(TIMEOUT):
+File: "/usr/lib/python3.10/selectors.py", line 469, in select
+  fd_event_list = self._selector.poll(timeout, max_ev)
+
+# Thread: <Thread(odoo.service.http.request.139660803712576, started 139660803712576)> (db:purchase_product_optional_test) (uid:4) (url:http://localhost:8079/websocket?version=17.0-3) (qc:n/a qt:0.019 pt:80.552)
+File: "/usr/lib/python3.10/threading.py", line 973, in _bootstrap
+  self._bootstrap_inner()
+File: "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+  self.run()
+File: "/usr/lib/python3.10/threading.py", line 953, in run
+  self._target(*self._args, **self._kwargs)
+File: "/usr/lib/python3.10/socketserver.py", line 683, in process_request_thread
+  self.finish_request(request, client_address)
+File: "/usr/lib/python3.10/socketserver.py", line 360, in finish_request
+  self.RequestHandlerClass(request, client_address, self)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 127, in __init__
+  super().__init__(*args, **kwargs)
+File: "/usr/lib/python3.10/socketserver.py", line 747, in __init__
+  self.handle()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 342, in handle
+  BaseHTTPRequestHandler.handle(self)
+File: "/usr/lib/python3.10/http/server.py", line 433, in handle
+  self.handle_one_request()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 374, in handle_one_request
+  self.run_wsgi()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 319, in run_wsgi
+  execute(self.server.app)
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 316, in execute
+  application_iter.close()  # type: ignore
+File: "/usr/lib/python3/dist-packages/werkzeug/wsgi.py", line 466, in close
+  callback()
+File: "/usr/lib/python3/dist-packages/werkzeug/wrappers/response.py", line 439, in close
+  func()
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 921, in <lambda>
+  response.call_on_close(lambda: cls._serve_forever(
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 1027, in _serve_forever
+  for message in websocket.get_messages():
+File: "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 308, in get_messages
+  for selector_key in self.__selector.select(TimeoutManager.TIMEOUT)
+File: "/usr/lib/python3.10/selectors.py", line 469, in select
+  fd_event_list = self._selector.poll(timeout, max_ev)
+
+# Thread: <Thread(odoo.service.httpd, started daemon 139660857366080)> (db:n/a) (uid:n/a) (url:n/a) (qc:n/a qt:n/a pt:n/a)
+File: "/usr/lib/python3.10/threading.py", line 973, in _bootstrap
+  self._bootstrap_inner()
+File: "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+  self.run()
+File: "/usr/lib/python3.10/threading.py", line 953, in run
+  self._target(*self._args, **self._kwargs)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 562, in http_thread
+  self.httpd.serve_forever()
+File: "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 719, in serve_forever
+  super().serve_forever(poll_interval=poll_interval)
+File: "/usr/lib/python3.10/socketserver.py", line 232, in serve_forever
+  ready = selector.select(poll_interval)
+File: "/usr/lib/python3.10/selectors.py", line 416, in select
+  fd_event_list = self._selector.poll(timeout)
+
+# Thread: <_MainThread(MainThread, started 139660991582208)> (db:purchase_product_optional_test) (uid:n/a) (url:n/a) (qc:n/a qt:n/a pt:n/a)
+File: "/usr/bin/odoo", line 8, in <module>
+  odoo.cli.main()
+File: "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 76, in main
+  o.run(args)
+File: "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 186, in run
+  main(args)
+File: "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 179, in main
+  rc = odoo.service.server.start(preload=preload, stop=stop)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1492, in start
+  rc = server.run(preload, stop)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 640, in run
+  rc = preload_registries(preload)
+File: "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1418, in preload_registries
+  result = loader.run_suite(post_install_suite, global_report=registry._assertion_report)
+File: "/usr/lib/python3/dist-packages/odoo/tests/loader.py", line 86, in run_suite
+  suite(results)
+File: "/usr/lib/python3.10/unittest/suite.py", line 84, in __call__
+  return self.run(*args, **kwds)
+File: "/usr/lib/python3/dist-packages/odoo/tests/suite.py", line 47, in run
+  test(result)
+File: "/usr/lib/python3.10/unittest/case.py", line 650, in __call__
+  return self.run(*args, **kwds)
+File: "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 319, in run
+  super().run(result)
+File: "/usr/lib/python3/dist-packages/odoo/tests/case.py", line 220, in run
+  self.doCleanups()
+File: "/usr/lib/python3/dist-packages/odoo/tests/case.py", line 237, in doCleanups
+  self._callCleanup(function, *args, **kwargs)
+File: "/usr/lib/python3/dist-packages/odoo/tests/case.py", line 190, in _callCleanup
+  function(*args, **kwargs)
+File: "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 2020, in _wait_remaining_requests
+  odoo.tools.misc.dumpstacks()
+File: "/usr/lib/python3/dist-packages/odoo/tools/misc.py", line 990, in dumpstacks
+  for line in extract_stack(stack): 
+2026-07-29 10:04:57,093 1 INFO purchase_product_optional_test odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-07-29 10:04:57,094 1 WARNING purchase_product_optional_test odoo.tests.common: A child process was found, terminating it: psutil.Process(pid=28, name='chrome_crashpad', status='zombie', started='10:04:26') 
+2026-07-29 10:04:57,095 1 WARNING purchase_product_optional_test odoo.tests.common: A child process was found, terminating it: psutil.Process(pid=30, name='chrome_crashpad', status='zombie', started='10:04:26') 
+2026-07-29 10:04:57,096 1 INFO purchase_product_optional_test odoo.service.server: 13 post-tests in 61.70s, 3051 queries 
+2026-07-29 10:04:57,097 1 INFO purchase_product_optional_test odoo.tests.stats: purchase_product_optional: 27 tests 51.74s 2654 queries 
+2026-07-29 10:04:57,097 1 INFO purchase_product_optional_test odoo.tests.result: 0 failed, 0 error(s) of 13 tests when loading database 'purchase_product_optional_test' 
+2026-07-29 10:04:57,097 1 INFO purchase_product_optional_test odoo.service.server: Initiating shutdown 
+2026-07-29 10:04:57,098 1 INFO purchase_product_optional_test odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-07-29 10:04:57,520 1 INFO purchase_product_optional_test odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 3 connections  

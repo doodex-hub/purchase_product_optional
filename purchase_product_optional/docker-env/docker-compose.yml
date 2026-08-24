@@ -1,0 +1,40 @@
+name: purchase_product_optional_backfill
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  odoo:
+    build: .
+    # BACKFILL 2026-07-29: percobaan #1 (`apt-get install chromium` polos) GAGAL — root cause:
+    # odoo:17.0 based Ubuntu jammy, paket `chromium` di sana cuma stub Snap. Percobaan #2 (ini):
+    # Google Chrome dari repo resmi Google + websocket-client, lihat docker-env/Dockerfile.
+    depends_on:
+      - db
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: odoo
+    shm_size: '2gb'
+    ports:
+      - "8079:8069"
+    volumes:
+      - D:/Kuncoro/doodex/repo/purchase-product-optional-cli/purchase_product_optional:/mnt/extra-addons/purchase_product_optional
+      - ./logs:/var/log/odoo
+    command: >
+      odoo -d purchase_product_optional_test
+      -i purchase_product_optional
+      --addons-path=/usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons
+      --test-enable
+      --test-tags=/purchase_product_optional
+      --stop-after-init
+      --logfile=/var/log/odoo/odoo.log
+
+volumes:
+  db-data:

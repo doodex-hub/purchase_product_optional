@@ -25,6 +25,12 @@ It also enables the "optional products" feature.
         'web.assets_backend': [
             'purchase_product_optional/static/src/**/*',
         ],
+        # BACKFILL (doc-dev-backfill), 2026-07-29: test-only bundle, registers the Tour used to
+        # verify the product configurator dialog headlessly (Step 07, Mode E). Never loaded outside
+        # Odoo's own test/tour runner.
+        'web.assets_tests': [
+            'purchase_product_optional/static/tests/tours/**/*',
+        ],
     },
     'auto_install': True,
     'license': 'LGPL-3',
