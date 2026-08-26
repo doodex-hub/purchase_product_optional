@@ -24,10 +24,8 @@ Kamu adalah migration copilot untuk project migrasi Odoo custom module berikut:
 - **Modul:** purchase_product_optional (kode langsung di folder ini, bukan sub-subfolder lain)
 - **Versi:** 18.0 → 19.0
 - **Sifat migrasi:** port kode saja (tanpa data produksi — instalasi baru di versi target). Dikonfirmasi dev, 2026-08-26.
-- **Source masih aktif dikembangkan selama migrasi?** Tidak (asumsi default — `migration/18.0` adalah
-  branch hasil migrasi 17→18 yang sudah SELESAI dan tidak menerima perubahan baru selama project ini
-  berjalan). **Belum ditanyakan eksplisit ke dev** — kalau ternyata source masih menerima fix/perubahan,
-  wajib update field ini + ikuti `SYNC_POLICY.md`.
+- **Source masih aktif dikembangkan selama migrasi?** Tidak — **dikonfirmasi eksplisit dev, 2026-08-26**
+  ("beku"). `migration/18.0` dibekukan selama project ini berjalan, `SYNC_POLICY.md` tidak relevan.
 - **Environment eksekusi:** Claude Code CLI.
 - **Git eksekusi:** Ya — Mode Git aktif (dikonfirmasi eksplisit dev, 2026-08-26; GUI git client
   dikonfirmasi sudah tertutup). Scope: HANYA `target-codebase` (folder ini, branch
@@ -133,17 +131,13 @@ berjalan — BUKAN migration spec.
 
 ## Status saat ini
 
-**Step 1 (Intake & Baseline Spec) — draft selesai, gate ditutup dengan asumsi terbuka terdokumentasi.**
-`01a_MIGRATION_INTAKE.md` dan `01b_BASELINE_SPEC.md` sudah ditulis lengkap (18 klaim BSL, 17 `[MATCH]`
-identik dengan baseline 17→18 lama, 1 dikoreksi — BSL-017). Tidak ada blocker faktual. 3 asumsi
-terbuka didokumentasikan transparan (bukan menghalangi progres, konsisten prinsip "pilih rekomendasi
-aman sendiri, dokumentasikan, lanjut"):
-1. Third-party/OCA dependency — scan manifest bersih (`purchase`, `purchase_product_matrix`, `sale`,
-   semua Community), dev belum konfirmasi final eksplisit ("tidak yakin") — diasumsikan tidak ada,
-   dicek ulang di step 2.
-2. Source aktif dikembangkan — diasumsikan Tidak (default, belum ditanya eksplisit).
-3. BSL-005 (override total `onchange_partner_id` core) — default dipertahankan apa adanya
-   (bug-for-bug parity), belum dikonfirmasi eksplisit dev mau diperbaiki atau tidak.
+**Step 1 (Intake & Baseline Spec) — selesai, gate lulus, SEMUA asumsi terbuka sudah dikonfirmasi dev
+(2026-08-26):**
+1. Third-party/OCA dependency — **dikonfirmasi: tidak ada.**
+2. Source aktif dikembangkan — **dikonfirmasi: Tidak (beku).**
+3. BSL-005 (override total `onchange_partner_id` core) — **dikonfirmasi: dipertahankan apa adanya**,
+   tidak diperbaiki (berlaku juga untuk CAND-08, pola dua dialog terbuka bersamaan — bug/quirk lama,
+   bukan diperbaiki di migrasi ini).
 
 **Step 2 (Diff & Compatibility Analysis) — selesai, SEMUA item terverifikasi (tidak ada TODO
 tersisa).** Temuan paling penting: modul ini **bukan port trivial** — file `static/src/js/purchase_product_field.js`

@@ -3,7 +3,7 @@
 **Step:** 1 — Intake & Scope
 **Versi:** 18.0 → 19.0
 **Tanggal:** 2026-08-26
-**Status:** Draft — menunggu review user
+**Status:** Disetujui — semua asumsi terbuka dikonfirmasi dev 2026-08-26
 
 ---
 
@@ -14,7 +14,7 @@
 - [x] `native-target` (Community 19.0) — **Ya**, tersedia: `D:\Kuncoro\doodex\repo\enterprise19.0` (folder gabungan Community+Enterprise, lihat catatan struktur di bawah).
 - [x] `native-source` (Community 18.0) — **Ya**, tersedia: `D:\Kuncoro\doodex\repo\odoo18`.
 - [x] `native-target-enterprise` — **Dikonfirmasi dev: tetap di-connect sebagai referensi**, walau §2 auto-scan manifest TIDAK menemukan dependency Enterprise (`depends: purchase, purchase_product_matrix, sale` — semua Community). Dev eksplisit minta tetap merujuk ke Enterprise "meskipun belum pasti" (pola sama seperti project `advanced_sales_analysis` 18→19 — instance produksi kemungkinan jalan Enterprise walau modul ini sendiri Community-only). Path: `D:\Kuncoro\doodex\repo\enterprise19.0` (SATU folder gabungan, sama dengan `native-target` — lihat catatan struktur). `native-source-enterprise` (18.0): `D:\Kuncoro\doodex\repo\enterprise18`.
-- [ ] `third-party-source`/`third-party-target` — Dev menjawab **"tidak yakin"**. Auto-scan §2 TIDAK menemukan dependency OCA/vendor apapun di `__manifest__.py` (`depends: purchase, purchase_product_matrix, sale` — semua modul core Odoo, bukan OCA). **Masih perlu dikonfirmasi eksplisit final oleh dev** sebelum step 2 dianggap selesai — silence/scan kosong bukan pengganti jawaban "tidak ada" yang eksplisit. Untuk sekarang: **tidak ada folder third-party di-connect**, ditandai `[BUTUH KONFIRMASI FINAL]`.
+- [x] `third-party-source`/`third-party-target` — **Dikonfirmasi final dev (2026-08-26): tidak ada dependency OCA/third-party.** Konsisten dengan auto-scan §2 (`depends: purchase, purchase_product_matrix, sale` — semua modul core Odoo). Tidak ada folder third-party di-connect.
 
 > **Catatan struktur folder gabungan (2026-08-26):** `D:\Kuncoro\doodex\repo\enterprise19.0` berisi `odoo/` (framework + `addons/` core) DENGAN modul Enterprise (`account_accountant`, dst) sudah digabung di `odoo/addons/` yang sama — SATU clone ini melayani DUA peran (`native-target` Community + `native-target-enterprise`). Dikonfirmasi lewat `ls` langsung (bukan diasumsikan), sama seperti pola yang sudah divalidasi di project `advanced_sales_analysis` 18→19. Folder ini BUKAN git repo (hasil extract, bukan clone) — tidak ada `git log`/`git diff` di situ.
 
@@ -39,10 +39,13 @@ Semua path sudah diisi nyata di `.claude/settings.json` (commit `7d327ec`) — t
 
 ## Ringkasan untuk Review — Perlu Konfirmasi User
 
-1. **Third-party/OCA dependency — masih "tidak yakin"** (lihat §0). Manifest scan bersih (`purchase`, `purchase_product_matrix`, `sale` — semua core Community), tapi ini BELUM jawaban final eksplisit dev. Akan dikonfirmasi ulang di step 2 sebelum dianggap selesai; sementara diasumsikan **tidak ada** berdasar scan, dicatat sebagai asumsi terbuka.
-2. **Source masih aktif dikembangkan?** Diasumsikan **Tidak** (default — `migration/18.0` adalah hasil migrasi 17→18 yang sudah selesai, tidak ada tanda sedang menerima perubahan baru). Belum ditanyakan eksplisit ke dev — kalau salah, wajib update `CLAUDE.md` + ikuti `SYNC_POLICY.md`.
-3. **Finding CAND-08 (17→18, migration-tool SUMMARY)** — pola "dua dialog terbuka bersamaan tanpa koordinasi" (`_onProductTemplateUpdate`, `purchase_product_matrix` + custom Product Configurator) dikonfirmasi ADA di 17.0 dan 18.0 (bukan bug migrasi, murni pola desain modul). **Asumsi default: perilaku ini dipertahankan apa adanya di 19.0** (tidak diperbaiki), kecuali dev eksplisit minta diperbaiki sekalian — sesuai larangan "Memperbaiki bug yang sudah ada di 18.0" di `CLAUDE.md`. Perlu dicek ulang apakah `purchase_product_matrix` 19.0 masih punya struktur method yang sama (`_onProductTemplateUpdate`) — kandidat kuat breaking change di step 2 mengingat CAND-02 (17→18) sudah mencatat method ini pernah berubah struktur besar sekali.
-4. **Deadline/owner (§6)** — belum disebutkan dev, belum relevan/urgent untuk memulai step 1-2, dilewati untuk sekarang.
+**Semua poin di bawah SUDAH dikonfirmasi dev (2026-08-26)** — tidak ada asumsi terbuka tersisa dari step 1.
+
+1. **Third-party/OCA dependency** — **Dikonfirmasi: tidak ada.** Konsisten dengan scan manifest bersih.
+2. **Source masih aktif dikembangkan?** — **Dikonfirmasi: Tidak (beku).** `migration/18.0` tidak menerima perubahan baru selama project 18→19 ini berjalan — `SYNC_POLICY.md` tidak relevan.
+3. **BSL-005 / override total `onchange_partner_id` core** — **Dikonfirmasi: dipertahankan apa adanya** (bug-for-bug parity), tidak diperbaiki di migrasi ini.
+4. **Finding CAND-08 (17→18, migration-tool SUMMARY)** — pola "dua dialog terbuka bersamaan tanpa koordinasi" (`_onProductTemplateUpdate`, `purchase_product_matrix` + custom Product Configurator), dikonfirmasi ADA di 17.0 dan 18.0. Termasuk kategori "bug/quirk lama" pada poin 3 di atas — **dipertahankan apa adanya**, tidak diperbaiki.
+5. **Deadline/owner (§6)** — belum disebutkan dev, belum relevan/urgent, dilewati.
 
 Tidak ada blocker faktual yang menghalangi lanjut ke Step 1b (Baseline Spec) — 3 poin di atas adalah asumsi terbuka yang didokumentasikan transparan, bukan hal yang menghalangi progres.
 
@@ -106,7 +109,7 @@ Dikonfirmasi dev, 2026-08-26.
 
 ## 4b. Source Masih Aktif Dikembangkan?
 
-- [x] Tidak — source module dibekukan selama migrasi berjalan (asumsi default, **belum ditanyakan eksplisit ke dev** — lihat "Ringkasan untuk Review" poin 2)
+- [x] Tidak — source module dibekukan selama migrasi berjalan (**dikonfirmasi eksplisit dev, 2026-08-26**)
 
 ## 5. Scope Boundary
 
