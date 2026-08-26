@@ -161,7 +161,13 @@ Fase F (Template QWeb) kemungkinan N/A — dikonfirmasi ulang di step 6 Applicab
 belum eksplisit disebut step 3) — keduanya dicek langsung, bersih, tidak ada breaking pattern
 tambahan.
 
-**Lanjut ke Step 5 (Acceptance Criteria & Test Plan).**
+**Step 5 (Acceptance Criteria & Test Plan) — selesai.** 16 AC ditulis (traceable ke BSL-NNN),
+grup baru AC-02 jadi area risiko tertinggi (DIFF-01/DIFF-02). 12/16 AC tercakup test existing
+(6 test class Python + 1 Tour, dikonfirmasi ada isi nyata bukan stub), 2 gap non-blocking
+(AC-02-02 fallback grid configurator, AC-05-02 exclusion — tidak ada test existing, disarankan
+tambahan di step 6/9 tapi bukan blocker).
+
+**Lanjut ke Step 6 (Code Migration) — mulai bagian coding.**
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -173,7 +179,7 @@ tambahan.
 | 2 | Diff & Compatibility Analysis | `02_DIFF_ANALYSIS.md` | ✅ Selesai — 2 breaking change ditemukan (DIFF-01, DIFF-02) | Tidak ada gate formal |
 | 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ✅ Selesai | — |
 | 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ✔️ Disetujui | ✔️ Lulus |
-| 5 | Acceptance Criteria & Test Plan | `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`, `05b_TEST_PLAN_MIGRATION.md` | ⬜ Belum mulai | — |
+| 5 | Acceptance Criteria & Test Plan | `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`, `05b_TEST_PLAN_MIGRATION.md` | ✅ Selesai | — |
 | 6 | Code Migration | kode `target-codebase` + `06c_IMPLEMENTATION_LOG.md` | ⬜ Belum mulai | — |
 | 7 | Data Migration Scripts | — | — (N/A, port kode saja) | — |
 | 8 | Code Review | `08_CODE_REVIEW.md` | ⬜ Belum mulai | — |
