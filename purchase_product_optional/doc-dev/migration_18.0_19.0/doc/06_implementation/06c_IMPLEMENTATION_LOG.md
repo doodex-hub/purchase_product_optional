@@ -39,11 +39,17 @@
 **Status:** ✅ Dicek (step 2, DIFF-07) — 0 match pola API lama (`_cr`/`_uid`/`_sql_constraints`/`groups_id`/`osv.expression`/dst). Tidak ada perubahan diperlukan.
 
 ### Checkpoint G1 — Install Test
-**Status:** ⏳ Belum dijalankan — menunggu keputusan mode eksekusi dari dev (lihat "Riwayat Percobaan G1" di bawah).
+**Status:** 🔄 Sedang berjalan — mode dikonfirmasi dev: **Mode C (AI jalankan langsung)**, Docker
+terkonfirmasi aktif di sesi ini (Claude Code CLI). `docker-env/Dockerfile` (base `odoo:19.0` + Chrome
+headless untuk Tour) dan `docker-env/docker-compose.yml` (project unik `purchase_product_optional_18_19_target`,
+port host `8199`, db `purchase_product_optional_19_qa`, command `-i purchase_product_optional --stop-after-init`)
+dibuat di `target-codebase` sesi ini.
 
 | # | Kapan | Mode | Hasil |
 |---|---|---|---|
-| — | — | — | Belum dijalankan |
+| 1 | 2026-08-26 | C — AI jalankan langsung (`docker compose up --build`) | ✅ **PASS** — 60 modul termuat bersih ("Modules loaded", "Registry loaded in 88.764s"), tidak ada exception/fatal error. 2 warning muncul PERSIS sesuai baseline (BSL-009 `product_add_mode` kwarg asing, BSL-017 label `id_vendor`/`id` bentrok) — dikonfirmasi bug lama yang dipertahankan, BUKAN regresi baru. |
+
+**Kesimpulan G1:** instalasi bersih di Odoo 19.0. Manifest version bump, dependency (`purchase`/`purchase_product_matrix`/`sale`/60 modul lain via `auto_install`), dan seluruh Python/XML modul valid struktur. G1 **tidak** memvalidasi JavaScript (server-side only) — validasi DIFF-01/02 (JS) menyusul lewat G2/test suite (`--test-enable`, termasuk Tour headless Chrome).
 
 ---
 

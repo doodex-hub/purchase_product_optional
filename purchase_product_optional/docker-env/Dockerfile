@@ -1,11 +1,12 @@
-# Migration testing (17.0 -> 18.0), Step 6/9 — adds a real headless-Chrome binary + websocket
+# Migration testing (18.0 -> 19.0), Step 6/9 - adds a real headless-Chrome binary + websocket
 # client so Odoo's own test runner (HttpCase.start_tour / browser_js) can execute the Tour test
 # (static/tests/tours/purchase_product_optional_tour.js). Do NOT override entrypoint/command in
-# docker-compose.yml — losing the official entrypoint breaks HOST/USER/PASSWORD env var translation.
+# docker-compose.yml - losing the official entrypoint breaks HOST/USER/PASSWORD env var translation.
 #
-# odoo:18.0 base is newer Debian with PEP 668 (pip refuses plain install outside a venv) — use the
-# --break-system-packages fallback pattern (migration-tool/templates/Dockerfile.template).
-FROM odoo:18.0
+# pip3 install --break-system-packages <pkg> || pip3 install <pkg> fallback pattern is REQUIRED
+# (migration-tool/templates/Dockerfile.template) - odoo image base varies whether pip enforces
+# PEP 668 or not, hardcoding either form breaks the other direction.
+FROM odoo:19.0
 USER root
 RUN apt-get update && apt-get install -y --no-install-recommends wget gnupg ca-certificates \
     && wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg \
