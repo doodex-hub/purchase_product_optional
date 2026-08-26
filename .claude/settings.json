@@ -1,5 +1,5 @@
 {
-  "_status": "DRAFT — BELUM DIVALIDASI (dibuat 2026-08-21, dikoreksi 2026-08-21 setelah cek dokumentasi resmi Claude Code — code.claude.com/docs/en/permissions). Varian settings.json.template INI KHUSUS untuk project yang mengaktifkan Mode Git (Git eksekusi = Ya di CLAUDE.md) — lihat ai-doc/USAGE_GUIDE.md 'Mode Git'. Kalau Git eksekusi = Tidak (default), pakai settings.json.template biasa. ADA placeholder {{ABS_PATH_...}} di bawah yang WAJIB diisi path absolut nyata sebelum dipakai — lihat README.md 'Koreksi path-matching', kalau tidak diisi rule-nya inert.",
+  "_status": "Project purchase_product_optional 18.0\u219219.0 \u2014 diinstansiasi dari migration-tool/templates/cli-config/settings.json.mode-git.template pada 2026-08-26. Mode Git aktif (dikonfirmasi dev). Menggantikan settings.json lama warisan migrasi 17.0\u219218.0 (dikonfirmasi dev, lihat CLAUDE.md).",
 
   "permissions": {
     "allow": [
@@ -50,9 +50,12 @@
       "Bash(git diff:*)",
       "Bash(git log:*)",
       "Bash(git branch:*)",
+      "Bash(MSYS_NO_PATHCONV=1 git show:*)",
+      "Bash(MSYS_NO_PATHCONV=1 git diff:*)",
+      "Bash(MSYS_NO_PATHCONV=1 git log:*)",
 
       "Edit(**)",
-	  "Edit(//D:/Kuncoro/doodex/repo/migration-tool-project/migration-tool/migration-records/**)"
+      "Edit(//D:/Kuncoro/doodex/repo/migration-tool-project/migration-tool/migration-records/**)"
     ],
     "deny": [
       "Bash(git push:*)",
@@ -63,11 +66,10 @@
       "Bash(git branch -D:*)",
       "Bash(gh pr create:*)",
 
-      "Edit(//D:/Kuncoro/doodex/repo/purchase-product-optional-migration-18-source/**)",
+      "Edit(//D:/Kuncoro/doodex/repo/purchase-product-optional-migration-19-source/**)",
       "Edit(//D:/Kuncoro/doodex/repo/odoo18/**)",
       "Edit(//D:/Kuncoro/doodex/repo/enterprise18/**)",
-      "Edit(//D:/Kuncoro/doodex/repo/odoo17/**)",
-      "Edit(//D:/Kuncoro/doodex/repo/enterprise17/**)",
+      "Edit(//D:/Kuncoro/doodex/repo/enterprise19.0/**)",
       "Edit(//D:/Kuncoro/doodex/repo/migration-tool-project/migration-tool/knowledge/**)",
       "Edit(//D:/Kuncoro/doodex/repo/migration-tool-project/migration-tool/templates/**)"
     ]
