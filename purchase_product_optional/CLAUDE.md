@@ -156,7 +156,12 @@ Tidak ada Critical Migration Blocker lain (tidak ada `<tree>`, dependency semua 
 Fase F (Template QWeb) kemungkinan N/A — dikonfirmasi ulang di step 6 Applicability Check. Step 7
 (Data Migration) di-skip — port kode saja.
 
-**Lanjut ke Step 4 (Spec Completeness Review).**
+**Step 4 (Spec Completeness Review) — gate LULUS.** Semua elemen source module tercakup di
+`03_MIGRATION_SPEC.md`. 2 gap kecil ditemukan & langsung ditutup di step ini (Tour test + Python test
+belum eksplisit disebut step 3) — keduanya dicek langsung, bersih, tidak ada breaking pattern
+tambahan.
+
+**Lanjut ke Step 5 (Acceptance Criteria & Test Plan).**
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -167,7 +172,7 @@ Fase F (Template QWeb) kemungkinan N/A — dikonfirmasi ulang di step 6 Applicab
 | 1 | Intake & Scope | `01a_MIGRATION_INTAKE.md`, `01b_BASELINE_SPEC.md` | ✅ Draft selesai | ✔️ Lulus (3 asumsi terbuka terdokumentasi) |
 | 2 | Diff & Compatibility Analysis | `02_DIFF_ANALYSIS.md` | ✅ Selesai — 2 breaking change ditemukan (DIFF-01, DIFF-02) | Tidak ada gate formal |
 | 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ✅ Selesai | — |
-| 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ⬜ Belum mulai | — |
+| 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ✔️ Disetujui | ✔️ Lulus |
 | 5 | Acceptance Criteria & Test Plan | `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`, `05b_TEST_PLAN_MIGRATION.md` | ⬜ Belum mulai | — |
 | 6 | Code Migration | kode `target-codebase` + `06c_IMPLEMENTATION_LOG.md` | ⬜ Belum mulai | — |
 | 7 | Data Migration Scripts | — | — (N/A, port kode saja) | — |
