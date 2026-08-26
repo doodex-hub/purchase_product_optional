@@ -150,7 +150,13 @@ diport. Sisanya (Python, view XML, 5 komponen Owl dialog lain, override `onchang
 dikonfirmasi bersih/stabil. 3 kandidat knowledge dicatat di
 `migration-tool/migration-records/purchase_product_optional_18.0_19.0/SUMMARY.md` (CAND-01/02/03).
 
-**Lanjut ke Step 3 (Migration Spec).**
+**Step 3 (Migration Spec) — selesai.** Strategi implementasi ditulis untuk DIFF-01/02 (rewrite
+`purchase_product_field.js`), bump manifest version, cleanup opsional `type='json'`→`type='jsonrpc'`.
+Tidak ada Critical Migration Blocker lain (tidak ada `<tree>`, dependency semua tersedia di 19.0).
+Fase F (Template QWeb) kemungkinan N/A — dikonfirmasi ulang di step 6 Applicability Check. Step 7
+(Data Migration) di-skip — port kode saja.
+
+**Lanjut ke Step 4 (Spec Completeness Review).**
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -160,7 +166,7 @@ dikonfirmasi bersih/stabil. 3 kandidat knowledge dicatat di
 |---|---|---|---|---|
 | 1 | Intake & Scope | `01a_MIGRATION_INTAKE.md`, `01b_BASELINE_SPEC.md` | ✅ Draft selesai | ✔️ Lulus (3 asumsi terbuka terdokumentasi) |
 | 2 | Diff & Compatibility Analysis | `02_DIFF_ANALYSIS.md` | ✅ Selesai — 2 breaking change ditemukan (DIFF-01, DIFF-02) | Tidak ada gate formal |
-| 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ⬜ Belum mulai | — |
+| 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ✅ Selesai | — |
 | 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ⬜ Belum mulai | — |
 | 5 | Acceptance Criteria & Test Plan | `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`, `05b_TEST_PLAN_MIGRATION.md` | ⬜ Belum mulai | — |
 | 6 | Code Migration | kode `target-codebase` + `06c_IMPLEMENTATION_LOG.md` | ⬜ Belum mulai | — |
