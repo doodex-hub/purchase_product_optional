@@ -7,6 +7,7 @@ import { useService } from "@web/core/utils/hooks";
 import { patch } from "@web/core/utils/patch";
 import { ProductConfiguratorDialogPurchase } from "./product_configurator_dialog/product_configurator_dialog";
 import { useRecordObserver } from "@web/model/relational_model/utils";
+import { useMatrixConfigurator } from "@product_matrix/js/matrix_configurator_hook";
 
 async function applyProductPurchase(record, product) {
     const customAttributesCommands = [
@@ -19,7 +20,7 @@ async function applyProductPurchase(record, product) {
         if (selectedCustomPTAV) {
             customAttributesCommands.push(
                 x2ManyCommands.create(undefined, {
-                    custom_product_template_attribute_value_id: [selectedCustomPTAV.id, "we don't care"],
+                    custom_product_template_attribute_value_id: { id: selectedCustomPTAV.id, display_name: "we don't care" },
                     custom_value: ptal.customValue,
                 })
             );
@@ -31,7 +32,7 @@ async function applyProductPurchase(record, product) {
     ).flatMap(ptal => ptal.selected_attribute_value_ids);
 
     await record.update({
-        product_id: [product.id, product.display_name],
+        product_id: { id: product.id, display_name: product.display_name },
         // product_qty: 4,
         product_no_variant_attribute_value_ids: [x2ManyCommands.set(noVariantPTAVIds)],
         product_custom_attribute_value_ids: customAttributesCommands,
@@ -50,6 +51,7 @@ patch(PurchaseOrderLineProductField.prototype, {
         this.dialog = useService("dialog");
         this.notification = useService("notification");
         this.orm = useService("orm");
+        this.matrixConfigurator = useMatrixConfigurator();
     },
 
     async _onProductTemplateUpdate() {
@@ -58,7 +60,7 @@ patch(PurchaseOrderLineProductField.prototype, {
         const result = await this.orm.call(
             'product.template',
             'get_single_product_variant',
-            [this.props.record.data.product_template_id[0]],
+            [this.props.record.data.product_template_id.id],
             {
                 context: this.context,
             }
@@ -70,7 +72,7 @@ patch(PurchaseOrderLineProductField.prototype, {
                     this._openProductConfigurator();
                 } else {
                     await this.props.record.update({
-                        product_id: [result.product_id, result.product_name],
+                        product_id: { id: result.product_id, display_name: result.product_name },
                     });
                 }
             }
@@ -89,7 +91,7 @@ patch(PurchaseOrderLineProductField.prototype, {
             if (!result.mode || result.mode === 'configurator') {
                 this._openProductConfigurator();
             } else {
-                this._openGridConfigurator();
+                this.matrixConfigurator.open(this.props.record, false);
             }
         }
     },
@@ -108,27 +110,37 @@ patch(PurchaseOrderLineProductField.prototype, {
     
         if (edit) {
             ptavIds = ptavIds.concat(this.props.record.data.product_no_variant_attribute_value_ids?.records?.map(record => record.resId) || []);
+            // `record.data` (relational_model) many2one fields are `{id, display_name}` objects,
+            // while `orm.read()` RPC results still return the legacy `[id, display_name]` tuple —
+            // normalize both branches to a plain id here so the downstream `.map()` below stays
+            // format-agnostic.
             customAttributeValues = this.props.record.data.product_custom_attribute_value_ids?.records?.[0]?.isNew
-                ? this.props.record.data.product_custom_attribute_value_ids.records.map(record => record.data)
-                : await this.orm.read(
+                ? this.props.record.data.product_custom_attribute_value_ids.records.map(record => ({
+                    custom_product_template_attribute_value_id: record.data.custom_product_template_attribute_value_id?.id,
+                    custom_value: record.data.custom_value,
+                }))
+                : (await this.orm.read(
                     'product.attribute.custom.value',
                     this.props.record.data.product_custom_attribute_value_ids?.currentIds || [],
                     ["custom_product_template_attribute_value_id", "custom_value"]
-                );
+                )).map(data => ({
+                    custom_product_template_attribute_value_id: data.custom_product_template_attribute_value_id?.[0],
+                    custom_value: data.custom_value,
+                }));
         }
-    
+
         this.dialog.add(ProductConfiguratorDialogPurchase, {
-            productTemplateId: this.props.record.data.product_template_id?.[0],
+            productTemplateId: this.props.record.data.product_template_id?.id,
             ptavIds: ptavIds,
             customAttributeValues: customAttributeValues.map(data => ({
-                ptavId: data.custom_product_template_attribute_value_id?.[0],
+                ptavId: data.custom_product_template_attribute_value_id,
                 value: data.custom_value,
             })),
             quantity: this.props.record.data.product_qty,
-            productUOMId: this.props.record.data.product_uom?.[0],
-            companyId: purchaseOrderRecord.data.company_id?.[0],
-            pricelistId: purchaseOrderRecord.data.pricelist_id?.[0],
-            currencyId: this.props.record.data.currency_id?.[0],
+            productUOMId: this.props.record.data.product_uom?.id,
+            companyId: purchaseOrderRecord.data.company_id?.id,
+            pricelistId: purchaseOrderRecord.data.pricelist_id?.id,
+            currencyId: this.props.record.data.currency_id?.id,
             soDate: serializeDateTime(purchaseOrderRecord.data.date_order),
             edit: edit,
             save: async (mainProduct, optionalProducts) => {

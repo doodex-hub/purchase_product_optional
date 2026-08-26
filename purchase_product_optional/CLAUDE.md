@@ -167,7 +167,14 @@ grup baru AC-02 jadi area risiko tertinggi (DIFF-01/DIFF-02). 12/16 AC tercakup 
 (AC-02-02 fallback grid configurator, AC-05-02 exclusion — tidak ada test existing, disarankan
 tambahan di step 6/9 tapi bukan blocker).
 
-**Lanjut ke Step 6 (Code Migration) — mulai bagian coding.**
+**Step 6 (Code Migration) — Fase A-E selesai, menunggu keputusan mode eksekusi G1 dari dev.**
+Perubahan kode: manifest version bump, `type='json'`→`'jsonrpc'` (4 route, cleanup opsional), dan
+rewrite `purchase_product_field.js` (DIFF-01/02 — format many2one objek + `useMatrixConfigurator`
+hook). **Temuan tambahan saat implementasi** (di luar step 2): `_openProductConfigurator()` punya 2
+sumber data (`record.data` vs `orm.read()`) yang sekarang beda format di 19.0 — dinormalisasi di
+titik ekstraksi. Fase F (template) dikonfirmasi N/A (semua `.xml` sudah `t-out` modern). **G1 (install
+test) belum dijalankan** — perlu keputusan dev soal mode eksekusi (Manual/AI siapkan container/AI
+jalankan langsung via Docker) sebelum lanjut.
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -180,7 +187,7 @@ tambahan di step 6/9 tapi bukan blocker).
 | 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ✅ Selesai | — |
 | 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ✔️ Disetujui | ✔️ Lulus |
 | 5 | Acceptance Criteria & Test Plan | `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`, `05b_TEST_PLAN_MIGRATION.md` | ✅ Selesai | — |
-| 6 | Code Migration | kode `target-codebase` + `06c_IMPLEMENTATION_LOG.md` | ⬜ Belum mulai | — |
+| 6 | Code Migration | kode `target-codebase` + `06c_IMPLEMENTATION_LOG.md` | 🔄 Fase A-E selesai, G1 belum dijalankan | — |
 | 7 | Data Migration Scripts | — | — (N/A, port kode saja) | — |
 | 8 | Code Review | `08_CODE_REVIEW.md` | ⬜ Belum mulai | — |
 | 9 | Dev Testing | `09_DEV_TESTING.md` | ⬜ Belum mulai | — |
