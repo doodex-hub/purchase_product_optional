@@ -133,13 +133,19 @@ berjalan — BUKAN migration spec.
 
 ## Status saat ini
 
-**Step 1 (Intake & Baseline Spec) — sedang dikerjakan.** Branch `migration/19.0_target` dan
-`source-codebase` baru saja di-bootstrap (2026-08-26). Modul terkonfirmasi dev: **port kode saja**,
-depend ke `purchase`, `purchase_product_matrix`, `sale` (semua Community, dikonfirmasi dari
-`__manifest__.py` migration/18.0 — TIDAK ada dependency Enterprise di manifest, meski dev minta tetap
-di-connect `enterprise19.0`/`enterprise18` sebagai referensi karena instance produksi kemungkinan
-jalan Enterprise). Dependency OCA/third-party: belum dikonfirmasi eksplisit dev (dijawab "tidak
-yakin") — dari manifest tidak terlihat ada, akan dikonfirmasi ulang di `01a_MIGRATION_INTAKE.md` §0.
+**Step 1 (Intake & Baseline Spec) — draft selesai, gate ditutup dengan asumsi terbuka terdokumentasi.**
+`01a_MIGRATION_INTAKE.md` dan `01b_BASELINE_SPEC.md` sudah ditulis lengkap (18 klaim BSL, 17 `[MATCH]`
+identik dengan baseline 17→18 lama, 1 dikoreksi — BSL-017). Tidak ada blocker faktual. 3 asumsi
+terbuka didokumentasikan transparan (bukan menghalangi progres, konsisten prinsip "pilih rekomendasi
+aman sendiri, dokumentasikan, lanjut"):
+1. Third-party/OCA dependency — scan manifest bersih (`purchase`, `purchase_product_matrix`, `sale`,
+   semua Community), dev belum konfirmasi final eksplisit ("tidak yakin") — diasumsikan tidak ada,
+   dicek ulang di step 2.
+2. Source aktif dikembangkan — diasumsikan Tidak (default, belum ditanya eksplisit).
+3. BSL-005 (override total `onchange_partner_id` core) — default dipertahankan apa adanya
+   (bug-for-bug parity), belum dikonfirmasi eksplisit dev mau diperbaiki atau tidak.
+
+**Lanjut ke Step 2 (Diff & Compatibility Analysis).**
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -147,7 +153,7 @@ yakin") — dari manifest tidak terlihat ada, akan dikonfirmasi ulang di `01a_MI
 
 | # | Step | Dokumen | Status | Gate |
 |---|---|---|---|---|
-| 1 | Intake & Scope | `01a_MIGRATION_INTAKE.md`, `01b_BASELINE_SPEC.md` | 🔄 Sedang dikerjakan | ⏳ Menunggu review user |
+| 1 | Intake & Scope | `01a_MIGRATION_INTAKE.md`, `01b_BASELINE_SPEC.md` | ✅ Draft selesai | ✔️ Lulus (3 asumsi terbuka terdokumentasi) |
 | 2 | Diff & Compatibility Analysis | `02_DIFF_ANALYSIS.md` | ⬜ Belum mulai | Tidak ada gate formal |
 | 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ⬜ Belum mulai | — |
 | 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ⬜ Belum mulai | — |
