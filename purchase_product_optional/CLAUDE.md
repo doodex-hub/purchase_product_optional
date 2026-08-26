@@ -182,7 +182,15 @@ CAND-10, bukan regresi).
 **Step 9 (Dev Testing) — gate LULUS.** 13/13 test pass (audit AST: semua "ok", bukan stub). Tour
 15 langkah sukses. 3 gap non-blocking (AC-02-02, AC-04-01, AC-05-02) dicatat transparan.
 
-**Lanjut ke Step 10 (QA Testing).**
+**Step 10 (QA Testing) — gate LULUS.** AI-interaktif (Claude Browser tool) DICOBA dan GAGAL — insiden
+IDENTIK dengan migrasi 17→18 modul ini (pane tidak compositing, klik tidak sampai server) — pivot ke
+bukti Tour Odoo native (sudah terbukti reliable 2× lintas migrasi). 7 skenario (S-01..S-07) ditulis,
+6 Pass (evidence Tour + test otomatis + code review), 1 (S-06, fallback grid configurator) belum
+dieksekusi runtime tapi risiko rendah (CAND-07: kemungkinan unreachable produksi). `human_qa/` 4 file
+digenerate untuk re-verifikasi manual kapan saja.
+
+**Lanjut ke Step 11 (UAT Sign-off) — WAJIB manual, business user asli. AI tidak pernah mengeksekusi
+atau mengisi Actual/Status/Sign-off Step 11.**
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -199,8 +207,8 @@ CAND-10, bukan regresi).
 | 7 | Data Migration Scripts | — | — (N/A, port kode saja) | — |
 | 8 | Code Review | `08_CODE_REVIEW.md` | ✔️ Disetujui | ✔️ Lulus (0🔴 0🟡 0🔵) |
 | 9 | Dev Testing | `09_DEV_TESTING.md` | ✔️ Disetujui | ✔️ Lulus (13/13 test pass, Tour sukses) |
-| 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ⬜ Belum mulai | — |
-| 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ⬜ Belum mulai | — |
+| 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ✔️ Disetujui | ✔️ Lulus (6/7 skenario Pass, 1 belum dieksekusi runtime, risiko rendah) |
+| 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ⬜ Belum mulai | ⏳ Menunggu dev/business user |
 
 Legenda status: ⬜ Belum mulai · 🔄 Sedang dikerjakan · ✅ Draft/selesai ditulis · ✔️ Disetujui/lulus gate.
 
