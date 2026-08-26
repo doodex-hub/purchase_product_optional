@@ -167,14 +167,22 @@ grup baru AC-02 jadi area risiko tertinggi (DIFF-01/DIFF-02). 12/16 AC tercakup 
 (AC-02-02 fallback grid configurator, AC-05-02 exclusion — tidak ada test existing, disarankan
 tambahan di step 6/9 tapi bukan blocker).
 
-**Step 6 (Code Migration) — Fase A-E selesai, menunggu keputusan mode eksekusi G1 dari dev.**
-Perubahan kode: manifest version bump, `type='json'`→`'jsonrpc'` (4 route, cleanup opsional), dan
-rewrite `purchase_product_field.js` (DIFF-01/02 — format many2one objek + `useMatrixConfigurator`
-hook). **Temuan tambahan saat implementasi** (di luar step 2): `_openProductConfigurator()` punya 2
-sumber data (`record.data` vs `orm.read()`) yang sekarang beda format di 19.0 — dinormalisasi di
-titik ekstraksi. Fase F (template) dikonfirmasi N/A (semua `.xml` sudah `t-out` modern). **G1 (install
-test) belum dijalankan** — perlu keputusan dev soal mode eksekusi (Manual/AI siapkan container/AI
-jalankan langsung via Docker) sebelum lanjut.
+**Step 6 (Code Migration) — SELESAI, G1+G2 PASS.** Perubahan kode: manifest version bump,
+`type='json'`→`'jsonrpc'` (4 route, cleanup opsional), rewrite `purchase_product_field.js`
+(DIFF-01/02 — format many2one objek + `useMatrixConfigurator` hook + normalisasi `customAttributeValues`,
+CAND-04). Fase F (template) N/A. **G1 PASS** (60 modul termuat bersih, Mode C/AI langsung via
+Docker). **G2 PASS** (Tour `purchase_product_optional_configurator_tour` — `tour succeeded`, 0 error
+JS).
+
+**Step 8 (Code Review) — gate LULUS, 0🔴 0🟡 0🔵.** Dikerjakan setelah G1/G2 (penyimpangan urutan
+dicatat transparan). Cek tabrakan nama core 2 arah: tidak ada tabrakan BARU dengan 19.0 (satu overlap
+lama `product_no_variant_attribute_value_ids` vs core `purchase` dikonfirmasi identik sejak 18.0,
+CAND-10, bukan regresi).
+
+**Step 9 (Dev Testing) — gate LULUS.** 13/13 test pass (audit AST: semua "ok", bukan stub). Tour
+15 langkah sukses. 3 gap non-blocking (AC-02-02, AC-04-01, AC-05-02) dicatat transparan.
+
+**Lanjut ke Step 10 (QA Testing).**
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -187,10 +195,10 @@ jalankan langsung via Docker) sebelum lanjut.
 | 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ✅ Selesai | — |
 | 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ✔️ Disetujui | ✔️ Lulus |
 | 5 | Acceptance Criteria & Test Plan | `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`, `05b_TEST_PLAN_MIGRATION.md` | ✅ Selesai | — |
-| 6 | Code Migration | kode `target-codebase` + `06c_IMPLEMENTATION_LOG.md` | 🔄 Fase A-E selesai, G1 belum dijalankan | — |
+| 6 | Code Migration | kode `target-codebase` + `06c_IMPLEMENTATION_LOG.md` | ✅ Selesai — G1+G2 PASS | — |
 | 7 | Data Migration Scripts | — | — (N/A, port kode saja) | — |
-| 8 | Code Review | `08_CODE_REVIEW.md` | ⬜ Belum mulai | — |
-| 9 | Dev Testing | `09_DEV_TESTING.md` | ⬜ Belum mulai | — |
+| 8 | Code Review | `08_CODE_REVIEW.md` | ✔️ Disetujui | ✔️ Lulus (0🔴 0🟡 0🔵) |
+| 9 | Dev Testing | `09_DEV_TESTING.md` | ✔️ Disetujui | ✔️ Lulus (13/13 test pass, Tour sukses) |
 | 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ⬜ Belum mulai | — |
 | 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ⬜ Belum mulai | — |
 

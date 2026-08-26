@@ -126,7 +126,9 @@ relational_model, kelola state sendiri via props/hasil RPC — **tidak ada perub
 
 ## Fase G2 — Validasi Akhir
 
-**Status:** ⏳ Belum dijalankan — menunggu G1 pass dan keputusan mode eksekusi browser dari dev.
+**Status:** ✅ **PASS**. Full test suite (`MSYS_NO_PATHCONV=1 docker compose run --rm odoo odoo -d purchase_product_optional_19_test2 -i purchase_product_optional --test-enable --test-tags /purchase_product_optional --stop-after-init`) — hasil `0 failed, 0 error(s) of 13 tests`. Tour `purchase_product_optional_configurator_tour` (15 langkah, mengeksekusi `purchase_product_field.js` hasil rewrite lewat Chrome headless): **`tour succeeded`**, 0 error console JS. Ini bukti runtime langsung DIFF-01 valid (dialog terbuka, format many2one benar, Confirm+save sukses). DIFF-02 (fallback `matrixConfigurator.open`) TIDAK tereksekusi skenario Tour existing — kode sudah benar secara analisis (mirror native persis), residual risk rendah, dicatat `09_DEV_TESTING.md`. Detail lengkap per-AC: `09_DEV_TESTING.md`.
+
+**Catatan operasional (lesson, sudah cocok dengan peringatan template `09_DEV_TESTING.md`):** run pertama tanpa `MSYS_NO_PATHCONV=1` kena false-pass ("0 failed, 0 error(s) of 0 tests" — tag `--test-tags /purchase_product_optional` di-mangle MSYS jadi path Windows). Fix: prefix `MSYS_NO_PATHCONV=1`.
 
 ---
 
