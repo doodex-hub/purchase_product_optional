@@ -145,7 +145,18 @@ aman sendiri, dokumentasikan, lanjut"):
 3. BSL-005 (override total `onchange_partner_id` core) — default dipertahankan apa adanya
    (bug-for-bug parity), belum dikonfirmasi eksplisit dev mau diperbaiki atau tidak.
 
-**Lanjut ke Step 2 (Diff & Compatibility Analysis).**
+**Step 2 (Diff & Compatibility Analysis) — selesai, SEMUA item terverifikasi (tidak ada TODO
+tersisa).** Temuan paling penting: modul ini **bukan port trivial** — file `static/src/js/purchase_product_field.js`
+(patch ke `PurchaseOrderLineProductField` milik `purchase_product_matrix`) punya **2 breaking change
+pasti** di 19.0: (1) DIFF-01, format many2one `record.data` berubah dari tuple `[id,name]` ke objek
+`{id,display_name}` — 8 titik kode terpengaruh; (2) DIFF-02, method `_openGridConfigurator`/`_openMatrixConfigurator`
+dihapus total dari base class, diganti hook `useMatrixConfigurator()` — 1 titik pemanggilan
+(`this._openGridConfigurator()`, fallback non-configurator) akan `TypeError` runtime kalau tidak
+diport. Sisanya (Python, view XML, 5 komponen Owl dialog lain, override `onchange_partner_id`)
+dikonfirmasi bersih/stabil. 3 kandidat knowledge dicatat di
+`migration-tool/migration-records/purchase_product_optional_18.0_19.0/SUMMARY.md` (CAND-01/02/03).
+
+**Lanjut ke Step 3 (Migration Spec).**
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -154,7 +165,7 @@ aman sendiri, dokumentasikan, lanjut"):
 | # | Step | Dokumen | Status | Gate |
 |---|---|---|---|---|
 | 1 | Intake & Scope | `01a_MIGRATION_INTAKE.md`, `01b_BASELINE_SPEC.md` | ✅ Draft selesai | ✔️ Lulus (3 asumsi terbuka terdokumentasi) |
-| 2 | Diff & Compatibility Analysis | `02_DIFF_ANALYSIS.md` | ⬜ Belum mulai | Tidak ada gate formal |
+| 2 | Diff & Compatibility Analysis | `02_DIFF_ANALYSIS.md` | ✅ Selesai — 2 breaking change ditemukan (DIFF-01, DIFF-02) | Tidak ada gate formal |
 | 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ⬜ Belum mulai | — |
 | 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ⬜ Belum mulai | — |
 | 5 | Acceptance Criteria & Test Plan | `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`, `05b_TEST_PLAN_MIGRATION.md` | ⬜ Belum mulai | — |
