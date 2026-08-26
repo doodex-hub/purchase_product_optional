@@ -189,28 +189,32 @@ bukti Tour Odoo native (sudah terbukti reliable 2× lintas migrasi). 7 skenario 
 dieksekusi runtime tapi risiko rendah (CAND-07: kemungkinan unreachable produksi). `human_qa/` 4 file
 digenerate untuk re-verifikasi manual kapan saja.
 
-**Step 11 (UAT Sign-off) — draft test script siap dijalankan.** `11_UAT_CHECKLIST.md` berisi 3
-skenario (T-01..T-03) bahasa awam + item yang sengaja tidak diperbaiki (T-04, informasi). Kolom
-Actual/Status/Sign-off SENGAJA dikosongkan — WAJIB dijalankan tangan sendiri oleh dev/business user,
-AI tidak pernah mengisi ini.
+**MIGRASI DINYATAKAN SELESAI (2026-08-26)** — Step 11 (UAT) di-sign-off oleh pemilik project
+("Kuncoro") berdasarkan hasil test otomatis AI, BUKAN eksekusi manual UI ("UAT dianggap selesai,
+percaya ai test") — **penyimpangan eksplisit dari prinsip default dokumen 11**, dicatat transparan di
+`11_UAT_CHECKLIST.md` (bukan disembunyikan). Risiko residual yang diterima: T-01/T-02 punya evidence
+eksekusi nyata (Tour test + unit test) tapi gap visual/UI (rendering, label, klik tombol) tidak pernah
+diverifikasi visual oleh mata manusia (AI-interaktif Claude Browser dicoba & gagal, Step 10); **T-03
+(edit ulang konfigurasi baris) sama sekali TIDAK ada evidence eksekusi apapun** — gap sejak Step 5,
+diterima sadar sebagai risiko rendah murni dari analisis kode (tidak diubah migrasi ini).
 
 ---
 
 ## RINGKASAN AKHIR — Migrasi 18.0 → 19.0 (per 2026-08-26)
 
-**Step 1-10 SEMUA selesai/lulus gate.** Branch `migration/19.0_target` (folder ini) berisi semua
-commit dari bootstrap sampai Step 10, BELUM di-push (Mode Git tidak pernah push otomatis) — dev yang
-menjalankan `git push` sendiri setelah review, kalau siap.
+**Step 1-11 SEMUA selesai/lulus gate** (Step 11 via penyimpangan eksplisit di atas). Branch
+`migration/19.0_target` (folder ini) berisi SEMUA commit dari bootstrap sampai Step 11, BELUM
+di-push (Mode Git tidak pernah push otomatis) — dev yang menjalankan `git push` sendiri, kalau siap.
 
 **Temuan teknis utama:** 2 breaking change pasti di `static/src/js/purchase_product_field.js` (format
 many2one tuple→objek, method `_openGridConfigurator` dihapus dari base class) — keduanya diperbaiki,
 diverifikasi PASS lewat Tour test end-to-end (headless Chrome, `tour succeeded`) dan 13 unit/integration
 test (0 failed, 0 error). Sisanya (Python, view XML, 5 komponen Owl lain) dikonfirmasi bersih tanpa
 perubahan. 1 residual risk rendah (fallback grid configurator, S-06) belum tervalidasi runtime —
-kemungkinan besar unreachable di produksi.
+kemungkinan besar unreachable di produksi. Satu gap tanpa evidence sama sekali (T-03, edit ulang
+konfigurasi) diterima sadar sebagai bagian sign-off UAT.
 
-**Satu-satunya yang tersisa:** Step 11 UAT — dev/business user menjalankan `11_UAT_CHECKLIST.md`
-sendiri, lalu `git push` kalau semua sudah oke.
+**Serah-terima ke dev:** branch `migration/19.0_target` siap review, `git push` kapan dev siap.
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja.
 
@@ -228,7 +232,7 @@ sendiri, lalu `git push` kalau semua sudah oke.
 | 8 | Code Review | `08_CODE_REVIEW.md` | ✔️ Disetujui | ✔️ Lulus (0🔴 0🟡 0🔵) |
 | 9 | Dev Testing | `09_DEV_TESTING.md` | ✔️ Disetujui | ✔️ Lulus (13/13 test pass, Tour sukses) |
 | 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ✔️ Disetujui | ✔️ Lulus (6/7 skenario Pass, 1 belum dieksekusi runtime, risiko rendah) |
-| 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ✅ Draft siap dijalankan | ⏳ Menunggu dev/business user menjalankan T-01..T-03 dengan tangan sendiri + sign-off |
+| 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ✔️ Disetujui | ⚠️ Lulus dengan penyimpangan — sign-off berbasis test AI, bukan eksekusi manual (lihat catatan transparansi di dokumen) |
 
 Legenda status: ⬜ Belum mulai · 🔄 Sedang dikerjakan · ✅ Draft/selesai ditulis · ✔️ Disetujui/lulus gate.
 
