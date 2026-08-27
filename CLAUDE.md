@@ -1,16 +1,22 @@
 # CLAUDE.md — purchase_product_optional migration (18.0 → 19.0)
 
 > Diinstansiasi dari `migration-tool/templates/CLAUDE_TEMPLATE.md` pada 2026-08-26.
-> File ini ditaruh di dalam `purchase_product_optional/` (bukan repo root — repo ini historically
-> menaruh `CLAUDE.md`+`doc-dev/` bersebelahan dengan kode modul di subfolder yang sama, pola yang sama
-> dipakai `doc-dev/backfill/` dan `doc-dev/migration_17.0_18.0/` sebelumnya; BUKAN pola `advanced_sales_analysis`
-> yang naruh di repo root — dipertahankan konsisten dengan riwayat repo ini, bukan kesalahan).
+> **File ini ditaruh di ROOT `target-codebase`** (folder ini), sesuai template resmi — supaya otomatis
+> dibaca Claude Code sebagai instruksi utama begitu sesi dibuka di folder ini. **Koreksi struktur
+> (2026-08-26, sesi yang sama):** sebelumnya file ini (dan `doc-dev/`) sempat ditaruh di dalam
+> `purchase_product_optional/` mengikuti pola lama repo ini (`doc-dev/backfill/`,
+> `doc-dev/migration_17.0_18.0/`) — TERBUKTI TIDAK ter-auto-load (dikonfirmasi: instruksi "kenalkan
+> diri sebagai migration copilot begitu sesi dibuka" di bawah tidak pernah terpicu di sesi awal migrasi
+> ini). Dipindah ke root via `git mv` supaya auto-load benar-benar jalan, konsisten pola
+> `advanced_sales_analysis` (18→19) yang sudah tervalidasi. Kode modul sekarang di subfolder
+> `purchase_product_optional/`, TERPISAH dari `CLAUDE.md`/`doc-dev/` di root — bukan "di folder ini"
+> lagi seperti sebelumnya.
 > Semua path `doc/...` yang disebut di file ini relatif terhadap `doc-dev/migration_18.0_19.0/doc/` —
 > bukan relatif ke root `target-codebase`.
 > **Catatan migrasi:** repo ini sebelumnya sudah dipakai untuk project **doc-dev-backfill**
 > (`doc-dev/backfill/`, dari 17.0) dan migrasi **17.0 → 18.0** (`doc-dev/migration_17.0_18.0/`, branch
 > `migration/18.0`, DINYATAKAN SELESAI). Kode modul aktual (18.0, hasil migrasi sebelumnya) ada
-> langsung di folder ini. Dokumen lama itu TETAP jadi referensi historis (basis awal
+> di subfolder `purchase_product_optional/`. Dokumen lama itu TETAP jadi referensi historis (basis awal
 > `01b_BASELINE_SPEC.md` di bawah, cross-check ulang ke kode 18.0 yang benar-benar berjalan, bukan
 > disalin mentah). `.claude/settings.json` dan `.gitignore` warisan migrasi 17→18 (paths lama) sudah
 > diganti dengan path project ini (dikonfirmasi dev, 2026-08-26).
@@ -21,7 +27,7 @@
 
 Kamu adalah migration copilot untuk project migrasi Odoo custom module berikut:
 
-- **Modul:** purchase_product_optional (kode langsung di folder ini, bukan sub-subfolder lain)
+- **Modul:** purchase_product_optional (kode di subfolder `purchase_product_optional/` — CLAUDE.md ini dan `doc-dev/` ada di ROOT repo, sejajar dengan subfolder itu, bukan di dalamnya)
 - **Versi:** 18.0 → 19.0
 - **Sifat migrasi:** port kode saja (tanpa data produksi — instalasi baru di versi target). Dikonfirmasi dev, 2026-08-26.
 - **Source masih aktif dikembangkan selama migrasi?** Tidak — **dikonfirmasi eksplisit dev, 2026-08-26**
@@ -114,7 +120,7 @@ Detail lengkap tiap step: `migration-tool/ai-doc/OVERVIEW.md`.
 | 3 | Migration spec (teknis) | `03_spec/03_MIGRATION_SPEC.md` | Tidak |
 | 4 | Spec completeness review | `04_completeness/04_SPEC_COMPLETENESS_REVIEW.md` | **Ya** — spec harus cover 100% source module |
 | 5 | Acceptance criteria & test plan | `05_acceptance/05a_MIGRATION_ACCEPTANCE_CRITERIA.md` + `05_acceptance/05b_TEST_PLAN_MIGRATION.md` | Tidak |
-| 6 | Code migration | kode di `target-codebase` (folder ini) + `06_implementation/06c_IMPLEMENTATION_LOG.md` | Tidak (disiplin per-fase) |
+| 6 | Code migration | kode di `target-codebase` (subfolder `purchase_product_optional/`) + `06_implementation/06c_IMPLEMENTATION_LOG.md` | Tidak (disiplin per-fase) |
 | 7 | Data migration scripts | — **N/A, port kode saja** | — |
 | 8 | Code review | `08_review/08_CODE_REVIEW.md` | **Ya** |
 | 9 | Dev testing | `09_devtest/09_DEV_TESTING.md` | **Ya** |
@@ -242,7 +248,7 @@ Legenda status: ⬜ Belum mulai · 🔄 Sedang dikerjakan · ✅ Draft/selesai d
 
 | Folder | Path | Peran | Read-only? |
 |---|---|---|---|
-| `target-codebase` (folder UTAMA) | `D:\Kuncoro\doodex\repo\purchase-product-optional-migration-19` (branch `migration/19.0_target`) | CLAUDE.md + doc-dev/ di `purchase_product_optional/`, tempat kode migrasi ditulis | Tidak |
+| `target-codebase` (folder UTAMA) | `D:\Kuncoro\doodex\repo\purchase-product-optional-migration-19` (branch `migration/19.0_target`) | CLAUDE.md + `doc-dev/` di ROOT; kode modul & migrasi ditulis di subfolder `purchase_product_optional/` | Tidak |
 | `source-codebase` | `D:\Kuncoro\doodex\repo\purchase-product-optional-migration-19-source` (branch `migration/18.0`) | Kode modul 18.0 (hasil migrasi 17→18 yang sudah selesai), referensi | Ya |
 | `migration-tool` | `D:\Kuncoro\doodex\repo\migration-tool-project\migration-tool` | Template + `ai-doc/OVERVIEW.md`; tulis ke `migration-records/purchase_product_optional_18.0_19.0/` | Tulis di `migration-records/` saja |
 | `native-source` (Community 18.0) | `D:\Kuncoro\doodex\repo\odoo18` | Cross-check API core 18.0 | Ya |
