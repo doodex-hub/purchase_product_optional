@@ -54,7 +54,7 @@ The display price is based on matches vendor we choose in purchase order and the
 Once installed, this feature allows you to display optional products when making a purchase order. Using an intuitive interface, you can easily add and remove optional products that have been configured in the product master.
 
 ## Compatibility
-Odoo version: 17.0
+Odoo version: 19.0
 
 ## License
 This module is licensed under [LGPLv3 licensed](./LICENSE)
