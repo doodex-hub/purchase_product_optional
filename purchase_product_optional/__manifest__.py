@@ -27,5 +27,8 @@ The main purpose is to enables the "optional products" feature on purchase order
     },
     'auto_install': True,
     'license': 'LGPL-3',
-    'images': ['static/description/banner.png'],
+    'images': [
+       'static/description/banner.gif',
+       'static/description/icon.png',
+    ],
 }
