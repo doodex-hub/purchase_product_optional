@@ -8,7 +8,10 @@
     'author': 'Doodex',
     "company": "Doodex",
     "website": "https://www.doodex.net/",
-    'images': ['static/description/banner.png'],
+    'images': [
+       'static/description/banner.gif',
+       'static/description/icon.png',
+    ],
 
     'description': """
 Technical module:
