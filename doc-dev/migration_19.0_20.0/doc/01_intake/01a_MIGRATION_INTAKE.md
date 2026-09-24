@@ -55,19 +55,20 @@ dan `FINDINGS.md` untuk direview retroaktif.
 ## Ringkasan untuk Review — Perlu Konfirmasi User
 
 1. **Sifat migrasi = port kode saja** (instalasi baru di 20.0, tanpa data produksi) — diwarisi dari
-   17→18 dan 18→19. Step 7 N/A. *Asumsi, belum dikonfirmasi ulang di sesi ini.*
+   17→18 dan 18→19. Step 7 N/A. ✅ Dikonfirmasi dev 2026-09-24.
 2. **Source beku** — `migration/19.0` adalah hasil akhir migrasi 18→19 yang sudah ditutup; tidak ada
-   commit baru selama migrasi ini (`SYNC_POLICY.md` tidak dibuat). *Asumsi.*
+   commit baru selama migrasi ini (`SYNC_POLICY.md` tidak dibuat). ✅ Dikonfirmasi dev 2026-09-24.
 3. **5 commit pasca-migrasi di branch rilis `19.0`/`staging/19.0` TIDAK di-port** (aset store:
    `banner.gif`, folder `assets`, hapus `img/`, `index.html`, fix key `images`, plus commit "cleaning"
    yang juga MENGHAPUS `tests/`). Alasan: source of truth migrasi ini adalah `migration/19.0`, dan
    commit "cleaning" bertentangan dengan kebutuhan test Step 6/9. Packaging rilis store tetap
-   keputusan dev saat merge ke branch rilis 20.0. Dicatat `FINDINGS.md` MF-01.
+   keputusan dev saat merge ke branch rilis 20.0. Dicatat `FINDINGS.md` MF-01. ✅ Disetujui dev 2026-09-24.
 4. **Semua bug/quirk 19.0 dipertahankan** (BSL-005 override `onchange_partner_id`, BSL-006 currency
    no-op, BSL-009 `product_add_mode`, BSL-010 multi-company, BSL-013/018 config param global, BSL-017,
    CAND-08 dua dialog) — konsisten keputusan dev 18→19.
-5. **Tidak ada dependency Enterprise/OCA** — scan bersih; Enterprise 20 tetap di-connect sebagai
-   referensi (sesuai CLAUDE.md). *Asumsi diwarisi.*
+5. **Dependency modul: Community saja, tidak ada OCA** — TAPI dev menyatakan (2026-09-24) instance
+   produksi **bisa jalan Enterprise**. Cek statis `enterprise20`: tidak ada modul yang menyentuh area
+   modul ini; verifikasi runtime dengan addons Enterprise dijadwalkan Step 10 (`FINDINGS.md` MF-05).
 6. **Sudah terlihat dari riset awal: migrasi ini BUKAN port trivial** — Odoo 20.0 memakai Owl 3
    (`3.0.0-alpha.49`) + compat layer, `ir.config_parameter.get_param/set_param` dihapus, xpath list
    baris PO berubah (`<column>`), `product.template._get_attribute_exclusions`/

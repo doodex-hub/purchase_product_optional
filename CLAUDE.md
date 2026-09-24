@@ -122,7 +122,7 @@ Cross-cutting, LATEN: `HOTFIX_REVIEW.md` + `HOTFIX_LOG.md` di root `doc/` — di
 
 Rencana Step 10 (dari `05b` + `FINDINGS.md` MF-04): Playwright MCP headless ke stack `docker-env/` (port 8201, `--http-interface=0.0.0.0`, tanpa `--stop-after-init`, DB `_qa` terpisah); skenario: harga vendor tampil benar (AC-03-01), eksklusi visual (AC-05-02), template configurable → dua dialog "hanya satu dialog disentuh" (CAND-08), edit ulang (AC-04-01/T-03) — idealnya Cross-Version-Compare vs 19.0 (`git worktree add` `migration/19.0` + image 19.0 `purchase_product_optional_18_19_target-odoo`).
 
-Keputusan default yang diambil tanpa gate interaktif (review retroaktif user): MF-01 aset store branch rilis tidak di-port; MF-03 parent exclusions hilang (platform 20.0), kontrak `parent_exclusions={}`; asumsi port-kode-saja + source beku (01a Ringkasan).
+Keputusan dev 2026-09-24 (sudah dicatat `FINDINGS.md` + `01a`): MF-01 aset store tidak di-port (diterapkan saat branch rilis 20.0); MF-03 parent exclusions tidak dipakai produksi → hilang diterima; port kode saja + source beku dikonfirmasi; **instance bisa jalan Enterprise** (MF-05) → Step 10 wajib diawali G1 + Tour ulang dengan `D:/Kuncoro/doodex/repo/enterprise20` di addons-path (install `account_budget_purchase`, `purchase_quality_control` — satu-satunya modul Enterprise yang meng-inherit form PO selain l10n/commission).
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja, supaya sesi berikutnya tahu persis harus lanjut dari mana tanpa tanya ulang ke user.
 

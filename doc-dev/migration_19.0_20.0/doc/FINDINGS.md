@@ -6,7 +6,7 @@
 
 **Modul:** purchase_product_optional
 **Migrasi:** 19.0 → 20.0
-**Terakhir update:** 2026-09-24
+**Terakhir update:** 2026-09-24 (keputusan dev MF-01, MF-03)
 
 ---
 
@@ -14,10 +14,11 @@
 
 | ID | Judul | Step | Tag | Prioritas | Status |
 |---|---|---|---|---|---|
-| MF-01 | 5 commit aset store di branch rilis `19.0` tidak di-port | 1 | `[PERLU-KEPUTUSAN]` | Rendah | Default diambil (tidak di-port), menunggu konfirmasi |
+| MF-01 | 5 commit aset store di branch rilis `19.0` tidak di-port | 1 | `[PERLU-KEPUTUSAN]` | Rendah | ✅ CONFIRMED 2026-09-24 — tidak di-port (keputusan dev) |
 | MF-02 | Bundel quirk 19.0 yang dipertahankan (BSL-005/006/009/010/013/017/018/021/022/025/027/028, CAND-08) | 1 | `[DIWARISI-SOURCE]` | Info | Dipertahankan |
-| MF-03 | Parent exclusions (eksklusi atribut lintas-produk) hilang di 20.0 | 1-2 | `[GAP-MIGRASI]` | Sedang | Default diambil (kontrak `parent_exclusions={}`), menunggu konfirmasi |
+| MF-03 | Parent exclusions (eksklusi atribut lintas-produk) hilang di 20.0 | 1-2 | `[GAP-MIGRASI]` | Sedang | ✅ CONFIRMED 2026-09-24 — fitur tidak dipakai produksi, dibiarkan hilang |
 | MF-04 | Template configurable & edit ulang (T-03/CAND-08) belum punya evidence eksekusi | 6 | `[DIWARISI-SOURCE]` | Sedang | Dijadwalkan Step 10 (menunggu slot) |
+| MF-05 | Instance produksi bisa jalan Enterprise — Step 6/9 hanya diuji Community | 1 (koreksi dev) | `[GAP-MIGRASI]` | Rendah | Statis: aman; bukti runtime Enterprise dijadwalkan Step 10 |
 
 ---
 
@@ -36,7 +37,7 @@ butuh test Step 6/9).
 **Rekomendasi (default yang diambil):** TIDAK di-port di migrasi ini (source of truth = `migration/19.0`,
 scope = kode fungsional). Saat membuat branch rilis `20.0`, dev menerapkan ulang packaging (cherry-pick
 commit aset + bump key `images`) sesuai praktik rilis 19.0.
-**Keputusan pemilik modul:** *(kosong)*
+**Keputusan pemilik modul:** ✅ 2026-09-24 — setuju default: tidak di-port di migrasi ini, diterapkan ulang saat membuat branch rilis `20.0`.
 
 ### MF-02 — Quirk 19.0 yang dipertahankan identik
 **Ditemukan di:** Step 1 (2026-09-24)
@@ -68,7 +69,7 @@ satu produk (`exclusions`) dan kombinasi arsip tetap jalan.
 `parent_combination` dari dua panggilan native; controller tetap mengembalikan key
 `parent_exclusions` berisi `{}` supaya kontrak JS (`_checkExclusions`) tidak berubah. Tidak
 mengimplementasikan ulang fitur parent exclusion di modul (itu menambah fitur/model data baru).
-**Keputusan pemilik modul:** *(kosong — konfirmasi apakah fitur ini pernah dipakai produksi)*
+**Keputusan pemilik modul:** ✅ 2026-09-24 — fitur parent exclusion TIDAK dipakai di produksi; hilangnya fitur diterima, tidak diimplementasi ulang.
 
 ### MF-04 — Jalur template configurable / edit ulang belum pernah dieksekusi
 **Ditemukan di:** Step 6 (2026-09-24)
@@ -85,6 +86,22 @@ membuka keduanya. Tour Step 9 hanya mencakup produk non-configurable + optional 
 **Rekomendasi:** Step 10 — skenario "hanya satu dialog disentuh" (USAGE_GUIDE) + edit ulang, idealnya
 Cross-Version-Compare 19.0 vs 20.0 live.
 **Keputusan pemilik modul:** *(kosong)*
+
+### MF-05 — Kemungkinan instance produksi memakai Enterprise
+**Ditemukan di:** Step 1, koreksi dev 2026-09-24 ("bisa ada Enterprise") atas asumsi 01a Ringkasan poin 5.
+**Tag:** `[GAP-MIGRASI]`
+**Ref:** `01a` §0/§2, `02_DIFF_ANALYSIS.md` §0b, `09_DEV_TESTING.md` (environment Community-only).
+**Deskripsi:** modul sendiri tetap Community-only (`depends` tidak berubah), tapi bisa di-install
+berdampingan dengan modul Enterprise 20.0. Cek statis `enterprise20` (2026-09-24): hanya 4 modul yang
+meng-inherit `purchase.purchase_order_form` — `account_budget_purchase` (atribut `<list>` order_line +
+button box), `l10n_ke_edi_oscu_stock` (button box), `partner_commission` (button box + grup
+`purchase_info`), `purchase_quality_control` (button box). Tidak ada yang menyentuh `product_id`,
+`product_template_id`, `<column name="product_and_description">`, atau `currency_id` pertama; tidak ada
+JS Enterprise yang mem-patch `PurchaseOrderLineProductField`/`pol_product_many2one`.
+**Dampak:** risiko rendah secara statis; belum ada bukti install/Tour dengan addons Enterprise aktif.
+**Rekomendasi:** Step 10 — stack QA dengan `enterprise20` di addons-path (+ install
+`account_budget_purchase`, `purchase_quality_control`) untuk G1 + Tour ulang sebelum skenario visual.
+**Keputusan pemilik modul:** dev menyatakan instance bisa jalan Enterprise (2026-09-24); verifikasi runtime di Step 10.
 
 ---
 
