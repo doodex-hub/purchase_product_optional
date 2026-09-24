@@ -11,20 +11,28 @@
 # Sanity check: fails (exit 2) when no "Starting <Class>.<method>" line appears in the log.
 #
 # Usage (from docker-env/): ./run-test.sh <db_name> [extra_tags] [extra_modules]
+#   extra_modules (comma list) are installed alongside and switch the addons path to include
+#   Enterprise 20.0 (/opt/enterprise), e.g. ./run-test.sh ppo_ent "" account_budget_purchase
 set -euo pipefail
 
 DB_NAME="${1:-purchase_product_optional_20_test}"
 EXTRA_TAGS="${2:-}"
+EXTRA_MODULES="${3:-}"
 MODULE_NAME="purchase_product_optional"
 TAGS="/${MODULE_NAME}${EXTRA_TAGS}"
 LOGFILE="./logs/run-test-$(date +%Y%m%d-%H%M%S).log"
 ADDONS_PATH="/opt/odoo/addons,/opt/odoo/odoo/addons,/mnt/extra-addons"
+INSTALL="${MODULE_NAME}"
+if [ -n "${EXTRA_MODULES}" ]; then
+  ADDONS_PATH="/opt/odoo/addons,/opt/odoo/odoo/addons,/opt/enterprise,/mnt/extra-addons"
+  INSTALL="${MODULE_NAME},${EXTRA_MODULES}"
+fi
 
 echo "=== db=${DB_NAME} tags=${TAGS} log=${LOGFILE} ==="
 docker compose down -v 2>&1 | tail -5
 
 MSYS_NO_PATHCONV=1 docker compose run --rm odoo \
-  -d "${DB_NAME}" -i "${MODULE_NAME}" \
+  -d "${DB_NAME}" -i "${INSTALL}" \
   --addons-path="${ADDONS_PATH}" \
   --test-enable --test-tags "${TAGS}" --stop-after-init 2>&1 | tee "${LOGFILE}"
 

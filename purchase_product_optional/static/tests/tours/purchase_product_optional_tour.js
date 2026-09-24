@@ -4,18 +4,15 @@
 // Companion Python test: tests/test_purchase_product_optional_tour.py
 
 import { registry } from "@web/core/registry";
+import { stepUtils } from "@web_tour/tour_utils";
 
 // 20.0: the tour registry is validated with t.strictObject({steps, url}) — no `test` key anymore.
 registry.category("web_tour.tours").add("purchase_product_optional_configurator_tour", {
     url: "/web",
     steps: () => [
-        {
-            // Same pattern as odoo/addons/purchase/static/src/js/tours/purchase.js
-            // (stepUtils.showAppsMenuItem()) — the .o_app tiles only render once this is open.
-            trigger: ".o_navbar_apps_menu button",
-            content: "Open the apps menu",
-            run: "click",
-        },
+        // Opens the Community apps dropdown; skipped automatically when web_enterprise is
+        // installed (its home menu already shows the .o_app tiles at /web).
+        { ...stepUtils.showAppsMenuItem(), content: "Open the apps menu" },
         {
             trigger: '.o_app[data-menu-xmlid="purchase.menu_purchase_root"]',
             content: "Open the Purchase app",

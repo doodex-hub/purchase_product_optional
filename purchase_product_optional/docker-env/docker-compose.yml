@@ -32,6 +32,8 @@ services:
       - ./logs:/var/log/odoo
       # native-target Community 20.0, read-only.
       - D:/Kuncoro/doodex/repo/odoo20:/opt/odoo:ro
+      # native-target Enterprise 20.0 (addons-only), read-only — production may run Enterprise (MF-05).
+      - D:/Kuncoro/doodex/repo/enterprise20:/opt/enterprise:ro
     # G1 / Step 9 runs go through ./run-test.sh (fresh DB every run). This default command is the
     # plain G1 install test.
     command: >
