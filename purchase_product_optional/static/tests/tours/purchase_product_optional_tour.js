@@ -63,6 +63,16 @@ registry.category("web_tour.tours").add("purchase_product_optional_configurator_
             content: "BR-01: the optional product is listed in the dialog",
         },
         {
+            // Step 10 (RMV-02): 20.0 backend no longer styles Font Awesome `.fa` classes, icons must
+            // use `<i class="oi" data-icon="..."/>` (Material Symbols) or they render empty.
+            trigger: 'button[aria-label="Add one"] i.oi[data-icon="add"]',
+            content: "Quantity +/- buttons use Odoo 20 icons",
+        },
+        {
+            trigger: 'tr:has(td:contains("BACKFILL QA Optional Product")) button:contains("Add") i.oi[data-icon="add"]',
+            content: "Optional product Add button uses the Odoo 20 icon",
+        },
+        {
             trigger: 'tr:has(td:contains("BACKFILL QA Optional Product")) button:contains("Add")',
             content: "Add the optional product",
             run: "click",

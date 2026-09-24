@@ -90,3 +90,19 @@ mengulang di HEAD ter-commit dengan hasil identik.
 
 - [x] ✅ Semua AC prioritas Unit/Integration/Tour pass — **siap Step 10** (Step 10 TIDAK dimulai — menunggu
   slot dari user, sesuai instruksi).
+
+## Rerun Step 10 (loop-back, 2026-09-24)
+
+Dipicu 2 perubahan dari Step 10: (1) tour memakai `stepUtils.showAppsMenuItem()` agar jalan dengan
+`web_enterprise` (MF-05), (2) fix ikon RMV-02 + 2 step asersi ikon di tour (total 17 step).
+
+| Run | Modul ter-install | Hasil | Log |
+|---|---|---|---|
+| Community | `purchase_product_optional` | `0 failed, 0 error(s) of 21 tests`, Tour `[17/17]` `tour succeeded` | `docker-env/logs/step10-comm2.out` |
+| Enterprise 20 | + `account_budget_purchase`, `purchase_quality_control` (124 modul, termasuk `web_enterprise`) | `0 failed, 0 error(s) of 21 tests`, Tour `tour succeeded` | `docker-env/logs/step10-ent3.out` |
+
+Perintah Enterprise:
+
+```bash
+bash run-test.sh ppo_ent "" account_budget_purchase,purchase_quality_control
+```

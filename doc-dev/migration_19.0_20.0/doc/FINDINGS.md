@@ -17,8 +17,13 @@
 | MF-01 | 5 commit aset store di branch rilis `19.0` tidak di-port | 1 | `[PERLU-KEPUTUSAN]` | Rendah | ✅ CONFIRMED 2026-09-24 — tidak di-port (keputusan dev) |
 | MF-02 | Bundel quirk 19.0 yang dipertahankan (BSL-005/006/009/010/013/017/018/021/022/025/027/028, CAND-08) | 1 | `[DIWARISI-SOURCE]` | Info | Dipertahankan |
 | MF-03 | Parent exclusions (eksklusi atribut lintas-produk) hilang di 20.0 | 1-2 | `[GAP-MIGRASI]` | Sedang | ✅ CONFIRMED 2026-09-24 — fitur tidak dipakai produksi, dibiarkan hilang |
-| MF-04 | Template configurable & edit ulang (T-03/CAND-08) belum punya evidence eksekusi | 6 | `[DIWARISI-SOURCE]` | Sedang | Dijadwalkan Step 10 (menunggu slot) |
-| MF-05 | Instance produksi bisa jalan Enterprise — Step 6/9 hanya diuji Community | 1 (koreksi dev) | `[GAP-MIGRASI]` | Rendah | Statis: aman; bukti runtime Enterprise dijadwalkan Step 10 |
+| MF-04 | Template configurable & edit ulang (T-03/CAND-08) belum punya evidence eksekusi | 6 | `[DIWARISI-SOURCE]` | Sedang | ✅ RESOLVED 2026-09-24 — Step 10 S-06/S-07 live 19 vs 20 identik (RMV-03) |
+| MF-05 | Instance produksi bisa jalan Enterprise — Step 6/9 hanya diuji Community | 1 (koreksi dev) | `[GAP-MIGRASI]` | Rendah | ✅ RESOLVED 2026-09-24 — 21/21 + Tour pass dengan Enterprise 20; QA Step 10 di stack Enterprise |
+| RMV-01 | `console.error` "Component is destroyed" di jalur template configurable (20 saja) | 10 | NATIVE-DIFF | Info | Dicatat |
+| RMV-02 | Ikon Font Awesome tidak ter-render di backend 20 | 10 | REGRESI | Sedang | ✅ FIXED 2026-09-24 |
+| RMV-03 | Grid Confirm + Cancel configurator → Save gagal `virtual_NN` | 10 | GAP-LAMA | Sedang | Dipertahankan (identik 19.0) |
+| RMV-04 | Label varian/`name` baris PO & judul grid berubah | 10 | NATIVE-DIFF | Info | Dicatat |
+| RMV-05 | Harga optional multi-varian $0; `no_variant` tidak tersimpan di baris | 10 | GAP-LAMA | Rendah | Dipertahankan (identik 19.0) |
 
 ---
 
@@ -102,6 +107,45 @@ JS Enterprise yang mem-patch `PurchaseOrderLineProductField`/`pol_product_many2o
 **Rekomendasi:** Step 10 — stack QA dengan `enterprise20` di addons-path (+ install
 `account_budget_purchase`, `purchase_quality_control`) untuk G1 + Tour ulang sebelum skenario visual.
 **Keputusan pemilik modul:** dev menyatakan instance bisa jalan Enterprise (2026-09-24); verifikasi runtime di Step 10.
+**Resolusi (Step 10, 2026-09-24):** `run-test.sh ... account_budget_purchase,purchase_quality_control`
+(124 modul termasuk `web_enterprise`): 21/21 pass + Tour sukses setelah tour memakai
+`stepUtils.showAppsMenuItem()` (home menu Enterprise). QA live dijalankan di stack Enterprise 19 & 20.
+
+### RMV-01 — "Component is destroyed" di console (jalur template configurable)
+**Ditemukan di:** Step 10 Cross-Version-Compare. **Klasifikasi:** NATIVE-DIFF. **Ref:** S-06, MF-04.
+**Deskripsi:** memilih template configurable membuat dialog configurator di-setup 2× dan instance
+pertama di-destroy saat `onWillStart` — terukur SAMA di 19 & 20 (instrumentasi `setup`/`onWillDestroy`).
+20.0 `useService` (`hooks.js` 20: `scope.run(...)`, `handleCallWhenDestroyed` → reject) me-reject RPC
+instance yang di-destroy; `catch` di `get_supplierinfo_id`/`get_product_update_price` mencetak
+`console.error("Error fetching data: ...")`. 19.0 menggantungkan promise itu diam-diam.
+**Dampak:** noise console; instance kedua (yang tampil) normal. Tidak difix (menyembunyikan log =
+mengubah perilaku modul).
+
+### RMV-02 — Ikon Font Awesome kosong di 20.0 (REGRESI, difix)
+**Ditemukan di:** Step 10 visual pass. **Lokasi:** `static/src/js/product/product.xml` (3 ikon).
+**Deskripsi:** backend 20.0 tidak memuat CSS Font Awesome (`.fa::before` → `content: none`); ikon native
+20 memakai `<i class="oi" data-icon="add|remove"/>` (Material Symbols). Tombol qty −/+ tampil kosong dan
+tombol optional "+ Add" tanpa ikon.
+**Fix:** `fa fa-minus` → `oi` `data-icon="remove"`, `fa fa-plus` → `oi` `data-icon="add"` (pola native
+`sale.QuantityButtons` 20). Diverifikasi live (Material Symbols, lebar 14px) + asersi Tour baru.
+**Pelajaran:** tidak tertangkap Step 2/8/9 (bukan error, bukan API) — hanya visual pass.
+
+### RMV-03 — Save gagal setelah grid Confirm + Cancel configurator (GAP-LAMA)
+**Ref:** CAND-08 (17_18), F-06 backfill, MF-04, S-06(a).
+**Deskripsi:** native grid menghapus baris baru; Cancel configurator (non-edit) memanggil
+`order_line.delete(record)` lagi pada record yang sudah dihapus → Save mengirim `virtual_NN` → SQL error
+"Oops!". Identik 19.0 (`virtual_26`) & 20.0 (`virtual_34`). Tutup lewat ✕ atau Confirm configurator: aman.
+**Keputusan:** dipertahankan (bug-for-bug, default CLAUDE.md) — kandidat perbaikan pasca-migrasi.
+
+### RMV-04 — Perbedaan tampilan native 20 (NATIVE-DIFF)
+Label varian "(Red)" di bawah produk hilang (widget native `AccountProductField` tanpa `get label()`);
+`purchase.order.line.name` = deskripsi tambahan saja (nama produk lewat `label`); judul grid matrix = nama
+produk; tombol secondary bergaya outline. Arch gabungan membuktikan modul tidak menyentuh `name`/`label`.
+
+### RMV-05 — Quirk data identik 19/20 (GAP-LAMA)
+Harga optional template multi-varian $0.00 (`standard_price` template = 0 bila >1 varian, BSL-002
+fallback); nilai atribut `no_variant` yang dipilih tidak tersimpan di baris (`product_no_variant_attribute_value_ids`
+kosong setelah save) — terukur sama di 19 & 20.
 
 ---
 

@@ -118,9 +118,9 @@ Cross-cutting, LATEN: `HOTFIX_REVIEW.md` + `HOTFIX_LOG.md` di root `doc/` — di
 
 ## Status saat ini
 
-**Step 1–9 selesai (2026-09-24), Step 9 lulus gate. STOP sebelum Step 10 — menunggu slot dari user** (instruksi eksplisit: Step 10 dibatasi maks 2 repo kecil bersamaan atau 1 repo besar sendirian, kontensi browser/Docker MF-46). Sesi berikutnya: mulai Step 10 HANYA setelah user bilang giliran repo ini.
+**Step 1–10 selesai (2026-09-24), Step 10 lulus gate.** Berikutnya: Step 11 (UAT checklist untuk business user) — belum dimulai, menunggu aba-aba user.
 
-Rencana Step 10 (dari `05b` + `FINDINGS.md` MF-04): Playwright MCP headless ke stack `docker-env/` (port 8201, `--http-interface=0.0.0.0`, tanpa `--stop-after-init`, DB `_qa` terpisah); skenario: harga vendor tampil benar (AC-03-01), eksklusi visual (AC-05-02), template configurable → dua dialog "hanya satu dialog disentuh" (CAND-08), edit ulang (AC-04-01/T-03) — idealnya Cross-Version-Compare vs 19.0 (`git worktree add` `migration/19.0` + image 19.0 `purchase_product_optional_18_19_target-odoo`).
+Step 10 (ringkas): Cross-Version-Compare live 19.0 (`localhost:8202`, worktree `../purchase-product-optional-migration-20-wt19` @ `migration/19.0` — masih ada di disk, boleh dihapus `git worktree remove`) vs 20.0 (`127.0.0.1:8201`), keduanya + Enterprise, Playwright MCP, 9 skenario (`10_qa/`). 1 REGRESI ditemukan & difix: ikon Font Awesome tidak ter-render di 20 (RMV-02 → `oi data-icon`, asersi di Tour). Sisanya NATIVE-DIFF (RMV-01/04) atau GAP-LAMA identik 19.0 (RMV-03 Save gagal setelah grid+Cancel configurator, RMV-05). Rerun Step 9: Community & Enterprise 21/21, Tour 17/17. Stack QA sudah dimatikan (`down -v`).
 
 Keputusan dev 2026-09-24 (sudah dicatat `FINDINGS.md` + `01a`): MF-01 aset store tidak di-port (diterapkan saat branch rilis 20.0); MF-03 parent exclusions tidak dipakai produksi → hilang diterima; port kode saja + source beku dikonfirmasi; **instance bisa jalan Enterprise** (MF-05) → Step 10 wajib diawali G1 + Tour ulang dengan `D:/Kuncoro/doodex/repo/enterprise20` di addons-path (install `account_budget_purchase`, `purchase_quality_control` — satu-satunya modul Enterprise yang meng-inherit form PO selain l10n/commission).
 
@@ -141,7 +141,7 @@ Ringkasan cepat — detail lengkap tiap step ada di field `Status:` di header ma
 | 7 | Data Migration Scripts | `07_DATA_MIGRATION_PLAN.md` + script — cuma kalau upgrade instance | — N/A (port kode saja, asumsi 01a) | — |
 | 8 | Code Review | `08_CODE_REVIEW.md` | ✅ Selesai 2026-09-24 (skill `odoo-review`, 0🔴 0🟡 6🔵) | ✔️ Lulus |
 | 9 | Dev Testing | `09_DEV_TESTING.md` | ✅ Selesai 2026-09-24 (21/21, Tour 15/15, 0 stub) | ✔️ Lulus |
-| 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ⏸ Siap — menunggu slot dari user (STOP wajib) | — |
+| 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ✅ Selesai 2026-09-24 — Cross-Version-Compare 19 vs 20 (+Enterprise), 9 skenario, RMV-01..05 (1 regresi ikon difix) | ✔️ Lulus |
 | 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ⬜ Belum mulai | — |
 
 Legenda status: ⬜ Belum mulai · 🔄 Sedang dikerjakan · ✅ Draft/selesai ditulis · ✔️ Disetujui/lulus gate.
