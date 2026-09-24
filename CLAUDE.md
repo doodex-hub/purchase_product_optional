@@ -133,7 +133,7 @@ Ringkasan cepat — detail lengkap tiap step ada di field `Status:` di header ma
 
 | # | Step | Dokumen | Status | Gate |
 |---|---|---|---|---|
-| 1 | Intake & Scope | `01a_MIGRATION_INTAKE.md`, `01b_BASELINE_SPEC.md` | ⬜ Belum mulai | ⏳ Menunggu review user |
+| 1 | Intake & Scope | `01a_MIGRATION_INTAKE.md`, `01b_BASELINE_SPEC.md` | ✅ Draft selesai 2026-09-24 | ✔️ Dilanjutkan atas instruksi user "jalan terus sampai Step 9" — asumsi di Ringkasan 01a + `FINDINGS.md` MF-01..03 untuk review retroaktif |
 | 2 | Diff & Compatibility Analysis | `02_DIFF_ANALYSIS.md` | ⬜ Belum mulai | Tidak ada gate formal |
 | 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ⬜ Belum mulai | — |
 | 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ⬜ Belum mulai | — |
