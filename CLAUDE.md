@@ -140,7 +140,7 @@ Ringkasan cepat — detail lengkap tiap step ada di field `Status:` di header ma
 | 5 | Acceptance Criteria & Test Plan | `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`, `05b_TEST_PLAN_MIGRATION.md` | ✅ Selesai 2026-09-24 (AC-01..09, test baru untuk gap lama) | — |
 | 6 | Code Migration | kode `purchase_product_optional/` + `06c_IMPLEMENTATION_LOG.md` | ✅ Selesai 2026-09-24 — G1 #2 PASS, G2 21/21 + Tour 15/15 | — (disiplin per-fase A1→G2) |
 | 7 | Data Migration Scripts | `07_DATA_MIGRATION_PLAN.md` + script — cuma kalau upgrade instance | — N/A (port kode saja, asumsi 01a) | — |
-| 8 | Code Review | `08_CODE_REVIEW.md` | ⬜ Belum mulai | — |
+| 8 | Code Review | `08_CODE_REVIEW.md` | ✅ Selesai 2026-09-24 (skill `odoo-review`, 0🔴 0🟡 6🔵) | ✔️ Lulus |
 | 9 | Dev Testing | `09_DEV_TESTING.md` | ⬜ Belum mulai | — |
 | 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ⬜ Belum mulai | — |
 | 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ⬜ Belum mulai | — |
