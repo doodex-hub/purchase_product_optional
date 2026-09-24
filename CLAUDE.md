@@ -118,12 +118,11 @@ Cross-cutting, LATEN: `HOTFIX_REVIEW.md` + `HOTFIX_LOG.md` di root `doc/` — di
 
 ## Status saat ini
 
-**Step 0 — Conditioning selesai (2026-09-24).** Branch `migration/20.0` dibuat dari `migration/19.0` (HEAD `4736c36`, "Perbaikan struktur: pindahkan CLAUDE.md + doc-dev/ ke root repo", setelah "Step 11 ditutup" `8e5767d`). `.claude/settings.json` diperbarui (deny list native 19/20, `git show` diizinkan), CLAUDE.md ini ditulis ulang, skeleton `doc-dev/migration_19.0_20.0/doc/` dibuat (folder kosong + `.gitkeep`). **Step 1 Intake belum mulai** — sesi eksekusi berikutnya mulai dari Step 1.
+**Step 1–9 selesai (2026-09-24), Step 9 lulus gate. STOP sebelum Step 10 — menunggu slot dari user** (instruksi eksplisit: Step 10 dibatasi maks 2 repo kecil bersamaan atau 1 repo besar sendirian, kontensi browser/Docker MF-46). Sesi berikutnya: mulai Step 10 HANYA setelah user bilang giliran repo ini.
 
-Open item untuk Step 1 intake (dicatat saat conditioning, belum diputuskan):
-- CLAUDE.md lama menyebut branch hasil migrasi `migration/19.0_target`, tapi nama aktual branch-nya `migration/19.0` (lokal = `origin/migration/19.0`). Semua rujukan di file ini sudah pakai nama aktual.
-- Gap yang diterima sadar di sign-off 18→19 dan terbawa ke baseline 19.0: T-03 (edit ulang konfigurasi baris) **tanpa evidence eksekusi apapun**; S-06 (fallback grid configurator, CAND-07 kemungkinan unreachable) belum tervalidasi runtime; AC-02-02, AC-04-01, AC-05-02 tanpa test existing; gap visual/UI tidak pernah diverifikasi mata manusia.
-- Branch rilis `19.0`/`staging/19.0` berisi 5 commit pasca-migrasi yang TIDAK ada di `migration/19.0` (commit "cleaning" + aset store: `banner.gif`, update folder `assets`, hapus folder `img`, `index.html`, fix key `images` di manifest). Putuskan di intake apakah aset store perlu di-port ke 20.0.
+Rencana Step 10 (dari `05b` + `FINDINGS.md` MF-04): Playwright MCP headless ke stack `docker-env/` (port 8201, `--http-interface=0.0.0.0`, tanpa `--stop-after-init`, DB `_qa` terpisah); skenario: harga vendor tampil benar (AC-03-01), eksklusi visual (AC-05-02), template configurable → dua dialog "hanya satu dialog disentuh" (CAND-08), edit ulang (AC-04-01/T-03) — idealnya Cross-Version-Compare vs 19.0 (`git worktree add` `migration/19.0` + image 19.0 `purchase_product_optional_18_19_target-odoo`).
+
+Keputusan default yang diambil tanpa gate interaktif (review retroaktif user): MF-01 aset store branch rilis tidak di-port; MF-03 parent exclusions hilang (platform 20.0), kontrak `parent_exclusions={}`; asumsi port-kode-saja + source beku (01a Ringkasan).
 
 > AI: update bagian ini sendiri di akhir tiap sesi kerja, supaya sesi berikutnya tahu persis harus lanjut dari mana tanpa tanya ulang ke user.
 
@@ -141,8 +140,8 @@ Ringkasan cepat — detail lengkap tiap step ada di field `Status:` di header ma
 | 6 | Code Migration | kode `purchase_product_optional/` + `06c_IMPLEMENTATION_LOG.md` | ✅ Selesai 2026-09-24 — G1 #2 PASS, G2 21/21 + Tour 15/15 | — (disiplin per-fase A1→G2) |
 | 7 | Data Migration Scripts | `07_DATA_MIGRATION_PLAN.md` + script — cuma kalau upgrade instance | — N/A (port kode saja, asumsi 01a) | — |
 | 8 | Code Review | `08_CODE_REVIEW.md` | ✅ Selesai 2026-09-24 (skill `odoo-review`, 0🔴 0🟡 6🔵) | ✔️ Lulus |
-| 9 | Dev Testing | `09_DEV_TESTING.md` | ⬜ Belum mulai | — |
-| 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ⬜ Belum mulai | — |
+| 9 | Dev Testing | `09_DEV_TESTING.md` | ✅ Selesai 2026-09-24 (21/21, Tour 15/15, 0 stub) | ✔️ Lulus |
+| 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ⏸ Siap — menunggu slot dari user (STOP wajib) | — |
 | 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ⬜ Belum mulai | — |
 
 Legenda status: ⬜ Belum mulai · 🔄 Sedang dikerjakan · ✅ Draft/selesai ditulis · ✔️ Disetujui/lulus gate.
