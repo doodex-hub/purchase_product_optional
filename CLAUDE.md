@@ -135,7 +135,7 @@ Ringkasan cepat — detail lengkap tiap step ada di field `Status:` di header ma
 |---|---|---|---|---|
 | 1 | Intake & Scope | `01a_MIGRATION_INTAKE.md`, `01b_BASELINE_SPEC.md` | ✅ Draft selesai 2026-09-24 | ✔️ Dilanjutkan atas instruksi user "jalan terus sampai Step 9" — asumsi di Ringkasan 01a + `FINDINGS.md` MF-01..03 untuk review retroaktif |
 | 2 | Diff & Compatibility Analysis | `02_DIFF_ANALYSIS.md` | ✅ Selesai 2026-09-24 (DIFF-01..19, 7 breaking pasti: Owl 3 ×3, orm_plugin, get/set_param, parent exclusions, `<column>` xpath) | Tidak ada gate formal |
-| 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ⬜ Belum mulai | — |
+| 3 | Migration Spec (teknis) | `03_MIGRATION_SPEC.md` | ✅ Selesai 2026-09-24 | — |
 | 4 | Spec Completeness Review | `04_SPEC_COMPLETENESS_REVIEW.md` | ⬜ Belum mulai | — |
 | 5 | Acceptance Criteria & Test Plan | `05a_MIGRATION_ACCEPTANCE_CRITERIA.md`, `05b_TEST_PLAN_MIGRATION.md` | ⬜ Belum mulai | — |
 | 6 | Code Migration | kode `purchase_product_optional/` + `06c_IMPLEMENTATION_LOG.md` | ⬜ Belum mulai | — (disiplin per-fase A1→G2) |
