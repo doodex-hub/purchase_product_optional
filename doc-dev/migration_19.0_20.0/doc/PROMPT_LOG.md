@@ -23,8 +23,8 @@ Mengikuti template: **Normal** (menjalankan/mereview konten migrasi), **Tool-fix
 | 8 — Code Review | (idem) | 0 | |
 | 9 — Dev Testing | (idem) | 0 | |
 | 10 — QA Testing | 1 | 0 | "lannjut step 10" — Cross-Version-Compare 19 vs 20 + Enterprise, 1 regresi (ikon) difix |
-| 11 — UAT Sign-off | | | |
-| **Total** | 5 | 0 | kickoff (Step 1-9) + 3 prompt status/keputusan (MF-01/03/05) + kickoff Step 10 |
+| 11 — UAT Sign-off | 1 | 0 | "lanjut step 11, sign-off percaya test ai" |
+| **Total** | 6 | 0 | kickoff (Step 1-9) + 3 prompt status/keputusan (MF-01/03/05) + kickoff Step 10 + kickoff Step 11 |
 
 ## Catatan Definisi
 

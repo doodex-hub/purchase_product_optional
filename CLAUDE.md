@@ -118,7 +118,7 @@ Cross-cutting, LATEN: `HOTFIX_REVIEW.md` + `HOTFIX_LOG.md` di root `doc/` — di
 
 ## Status saat ini
 
-**Step 1–10 selesai (2026-09-24), Step 10 lulus gate.** Berikutnya: Step 11 (UAT checklist untuk business user) — belum dimulai, menunggu aba-aba user.
+**MIGRASI 19.0→20.0 DITUTUP (2026-09-24).** Step 1–11 selesai; Step 11 di-sign-off pemilik project berbasis evidence AI ("sign-off percaya test ai yang sudah dilakukan" — penyimpangan eksplisit, `11_uat/11_UAT_CHECKLIST.md`). Titik-nol hotfix: `doc/MIGRATION_CLOSED.md`. Sesi berikutnya di branch ini: kalau ada commit baru setelah SHA di file itu → jalankan `HOTFIX_REVIEW.md`. Sisa pekerjaan dev (di luar AI): `git push`, rehearsal upgrade kalau produksi di-upgrade, packaging store branch rilis 20.0 (MF-01), smoke/main-flow manual di staging Enterprise (disarankan). Worktree `../purchase-product-optional-migration-20-wt19` bisa dihapus.
 
 Step 10 (ringkas): Cross-Version-Compare live 19.0 (`localhost:8202`, worktree `../purchase-product-optional-migration-20-wt19` @ `migration/19.0` — masih ada di disk, boleh dihapus `git worktree remove`) vs 20.0 (`127.0.0.1:8201`), keduanya + Enterprise, Playwright MCP, 9 skenario (`10_qa/`). 1 REGRESI ditemukan & difix: ikon Font Awesome tidak ter-render di 20 (RMV-02 → `oi data-icon`, asersi di Tour). Sisanya NATIVE-DIFF (RMV-01/04) atau GAP-LAMA identik 19.0 (RMV-03 Save gagal setelah grid+Cancel configurator, RMV-05). Rerun Step 9: Community & Enterprise 21/21, Tour 17/17. Stack QA sudah dimatikan (`down -v`).
 
@@ -142,7 +142,7 @@ Ringkasan cepat — detail lengkap tiap step ada di field `Status:` di header ma
 | 8 | Code Review | `08_CODE_REVIEW.md` | ✅ Selesai 2026-09-24 (skill `odoo-review`, 0🔴 0🟡 6🔵) | ✔️ Lulus |
 | 9 | Dev Testing | `09_DEV_TESTING.md` | ✅ Selesai 2026-09-24 (21/21, Tour 15/15, 0 stub) | ✔️ Lulus |
 | 10 | QA Testing | `10_BUSINESS_FLOW_MIGRATION.md` | ✅ Selesai 2026-09-24 — Cross-Version-Compare 19 vs 20 (+Enterprise), 9 skenario, RMV-01..05 (1 regresi ikon difix) | ✔️ Lulus |
-| 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ⬜ Belum mulai | — |
+| 11 | UAT Sign-off | `11_UAT_CHECKLIST.md` | ✅ Selesai 2026-09-24 — sign-off pemilik project berbasis evidence AI (penyimpangan eksplisit) | ✔️ Ditutup (`MIGRATION_CLOSED.md`) |
 
 Legenda status: ⬜ Belum mulai · 🔄 Sedang dikerjakan · ✅ Draft/selesai ditulis · ✔️ Disetujui/lulus gate.
 
@@ -183,6 +183,7 @@ Temuan baru ditulis ke `migration-tool/migration-records/purchase_product_option
 | Backfill 17.0 | `doc-dev/backfill/` (`spec/01A_FUNCTIONAL_SPEC.md`, `FINDINGS.md` F-01..F-08) | Selesai | Baseline behavior modul asli 17.0 |
 | Migrasi 17.0→18.0 | `doc-dev/migration_17.0_18.0/doc/` (`01_intake/01b_BASELINE_SPEC.md`; tidak ada `FINDINGS.md`) | SELESAI | Branch `migration/18.0`. Migration record: `migration-tool/migration-records/purchase_product_optional_17_18/SUMMARY.md` (CAND-01..11) |
 | Migrasi 18.0→19.0 | `doc-dev/migration_18.0_19.0/doc/` — **baseline behavior:** `01_intake/01b_BASELINE_SPEC.md`; **gap yang sengaja dipertahankan:** tidak ada `FINDINGS.md` — lihat migration record + `11_uat/11_UAT_CHECKLIST.md` | SELESAI 2026-08-26 (UAT di-sign-off berbasis test AI — penyimpangan eksplisit) | Branch `migration/19.0` (di dokumen lama tertulis `migration/19.0_target`). Perubahan kode: manifest bump, `type='json'`→`'jsonrpc'` (4 route), rewrite `purchase_product_field.js` (DIFF-01 many2one tuple→objek, DIFF-02 `_openGridConfigurator` dihapus → `useMatrixConfigurator`, normalisasi `customAttributeValues` CAND-04). G1+G2 PASS, 13/13 test pass, Tour 15 langkah sukses, code review 0🔴 0🟡 0🔵, QA 6/7 Pass. Migration record: `migration-tool/migration-records/purchase_product_optional_18.0_19.0/SUMMARY.md` |
+| Migrasi 19.0→20.0 | `doc-dev/migration_19.0_20.0/doc/` (baseline `01b` BSL-001..028, `FINDINGS.md` MF-01..05 + RMV-01..05, `CROSS_VERSION_COMPARE.md`) | SELESAI 2026-09-24 (UAT di-sign-off berbasis test AI — penyimpangan eksplisit) | Branch `migration/20.0`. Perubahan: manifest, `get/set_param`→`get/set_int`, xpath `<column>`, controller tanpa `parent_combination`, Owl 3 (`useProps`/`proxy`/`this.` di template, `orm_plugin`), ikon `fa`→`oi` (RMV-02), test (+6) & tour (Enterprise-safe). 21/21 Community & Enterprise, Tour 17/17, code review 0🔴 0🟡, QA 9/9 (19 vs 20 live). Migration record: `migration-tool/migration-records/purchase_product_optional_19.0_20.0/SUMMARY.md` |
 
 ---
 
