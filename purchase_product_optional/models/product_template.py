@@ -18,8 +18,8 @@ class ProductTemplate(models.Model):
         """
         currency_obj = self.env['res.currency']
         from_currency = currency_obj.browse(from_currency)
-        get_param = self.env['ir.config_parameter'].sudo().get_param
-        to_currency_id = int(get_param('currency_id'))
+        get_param = self.env['ir.config_parameter'].sudo().get_int
+        to_currency_id = get_param('currency_id')
         to_currency = currency_obj.browse(to_currency_id)
         if from_currency.id == to_currency_id:
             return price

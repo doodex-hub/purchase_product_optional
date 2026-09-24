@@ -17,6 +17,7 @@
 | MF-01 | 5 commit aset store di branch rilis `19.0` tidak di-port | 1 | `[PERLU-KEPUTUSAN]` | Rendah | Default diambil (tidak di-port), menunggu konfirmasi |
 | MF-02 | Bundel quirk 19.0 yang dipertahankan (BSL-005/006/009/010/013/017/018/021/022/025/027/028, CAND-08) | 1 | `[DIWARISI-SOURCE]` | Info | Dipertahankan |
 | MF-03 | Parent exclusions (eksklusi atribut lintas-produk) hilang di 20.0 | 1-2 | `[GAP-MIGRASI]` | Sedang | Default diambil (kontrak `parent_exclusions={}`), menunggu konfirmasi |
+| MF-04 | Template configurable & edit ulang (T-03/CAND-08) belum punya evidence eksekusi | 6 | `[DIWARISI-SOURCE]` | Sedang | Dijadwalkan Step 10 (menunggu slot) |
 
 ---
 
@@ -68,6 +69,22 @@ satu produk (`exclusions`) dan kombinasi arsip tetap jalan.
 `parent_exclusions` berisi `{}` supaya kontrak JS (`_checkExclusions`) tidak berubah. Tidak
 mengimplementasikan ulang fitur parent exclusion di modul (itu menambah fitur/model data baru).
 **Keputusan pemilik modul:** *(kosong — konfirmasi apakah fitur ini pernah dipakai produksi)*
+
+### MF-04 — Jalur template configurable / edit ulang belum pernah dieksekusi
+**Ditemukan di:** Step 6 (2026-09-24)
+**Tag:** `[DIWARISI-SOURCE]`
+**Ref:** BSL-001, BSL-004, CAND-08 (17_18), gap T-03 UAT 18→19, AC-04-01.
+**Lokasi:** `static/src/js/purchase_product_field.js` (`_onProductTemplateUpdate`, `onEditConfiguration`);
+native `product_matrix/static/src/js/matrix_configurator_hook.js` (`open()` menghapus baris baru saat
+`edit=false` — identik 19.0 dan 20.0; beda 20.0 hanya judul dialog matrix = nama produk).
+**Deskripsi:** memilih template configurable (lebih dari satu variant) memicu grid matrix native
+(yang menghapus baris PO baru) DAN dialog configurator modul atas record yang sama; edit ulang juga
+membuka keduanya. Tour Step 9 hanya mencakup produk non-configurable + optional product.
+**Dampak:** perilaku warisan dipertahankan (tidak diperbaiki); risiko residual: belum ada bukti live
+20.0 ≡ 19.0 untuk jalur ini.
+**Rekomendasi:** Step 10 — skenario "hanya satu dialog disentuh" (USAGE_GUIDE) + edit ulang, idealnya
+Cross-Version-Compare 19.0 vs 20.0 live.
+**Keputusan pemilik modul:** *(kosong)*
 
 ---
 

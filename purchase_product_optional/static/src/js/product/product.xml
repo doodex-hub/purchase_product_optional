@@ -33,7 +33,7 @@
                 <button
                     class="btn btn-secondary d-none d-md-inline-block"
                     aria-label="Remove one"
-                    t-on-click="decreaseQuantity">
+                    t-on-click="this.decreaseQuantity">
                     <i class="fa fa-minus"/>
                 </button>
                 <input
@@ -41,16 +41,16 @@
                     name="product_quantity"
                     type="number"
                     t-att-value="this.props.quantity"
-                    t-on-change="setQuantity"/>
+                    t-on-change="this.setQuantity"/>
                 <button
                     class="btn btn-secondary d-none d-md-inline-block"
                     aria-label="Add one"
-                    t-on-click="increaseQuantity">
+                    t-on-click="this.increaseQuantity">
                     <i class="fa fa-plus"/>
                 </button>
             </div>
             <div t-else="">
-                <h5 class="text-nowrap" t-out="getFormattedPrice()"/>
+                <h5 class="text-nowrap" t-out="this.getFormattedPrice()"/>
             </div>
             <a
                 class="d-block mt-2"
@@ -62,7 +62,7 @@
         </td>
         <td class="o_purchase_product_optional_price py-3 px-0 text-end" name="price">
             <div t-if="!this.props.optional" class="input-group justify-content-end">
-                <h5 class="text-nowrap" t-out="getFormattedPrice()"/>
+                <h5 class="text-nowrap" t-out="this.getFormattedPrice()"/>
             </div>
             <div t-else="">
                 <button

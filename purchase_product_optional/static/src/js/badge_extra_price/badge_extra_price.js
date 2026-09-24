@@ -1,14 +1,14 @@
 /** @odoo-module **/
 
-import { Component } from "@odoo/owl";
+import { Component, t, useProps } from "@odoo/owl";
 import { formatCurrency } from "@web/core/currency";
 
 export class BadgeExtraPrice extends Component {
     static template = "product.badge_extra_price";
-    static props = {
-        price: Number,
-        currencyId: Number,
-    };
+    props = useProps({
+        price: t.number(),
+        currencyId: t.number(),
+    });
 
     /**
      * Return the price, in the format of the given currency.

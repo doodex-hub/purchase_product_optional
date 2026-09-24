@@ -1,7 +1,8 @@
 /** @odoo-module **/
 
 import { _t } from "@web/core/l10n/translation";
-import { Component, onWillStart, useState, useSubEnv } from "@odoo/owl";
+import { useSubEnv } from "@web/owl2/utils";
+import { Component, onWillStart, proxy, t, useProps } from "@odoo/owl";
 import { Dialog } from '@web/core/dialog/dialog';
 import { ProductList } from "../product_list/product_list";
 import { useService } from "@web/core/utils/hooks";
@@ -10,31 +11,27 @@ import { rpc } from "@web/core/network/rpc";
 export class ProductConfiguratorDialogPurchase extends Component {
     static components = { Dialog, ProductList };
     static template = 'purchase_product_optional.dialog';
-    static props = {
-        productTemplateId: Number,
-        ptavIds: { type: Array, element: Number },
-        customAttributeValues: {
-            type: Array,
-            element: Object,
-            shape: {
-                ptavId: Number,
-                value: String,
-            }
-        },
-        quantity: Number,
-        productUOMId: { type: Number, optional: true },
-        companyId: { type: Number, optional: true },
-        pricelistId: { type: Number, optional: true },
-        currencyId: Number,
-        soDate: String,
-        edit: { type: Boolean, optional: true },
-        save: Function,
-        discard: Function,
-        close: Function, // This is the close from the env of the Dialog Component
-    };
-    static defaultProps = {
-        edit: false,
-    }
+    // Owl 3 (20.0): static props/defaultProps are replaced by a props schema.
+    props = useProps({
+        productTemplateId: t.number(),
+        ptavIds: t.array(t.number()),
+        customAttributeValues: t.array(
+            t.object({
+                ptavId: t.number(),
+                value: t.string(),
+            })
+        ),
+        quantity: t.number(),
+        productUOMId: t.number().optional(),
+        companyId: t.number().optional(),
+        pricelistId: t.number().optional(),
+        currencyId: t.number(),
+        soDate: t.string(),
+        edit: t.boolean().optional(false),
+        save: t.function(),
+        discard: t.function(),
+        close: t.function(), // This is the close from the env of the Dialog Component
+    });
 
     setup() {
         this.price_product_dialog = {};
@@ -45,7 +42,7 @@ export class ProductConfiguratorDialogPurchase extends Component {
 
         this.title = _t("Configure your product");
         this.orm = useService("orm");
-        this.state = useState({
+        this.state = proxy({
             products: [],
             optionalProducts: [],
         });

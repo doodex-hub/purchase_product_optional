@@ -76,9 +76,9 @@ class ProductConfiguratorPurchaseController(Controller):
                 dict(
                     **self._get_product_information_purchase(
                         optional_product_template,
-                        optional_product_template._get_first_possible_combination(
-                            parent_combination=combination
-                        ),
+                        # 20.0: parent (cross-product) exclusions no longer exist, the native
+                        # method dropped its `parent_combination` argument.
+                        optional_product_template._get_first_possible_combination(),
                         currency_id,
                         so_date,
                         # giving all the ptav of the parent product to get all the exclusions
@@ -191,9 +191,7 @@ class ProductConfiguratorPurchaseController(Controller):
             dict(
                 **self._get_product_information_purchase(
                     optional_product_template,
-                    optional_product_template._get_first_possible_combination(
-                        parent_combination=parent_combination
-                    ),
+                    optional_product_template._get_first_possible_combination(),
                     currency_id,
                     so_date,
                     parent_combination=parent_combination,
@@ -262,8 +260,9 @@ class ProductConfiguratorPurchaseController(Controller):
         product_uom = request.env['uom.uom'].browse(product_uom_id)
         currency = request.env['res.currency'].browse(currency_id)
         product = product_template._get_variant_for_combination(combination)
+        # 20.0: `parent_combination` was removed from the native method (exclusions are now
+        # restricted to the same template), so `parent_exclusions` below is always empty.
         attribute_exclusions = product_template._get_attribute_exclusions(
-            parent_combination=parent_combination,
             combination_ids=combination.ids,
         )
 
@@ -301,7 +300,7 @@ class ProductConfiguratorPurchaseController(Controller):
             ) for ptal in product_template.attribute_line_ids],
             exclusions=attribute_exclusions['exclusions'],
             archived_combinations=attribute_exclusions['archived_combinations'],
-            parent_exclusions=attribute_exclusions['parent_exclusions'],
+            parent_exclusions={},
         )
 
     def _get_basic_product_information_purchase(self, product_or_template, pricelist, combination, **kwargs):

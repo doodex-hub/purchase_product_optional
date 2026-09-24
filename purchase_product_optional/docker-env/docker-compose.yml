@@ -1,8 +1,11 @@
-name: purchase_product_optional_18_19_target
+name: purchase_product_optional_migration_20
 
+# Migration testing 19.0 -> 20.0. Odoo 20.0 from source (see Dockerfile). Project name + port 8201 are
+# unique so this stack never collides with other migration stacks running on the same machine
+# (e.g. pos_margin_sale_migration_20 on 8078/8182).
 services:
   db:
-    image: postgres:15
+    image: postgres:16
     environment:
       POSTGRES_USER: odoo
       POSTGRES_PASSWORD: odoo
@@ -11,25 +14,33 @@ services:
       - db-data:/var/lib/postgresql/data
 
   odoo:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - db
-    environment:
-      HOST: db
-      USER: odoo
-      PASSWORD: odoo
     shm_size: '2gb'
+    environment:
+      # libpq env vars (there is no official-image entrypoint translating HOST/USER/PASSWORD here).
+      PGHOST: db
+      PGUSER: odoo
+      PGPASSWORD: odoo
     ports:
-      - "8199:8069"
+      - "8201:8069"
     volumes:
       - ..:/mnt/extra-addons/purchase_product_optional
       - ./logs:/var/log/odoo
+      # native-target Community 20.0, read-only.
+      - D:/Kuncoro/doodex/repo/odoo20:/opt/odoo:ro
+    # G1 / Step 9 runs go through ./run-test.sh (fresh DB every run). This default command is the
+    # plain G1 install test.
     command: >
-      odoo -d purchase_product_optional_19_qa
+      -d purchase_product_optional_20_test
       -i purchase_product_optional
-      --addons-path=/usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons
-      --logfile=/var/log/odoo/odoo_qa.log
+      --addons-path=/opt/odoo/addons,/opt/odoo/odoo/addons,/mnt/extra-addons
+      --http-interface=0.0.0.0
       --stop-after-init
+      --logfile=/var/log/odoo/odoo.log
 
 volumes:
   db-data:

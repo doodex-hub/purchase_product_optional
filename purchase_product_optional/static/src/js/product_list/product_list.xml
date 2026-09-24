@@ -16,7 +16,7 @@
                 </tr>
                 <tr t-if="!this.props.areProductsOptional">
                     <td colspan="4" class="border-bottom-0 text-end">
-                        <h4>Total: <span t-out="getFormattedTotal()"/></h4>
+                        <h4>Total: <span t-out="this.getFormattedTotal()"/></h4>
                     </td>
                 </tr>
             </tbody>

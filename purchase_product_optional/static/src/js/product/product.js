@@ -1,6 +1,6 @@
 /** @odoo-module */
 
-import { Component } from "@odoo/owl";
+import { Component, t, useProps } from "@odoo/owl";
 import { formatCurrency } from "@web/core/currency";
 import {
     ProductTemplateAttributeLine as PTAL
@@ -9,21 +9,21 @@ import {
 export class Product extends Component {
     static components = { PTAL };
     static template = "purchase_product_optional.product";
-    static props = {
-        id: { type: [Number, {value: false}], optional: true },
-        product_tmpl_id: Number,
-        display_name: String,
-        description_purchase: [Boolean, String], // backend sends 'false' when there is no description
-        price: Number,
-        quantity: Number,
-        attribute_lines: Object,
-        optional: Boolean,
-        imageURL: { type: String, optional: true },
-        archived_combinations: Array,
-        exclusions: Object,
-        parent_exclusions: Object,
-        parent_product_tmpl_ids: { type: Array, element: Number, optional: true },
-    };
+    props = useProps({
+        id: t.or([t.number(), t.literal(false)]).optional(),
+        product_tmpl_id: t.number(),
+        display_name: t.string(),
+        description_purchase: t.or([t.boolean(), t.string()]), // backend sends 'false' when there is no description
+        price: t.number(),
+        quantity: t.number(),
+        attribute_lines: t.array(),
+        optional: t.boolean(),
+        imageURL: t.string().optional(),
+        archived_combinations: t.array(),
+        exclusions: t.object(),
+        parent_exclusions: t.object(),
+        parent_product_tmpl_ids: t.array(t.number()).optional(),
+    });
 
     //--------------------------------------------------------------------------
     // Handlers

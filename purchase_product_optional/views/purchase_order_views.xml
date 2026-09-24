@@ -6,10 +6,14 @@
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//list/field[@name='product_template_id']" position="attributes">
+            <!-- 20.0: product_id / product_template_id now live inside
+                 <column name="product_and_description">, so `//list/field` no longer matches. -->
+            <xpath expr="//list//field[@name='product_template_id']" position="attributes">
                 <attribute name="column_invisible">0</attribute>
             </xpath>
-            <xpath expr="//list/field[@name='product_template_id']" position="after">
+            <!-- Hidden helper fields stay direct children of the list, after the column (a <column>
+                 renders every child field in its single cell and ignores column_invisible). -->
+            <xpath expr="//list/column[@name='product_and_description']" position="after">
                 <field name="product_template_attribute_value_ids" column_invisible="1" />
                 <field name="product_custom_attribute_value_ids" column_invisible="1" >
                     <list>
@@ -20,7 +24,7 @@
                 <field name="product_no_variant_attribute_value_ids" column_invisible="1" />
                 <field name="is_configurable_product" column_invisible="1" />
             </xpath>
-            <xpath expr="//list/field[@name='product_id']" position="attributes">
+            <xpath expr="//list//field[@name='product_id']" position="attributes">
                 <attribute name="optional">hide</attribute>
                 <attribute name="string">Product Variant</attribute>
             </xpath>

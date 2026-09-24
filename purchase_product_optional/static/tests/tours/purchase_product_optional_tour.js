@@ -5,8 +5,8 @@
 
 import { registry } from "@web/core/registry";
 
+// 20.0: the tour registry is validated with t.strictObject({steps, url}) — no `test` key anymore.
 registry.category("web_tour.tours").add("purchase_product_optional_configurator_tour", {
-    test: true,
     url: "/web",
     steps: () => [
         {
@@ -37,7 +37,8 @@ registry.category("web_tour.tours").add("purchase_product_optional_configurator_
             run: "click",
         },
         {
-            trigger: ".o_field_x2many_list_row_add > a",
+            // 20.0: list controls render as <button> ("Add a product"), no longer as <a>.
+            trigger: '.o_field_x2many_list_row_add > button:contains("Add a product")',
             content: "Add a new order line",
             run: "click",
         },

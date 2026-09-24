@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t t-name="purchase_product_optional.dialog">
-        <Dialog size="size" title="title" contentClass="this.state.optionalProducts.length ? 'h-75' : ''">
+        <Dialog size="this.size" title="this.title" contentClass="this.state.optionalProducts.length ? 'h-75' : ''">
             <ProductList t-if="this.state.products.length" products="this.state.products"/>
             <ProductList
                 t-if="this.state.optionalProducts.length"
@@ -10,11 +10,11 @@
             <t t-set-slot="footer">
                 <button
                     class="btn btn-primary"
-                    t-on-click="onConfirm"
-                    t-att-disabled="!isPossibleConfiguration()">
+                    t-on-click="this.onConfirm"
+                    t-att-disabled="!this.isPossibleConfiguration()">
                     Confirm
                 </button>
-                <button class="btn btn-secondary" t-on-click="onDiscard">
+                <button class="btn btn-secondary" t-on-click="this.onDiscard">
                     Cancel
                 </button>
             </t>

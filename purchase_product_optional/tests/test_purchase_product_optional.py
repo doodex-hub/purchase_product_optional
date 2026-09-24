@@ -22,7 +22,8 @@ class TestConvertPrice(TransactionCase):
 
     def test_convert_price_same_currency_no_conversion(self):
         currency = self.env.company.currency_id
-        self.env['ir.config_parameter'].sudo().set_param('currency_id', str(currency.id))
+        # 20.0: get_param/set_param were removed from ir.config_parameter (typed API only).
+        self.env['ir.config_parameter'].sudo().set_int('currency_id', currency.id)
         price = self.env['product.template'].convert_price(50.0, currency.id)
         self.assertEqual(price, 50.0)
 
@@ -42,7 +43,7 @@ class TestConvertPrice(TransactionCase):
             'rate': 2.0,
             'company_id': company.id,
         })
-        self.env['ir.config_parameter'].sudo().set_param('currency_id', str(company_currency.id))
+        self.env['ir.config_parameter'].sudo().set_int('currency_id', company_currency.id)
         price = self.env['product.template'].convert_price(100.0, other_currency.id)
         self.assertNotEqual(
             price, 100.0,
@@ -90,6 +91,31 @@ class TestOnchangePartnerCurrency(TransactionCase):
             "Documents F-03: currency_id stays unchanged even though partner's "
             "property_purchase_currency_id differs",
         )
+
+    def test_onchange_stores_currency_param(self):
+        # MIGRATION 19.0->20.0 (BSL-006/007/019): the onchange keeps writing the (unchanged) PO
+        # currency to the global 'currency_id' parameter, now through ir.config_parameter.set_int.
+        company_currency = self.env.company.currency_id
+        other_currency = self.env['res.currency'].with_context(active_test=False).search(
+            [('id', '!=', company_currency.id)], limit=1
+        )
+        other_currency.write({'active': True})
+        partner = self.env['res.partner'].create({
+            'name': 'MIGRATION Param Vendor',
+            'property_purchase_currency_id': other_currency.id,
+        })
+        self.env['ir.config_parameter'].sudo().search([('key', '=', 'currency_id')]).unlink()
+        po = self.env['purchase.order'].new({
+            'partner_id': partner.id,
+            'currency_id': company_currency.id,
+        })
+        po.onchange_partner_id()
+        po.onchange_id_vendor()
+        self.assertEqual(po.currency_id, company_currency)
+        self.assertEqual(
+            self.env['ir.config_parameter'].sudo().get_int('currency_id'), company_currency.id
+        )
+        self.assertEqual(str(po.id_vendor), str(partner.id))
 
     def test_onchange_partner_id_mro_shadowing_candidates(self):
         # FINDINGS F-02: log every class in the MRO that defines `onchange_partner_id` on
@@ -197,6 +223,19 @@ class TestProductAddModeField(TransactionCase):
             "fields.Many2many(...) instead of being declared as its own field",
         )
 
+    def test_id_vendor_label(self):
+        # MIGRATION 19.0->20.0 (BSL-017, F-08): label stays the explicit 'ID'.
+        self.assertEqual(self.env['purchase.order']._fields['id_vendor'].string, 'ID')
+
+    def test_simple_product_single_variant_no_configurator(self):
+        # MIGRATION 19.0->20.0 (BSL-001/021, AC-02-02): a simple product without optional products
+        # makes get_single_product_variant() return the variant and has_optional_products=False,
+        # which is the branch where purchase_product_field.js only sets product_id (no dialog).
+        template = self.env['product.template'].create({'name': 'MIGRATION Simple Product'})
+        result = template.get_single_product_variant()
+        self.assertEqual(result.get('product_id'), template.product_variant_id.id)
+        self.assertFalse(result.get('has_optional_products'))
+
 
 @tagged('post_install', '-at_install')
 class TestPurchaseOrderFormViewColumns(TransactionCase):
@@ -260,6 +299,80 @@ class TestPurchaseProductOptionalController(HttpCase):
             payload['optional_products'][0]['product_tmpl_id'], self.optional_template.id
         )
         self.assertIn('exclusions', payload['products'][0])
+        # MIGRATION 19.0->20.0 (BSL-020, MF-03): parent exclusions no longer exist natively, the key
+        # is kept (empty) so the dialog JS contract is unchanged.
+        self.assertEqual(payload['products'][0]['parent_exclusions'], {})
+        self.assertEqual(payload['optional_products'][0]['parent_exclusions'], {})
+
+    def test_get_optional_products_route(self):
+        # MIGRATION 19.0->20.0 (BSL-026, DIFF-11): route used when an optional product is added in
+        # the dialog; it called _get_first_possible_combination(parent_combination=...) in 19.0.
+        self.authenticate('admin', 'admin')
+        result = self._json_rpc('/purchase_product_optional/get_optional_products', {
+            'product_template_id': self.main_template.id,
+            'combination': [],
+            'parent_combination': [],
+            'currency_id': self.env.company.currency_id.id,
+            'so_date': fields.Date.today().isoformat(),
+        })
+        payload = result.get('result')
+        self.assertIsNotNone(payload, f"Unexpected JSON-RPC error: {result.get('error')}")
+        self.assertEqual(len(payload), 1)
+        self.assertEqual(payload[0]['product_tmpl_id'], self.optional_template.id)
+        self.assertEqual(payload[0]['parent_product_tmpl_ids'], [self.main_template.id])
+        self.assertEqual(payload[0]['parent_exclusions'], {})
+
+    def test_update_combination_route(self):
+        # MIGRATION 19.0->20.0 (BSL-026/028): returns basic info with price = standard_price.
+        self.authenticate('admin', 'admin')
+        self.optional_template.standard_price = 42.0
+        ptav = self.optional_template.attribute_line_ids.product_template_value_ids
+        result = self._json_rpc('/purchase_product_optional/update_combination', {
+            'product_template_id': self.optional_template.id,
+            'combination': ptav.ids,
+            'currency_id': self.env.company.currency_id.id,
+            'so_date': fields.Date.today().isoformat(),
+            'quantity': 2,
+        })
+        payload = result.get('result')
+        self.assertIsNotNone(payload, f"Unexpected JSON-RPC error: {result.get('error')}")
+        self.assertEqual(payload['id'], self.optional_template.product_variant_id.id)
+        self.assertEqual(payload['price'], 42.0)
+
+    def test_get_values_purchase_same_template_exclusions(self):
+        # MIGRATION 19.0->20.0 (BSL-016, AC-05-02): exclusions inside one template are still sent
+        # (20.0 stores them on ptav.excluded_value_ids instead of exclude_for).
+        self.authenticate('admin', 'admin')
+        attr_a = self.env['product.attribute'].create({'name': 'MIGRATION Attr A'})
+        attr_b = self.env['product.attribute'].create({'name': 'MIGRATION Attr B'})
+        a1, a2 = self.env['product.attribute.value'].create([
+            {'name': 'A1', 'attribute_id': attr_a.id}, {'name': 'A2', 'attribute_id': attr_a.id},
+        ])
+        b1, b2 = self.env['product.attribute.value'].create([
+            {'name': 'B1', 'attribute_id': attr_b.id}, {'name': 'B2', 'attribute_id': attr_b.id},
+        ])
+        template = self.env['product.template'].create({
+            'name': 'MIGRATION Exclusion Product',
+            'attribute_line_ids': [
+                (0, 0, {'attribute_id': attr_a.id, 'value_ids': [(6, 0, [a1.id, a2.id])]}),
+                (0, 0, {'attribute_id': attr_b.id, 'value_ids': [(6, 0, [b1.id, b2.id])]}),
+            ],
+        })
+        ptavs = template.attribute_line_ids.product_template_value_ids
+        ptav_a1 = ptavs.filtered(lambda v: v.product_attribute_value_id == a1)
+        ptav_b1 = ptavs.filtered(lambda v: v.product_attribute_value_id == b1)
+        ptav_a1.excluded_value_ids = [(6, 0, ptav_b1.ids)]
+        result = self._json_rpc('/purchase_product_optional/get_values_purchase', {
+            'product_template_id': template.id,
+            'quantity': 1,
+            'currency_id': self.env.company.currency_id.id,
+            'so_date': fields.Date.today().isoformat(),
+        })
+        payload = result.get('result')
+        self.assertIsNotNone(payload, f"Unexpected JSON-RPC error: {result.get('error')}")
+        exclusions = payload['products'][0]['exclusions']
+        self.assertIn(ptav_b1.id, exclusions[str(ptav_a1.id)])
+        self.assertIn(ptav_a1.id, exclusions[str(ptav_b1.id)])
 
     def test_create_product_creates_dynamic_variant(self):
         self.authenticate('admin', 'admin')

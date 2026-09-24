@@ -1,19 +1,16 @@
 /** @odoo-module */
 
-import { Component } from "@odoo/owl";
+import { Component, t, useProps } from "@odoo/owl";
 import { formatCurrency } from "@web/core/currency";
 import { Product } from "../product/product";
 
 export class ProductList extends Component {
     static components = { Product };
     static template = "purchaseProductConfigurator.productList";
-    static props = {
-        products: Array,
-        areProductsOptional: { type: Boolean, optional: true },
-    };
-    static defaultProps = {
-        areProductsOptional: false,
-    };
+    props = useProps({
+        products: t.array(),
+        areProductsOptional: t.boolean().optional(false),
+    });
 
     /**
      * Return the total of the product in the list, in the currency of the `purchase.order`.

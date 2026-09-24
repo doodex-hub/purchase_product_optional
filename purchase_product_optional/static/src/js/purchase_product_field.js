@@ -1,7 +1,7 @@
 /** @odoo-module */
 import { PurchaseOrderLineProductField } from '@purchase_product_matrix/js/purchase_product_field';
 import { serializeDateTime } from "@web/core/l10n/dates";
-import { x2ManyCommands } from "@web/core/orm_service";
+import { x2ManyCommands } from "@web/core/orm_plugin";
 import { WarningDialog } from "@web/core/errors/error_dialogs";
 import { useService } from "@web/core/utils/hooks";
 import { patch } from "@web/core/utils/patch";
