@@ -147,7 +147,6 @@ patch(PurchaseOrderLineProductField.prototype, {
             save: async (mainProduct, optionalProducts) => {
                 await applyProductPurchase(this.props.record, mainProduct);
 
-                console.log('Main Product Quantity:', mainProduct.quantity);
                 // await this._onProductUpdate();
                 // purchaseOrderRecord.data.order_line.leaveEditMode();
 
@@ -157,7 +156,6 @@ patch(PurchaseOrderLineProductField.prototype, {
                         mode: "readonly",
                     });
                     await applyProductPurchase(line, optionalProduct);
-                    console.log('tes')
                 }
             },            
             discard: () => {
