@@ -26,6 +26,7 @@ export class ProductConfiguratorDialogPurchase extends Component {
         companyId: t.number().optional(),
         pricelistId: t.number().optional(),
         currencyId: t.number(),
+        partnerId: t.number().optional(),
         soDate: t.string(),
         edit: t.boolean().optional(false),
         save: t.function(),
@@ -35,10 +36,6 @@ export class ProductConfiguratorDialogPurchase extends Component {
 
     setup() {
         this.price_product_dialog = {};
-
-        let inputElementIdVendor = document.getElementById('id_vendor_0');
-        inputElementIdVendor = inputElementIdVendor.value
-        this.id_vendor = inputElementIdVendor;
 
         this.title = _t("Configure your product");
         this.orm = useService("orm");
@@ -125,7 +122,7 @@ export class ProductConfiguratorDialogPurchase extends Component {
                     partner_to_currency_id[item.partner_id[0]] = item.currency_id[0]//
                 });
 
-                let key = this.id_vendor ? this.id_vendor : null;
+                let key = this.props.partnerId || null;
                 key = key ? key : null;
 
                 let price = product_or_template[0].standard_price; //product_or_template[0].standard_price
@@ -175,7 +172,7 @@ export class ProductConfiguratorDialogPurchase extends Component {
                 partner_to_currency_id[item.partner_id[0]] = item.currency_id[0]//
             });
 
-            let key = this.id_vendor ? this.id_vendor : null;
+            let key = this.props.partnerId || null;
             key = key ? key : null;
 
             let price = product_or_template[0].standard_price; //product_or_template[0].standard_price
