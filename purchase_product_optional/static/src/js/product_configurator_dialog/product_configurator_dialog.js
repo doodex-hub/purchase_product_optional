@@ -146,7 +146,7 @@ export class ProductConfiguratorDialogPurchase extends Component {
                 }
                 price = price
                 let from_currency = currency_id
-                price = await this.orm.call('product.template', 'convert_price', [[], price, from_currency]);
+                price = await this.orm.call('product.template', 'convert_price', [[], price, from_currency, this.props.currencyId]);
                 optionalProductPrices[product_tmpl_id] = price;
                 this.price_product_dialog[product_tmpl_id] = price; // add optional object to obj list price
             }
@@ -195,7 +195,7 @@ export class ProductConfiguratorDialogPurchase extends Component {
             }
             price = price
             let from_currency = currency_id
-            price = await this.orm.call('product.template', 'convert_price', [[], price, from_currency]);
+            price = await this.orm.call('product.template', 'convert_price', [[], price, from_currency, this.props.currencyId]);
             this.price = price;
             return arrObj;
         } catch (error) {
