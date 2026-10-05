@@ -283,3 +283,36 @@ di repo ini SUDAH memakai versi final yang terbukti PASS.
 
 - *(diisi setelah Step 04 dijalankan — tergantung apakah environment docker berhasil membuktikan/
   membantah F-01/F-02 secara nyata, atau berhenti di desk-review)*
+
+---
+
+## Update 2026-10-05 — Review & hotfix rilis 19.0.1.0.1
+
+> Sesi review/fix/publish terpisah dari migrasi: finding dinilai dari kebenaran kode dan source Odoo 19.0,
+> bukan dari aturan migrasi ("quirk dipertahankan"). Keputusan "dipertahankan" pada entry F-xx di atas
+> **tidak berlaku lagi** untuk item yang diperbaiki di bawah. Bukti: reproduksi sebelum/sesudah di Docker
+> (Odoo 19.0, DB baru) dengan skrip JSON-RPC yang sama + uji UI browser.
+
+### Status per finding
+
+| ID | Status | Catatan |
+|---|---|---|
+| F-01 | ✅ FIXED 19.0.1.0.1 | `product_no_variant_attribute_value_ids` kini `store=True, readonly=False, precompute=True`; kwarg `product_add_mode` dibuang. Sebelum: dikirim `[1]`, terbaca `[]`. Sesudah: terbaca sama dengan yang dikirim. Warning "unknown parameter" hilang. |
+| F-02 | ✅ FIXED | Override `purchase.order.onchange_partner_id` dihapus (`models/purchase_order.py` dihapus). Sebelum: payment term tidak terisi saat partner diganti. Sesudah: terisi (native). |
+| F-03 | ✅ FIXED | Kode mati ikut terhapus bersama override. Kurs partner sudah ditangani `_compute_currency_id` native. |
+| F-04 | ✅ FIXED | Tidak ada lagi tulis ke `ir.config_parameter['currency_id']`. `convert_price(price, from_currency, to_currency=None)`; dialog mengirim `props.currencyId`. Sebelum: 100 USD bisa menjadi 200 atau 100 tergantung onchange terakhir. Sesudah: deterministik. |
+| F-05 | ✅ FIXED | Parameter kosong tidak lagi relevan; tanpa `to_currency` dipakai mata uang company. |
+| F-06 | ✅ FIXED | `partnerId` dikirim sebagai prop dialog (dari record PO); `document.getElementById('id_vendor_0')` dihapus. |
+| F-07 | ⏸ TIDAK DIKERJAKAN | Harga supplier belum memakai `_select_seller` (company/qty/tanggal/varian). Butuh keputusan produk. |
+| F-08 | ✅ FIXED | Field `id_vendor` (label "ID") dihapus beserta onchange, view, dan style. |
+| baru | ✅ FIXED | `console.log` debug dihapus (3 baris). |
+| baru | ⏸ TIDAK DIKERJAKAN | Optimasi RPC dialog (`search_read` tanpa `fields`, 2-3 RPC per produk opsional) dan kosmetik (`i18n/sale_product_configurator.pot`, `description` manifest). |
+
+### Ringkasan rilis
+
+- Versi modul: `19.0.1.0.1`. Perubahan hanya di modul `purchase_product_optional`.
+- Hash: staging/19.0 `265a6d3 → 51d5f4f`; 19.0 `61702e9 → bd0229d (merge commit)`. Verifikasi remote lawan remote: diff staging↔publish kosong, sisa file terlarang 0.
+- Uji: skrip RPC (field, payment term, konversi, persist no_variant) sebelum/sesudah; uji UI dialog dengan vendor X → utama 7.00/optional 3.00, vendor Y → 9.00/1.00, tanpa vendor → supplier pertama 7.00/3.00; PO tersimpan, tanpa error console.
+- **Belum teruji:** tour test (tidak ada `tests/` di staging), Enterprise, multi-company.
+- **Catatan audit operasional:** (1) data Extra Values yang sudah hilang di PO lama tidak bisa dipulihkan; (2) upgrade menghapus kolom `purchase_order.id_vendor`; (3) `convert_price` kini menerima argumen ke-3 opsional (kompatibel mundur untuk pemanggil lama, tapi hasilnya memakai mata uang company, bukan state global).
+- Pelajaran uji: asset bundle di-cache (`immutable`) → hapus `ir.attachment` `/web/assets/%` setelah ubah JS; cookie sesi dipakai bersama antar port → pakai konteks browser terpisah; di Odoo 20 dari source set `odoobot_state='disabled'`.
