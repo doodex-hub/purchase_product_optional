@@ -23,7 +23,7 @@
 | RMV-02 | Ikon Font Awesome tidak ter-render di backend 20 | 10 | REGRESI | Sedang | ✅ FIXED 2026-09-24 |
 | RMV-03 | Grid Confirm + Cancel configurator → Save gagal `virtual_NN` | 10 | GAP-LAMA | Sedang | Dipertahankan (identik 19.0) |
 | RMV-04 | Label varian/`name` baris PO & judul grid berubah | 10 | NATIVE-DIFF | Info | Dicatat |
-| RMV-05 | Harga optional multi-varian $0; `no_variant` tidak tersimpan di baris | 10 | GAP-LAMA | Rendah | Dipertahankan (identik 19.0) |
+| RMV-05 | Harga optional multi-varian $0; `no_variant` tidak tersimpan di baris | 10 | GAP-LAMA | Rendah | Sebagian ✅ 2026-10-05: `no_variant` kini tersimpan (hotfix 20.0.1.0.1, lihat `doc-dev/backfill/FINDINGS.md` F-01). Harga optional multi-varian $0 tetap dipertahankan |
 
 ---
 
