@@ -525,7 +525,6 @@ export class ProductConfiguratorDialogPurchase extends Component {
     * @return {Boolean} - Whether all the products selected have a valid combination or not.
     */
     isPossibleConfiguration() {
-        console.log("Checking configuration:", this.state.products);
         return [...this.state.products].every(
             p => this._isPossibleCombination(p)
         );
