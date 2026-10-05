@@ -24,16 +24,6 @@
                 <attribute name="optional">hide</attribute>
                 <attribute name="string">Product Variant</attribute>
             </xpath>
-            <xpath expr="//field[@name='currency_id']" position="after">
-                <field name="id_vendor" class='id_vendor' nolabel='1'/>
-            </xpath>
-            <xpath expr="//form" position="inside">
-                <style>
-                .id_vendor {
-                    visibility: hidden;
-                }
-                </style>
-            </xpath>
         </field>
     </record>
 

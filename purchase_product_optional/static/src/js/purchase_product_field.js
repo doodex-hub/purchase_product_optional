@@ -128,6 +128,7 @@ patch(PurchaseOrderLineProductField.prototype, {
             productUOMId: this.props.record.data.product_uom?.[0],
             companyId: purchaseOrderRecord.data.company_id?.[0],
             pricelistId: purchaseOrderRecord.data.pricelist_id?.[0],
+            partnerId: purchaseOrderRecord.data.partner_id?.[0],
             currencyId: this.props.record.data.currency_id?.[0],
             soDate: serializeDateTime(purchaseOrderRecord.data.date_order),
             edit: edit,
