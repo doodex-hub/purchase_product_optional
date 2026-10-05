@@ -8,20 +8,20 @@ class ProductTemplate(models.Model):
     Inherit the model product.template to add custom functionality.
     """
 
-    def convert_price(self, price, from_currency):
+    def convert_price(self, price, from_currency, to_currency=None):
         """
         Convert the price from one currency to another.
         
         :param price: The amount in the original currency
         :param from_currency: ID of the original currency
+        :param to_currency: ID of the target currency (the purchase order currency).
+                            Defaults to the current company currency.
         :return: The converted price in the target currency
         """
         currency_obj = self.env['res.currency']
         from_currency = currency_obj.browse(from_currency)
-        get_param = self.env['ir.config_parameter'].sudo().get_param
-        to_currency_id = int(get_param('currency_id'))
-        to_currency = currency_obj.browse(to_currency_id)
-        if from_currency.id == to_currency_id:
+        to_currency = currency_obj.browse(to_currency) if to_currency else self.env.company.currency_id
+        if from_currency == to_currency:
             return price
         price = from_currency._convert(
             from_amount=price,
