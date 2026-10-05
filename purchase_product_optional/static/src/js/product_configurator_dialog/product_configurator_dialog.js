@@ -26,6 +26,7 @@ export class ProductConfiguratorDialogPurchase extends Component {
         companyId: { type: Number, optional: true },
         pricelistId: { type: Number, optional: true },
         currencyId: Number,
+        partnerId: { type: Number, optional: true },
         soDate: String,
         edit: { type: Boolean, optional: true },
         save: Function,
@@ -38,10 +39,6 @@ export class ProductConfiguratorDialogPurchase extends Component {
 
     setup() {
         this.price_product_dialog = {};
-
-        let inputElementIdVendor = document.getElementById('id_vendor_0');
-        inputElementIdVendor = inputElementIdVendor.value
-        this.id_vendor = inputElementIdVendor;
 
         this.title = _t("Configure your product");
         this.orm = useService("orm");
@@ -128,7 +125,7 @@ export class ProductConfiguratorDialogPurchase extends Component {
                     partner_to_currency_id[item.partner_id[0]] = item.currency_id[0]//
                 });
 
-                let key = this.id_vendor ? this.id_vendor : null;
+                let key = this.props.partnerId || null;
                 key = key ? key : null;
 
                 let price = product_or_template[0].standard_price; //product_or_template[0].standard_price
@@ -149,7 +146,7 @@ export class ProductConfiguratorDialogPurchase extends Component {
                 }
                 price = price
                 let from_currency = currency_id
-                price = await this.orm.call('product.template', 'convert_price', [[], price, from_currency]);
+                price = await this.orm.call('product.template', 'convert_price', [[], price, from_currency, this.props.currencyId]);
                 optionalProductPrices[product_tmpl_id] = price;
                 this.price_product_dialog[product_tmpl_id] = price; // add optional object to obj list price
             }
@@ -178,7 +175,7 @@ export class ProductConfiguratorDialogPurchase extends Component {
                 partner_to_currency_id[item.partner_id[0]] = item.currency_id[0]//
             });
 
-            let key = this.id_vendor ? this.id_vendor : null;
+            let key = this.props.partnerId || null;
             key = key ? key : null;
 
             let price = product_or_template[0].standard_price; //product_or_template[0].standard_price
@@ -198,7 +195,7 @@ export class ProductConfiguratorDialogPurchase extends Component {
             }
             price = price
             let from_currency = currency_id
-            price = await this.orm.call('product.template', 'convert_price', [[], price, from_currency]);
+            price = await this.orm.call('product.template', 'convert_price', [[], price, from_currency, this.props.currencyId]);
             this.price = price;
             return arrObj;
         } catch (error) {
@@ -528,7 +525,6 @@ export class ProductConfiguratorDialogPurchase extends Component {
     * @return {Boolean} - Whether all the products selected have a valid combination or not.
     */
     isPossibleConfiguration() {
-        console.log("Checking configuration:", this.state.products);
         return [...this.state.products].every(
             p => this._isPossibleCombination(p)
         );

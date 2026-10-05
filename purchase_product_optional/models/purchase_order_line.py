@@ -1,16 +1,6 @@
 from odoo import api, fields, models, _
 
 
-class PurchaseOrder(models.Model):
-    _inherit = 'purchase.order'
-    
-    id_vendor = fields.Char(string='ID')
-    
-    @api.onchange('partner_id')
-    def onchange_id_vendor(self):
-        self.id_vendor = self.partner_id.id
-
-
 class PurchaseOrderLiner(models.Model):
     _inherit = 'purchase.order.line'
     
@@ -25,7 +15,7 @@ class PurchaseOrderLiner(models.Model):
         comodel_name='product.template.attribute.value',
         string="Extra Values",
         compute='_compute_no_variant_attribute_values',
-    product_add_mode = fields.Selection(related='product_id.product_template_id.product_add_mode', depends=['product_template_id']))
+        store=True, readonly=False, precompute=True)
     
     @api.depends('product_id')
     def _compute_custom_attribute_values(self):
